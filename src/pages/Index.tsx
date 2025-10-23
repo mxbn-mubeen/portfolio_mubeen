@@ -6,7 +6,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
 import { useEffect, useRef } from "react";
-import anime from 'animejs/lib/anime.es.js';
+import { animate } from 'animejs';
 
 const Index = () => {
   const skillsRef = useStaggerAnimation({ delay: 80 });
@@ -16,9 +16,8 @@ const Index = () => {
   useEffect(() => {
     // Continuous floating animation for hero content
     if (floatingRef.current) {
-      anime({
-        targets: floatingRef.current,
-        translateY: [-10, 10],
+      animate(floatingRef.current, {
+        y: [-10, 10],
         duration: 3000,
         easing: 'easeInOutSine',
         loop: true,

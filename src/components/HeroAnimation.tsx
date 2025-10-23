@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import { animate, createTimeline } from 'animejs';
 
 interface HeroAnimationProps {
   children: React.ReactNode;
@@ -27,48 +27,43 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
         .join('');
     }
 
-    // Animate title characters
-    anime.timeline()
-      .add({
-        targets: title?.querySelectorAll('span'),
-        opacity: [0, 1],
-        translateY: [50, 0],
-        scale: [0.8, 1],
-        duration: 1000,
-        delay: anime.stagger(50),
-        easing: 'easeOutExpo',
-      })
-      .add({
-        targets: subtitle,
-        opacity: [0, 1],
-        translateY: [30, 0],
-        duration: 800,
-        easing: 'easeOutExpo',
-      }, '-=600')
-      .add({
-        targets: description,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 800,
-        easing: 'easeOutExpo',
-      }, '-=400')
-      .add({
-        targets: buttons,
-        opacity: [0, 1],
-        scale: [0.8, 1],
-        duration: 600,
-        delay: anime.stagger(100),
-        easing: 'easeOutBack',
-      }, '-=200')
-      .add({
-        targets: socials,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        scale: [0.8, 1],
-        duration: 500,
-        delay: anime.stagger(80),
-        easing: 'easeOutExpo',
-      }, '-=200');
+    const tl = createTimeline();
+
+    tl.add(title?.querySelectorAll('span') as any, {
+      opacity: [0, 1],
+      y: [50, 0],
+      scale: [0.8, 1],
+      duration: 1000,
+      delay: (_el: Element, i: number) => i * 50,
+    });
+
+    tl.add(subtitle as any, {
+      opacity: [0, 1],
+      y: [30, 0],
+      duration: 800,
+    });
+
+    tl.add(description as any, {
+      opacity: [0, 1],
+      y: [20, 0],
+      duration: 800,
+    });
+
+    tl.add(Array.from(buttons) as any, {
+      opacity: [0, 1],
+      scale: [0.8, 1],
+      duration: 600,
+      delay: (_el: Element, i: number) => i * 100,
+      easing: 'easeOutBack',
+    });
+
+    tl.add(Array.from(socials) as any, {
+      opacity: [0, 1],
+      y: [20, 0],
+      scale: [0.8, 1],
+      duration: 500,
+      delay: (_el: Element, i: number) => i * 80,
+    });
 
   }, []);
 

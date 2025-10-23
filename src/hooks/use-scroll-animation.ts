@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import { animate, cubicBezier } from 'animejs';
 
 export const useScrollAnimation = (options?: {
   threshold?: number;
@@ -17,10 +17,9 @@ export const useScrollAnimation = (options?: {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && (!once || !hasAnimated.current)) {
-            anime({
-              targets: element,
+            animate(element, {
               opacity: [0, 1],
-              translateY: [40, 0],
+              y: [40, 0],
               duration: 1000,
               easing: 'easeOutExpo',
             });
@@ -62,14 +61,15 @@ export const useStaggerAnimation = (options?: {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated.current) {
             const children = container.children;
-            anime({
-              targets: Array.from(children),
-              opacity: [0, 1],
-              translateY: [30, 0],
-              scale: [0.9, 1],
-              duration: 800,
-              delay: anime.stagger(delay),
-              easing: 'easeOutExpo',
+            Array.from(children).forEach((child, i) => {
+              animate(child as Element, {
+                opacity: [0, 1],
+                y: [30, 0],
+                scale: [0.9, 1],
+                duration: 800,
+                delay: i * delay,
+                easing: 'easeOutExpo',
+              });
             });
             hasAnimated.current = true;
             observer.unobserve(container);
