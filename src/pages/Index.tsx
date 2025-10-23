@@ -2,8 +2,32 @@ import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Code2, Database, L
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { HeroAnimation } from "@/components/HeroAnimation";
+import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
+import { useEffect, useRef } from "react";
+// @ts-ignore
+import anime from 'animejs';
 
 const Index = () => {
+  const skillsRef = useStaggerAnimation({ delay: 80 });
+  const projectsRef = useStaggerAnimation({ delay: 150 });
+  const floatingRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Continuous floating animation for hero content
+    if (floatingRef.current) {
+      anime({
+        targets: floatingRef.current,
+        translateY: [-10, 10],
+        duration: 3000,
+        easing: 'easeInOutSine',
+        loop: true,
+        direction: 'alternate',
+      });
+    }
+  }, []);
+
   const skills = [
     { name: "React.js", icon: Code2 },
     { name: "Next.js", icon: Layers },
@@ -42,59 +66,61 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="animate-float">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Mohamed Mubeen A S
-            </h1>
-            <p className="text-2xl md:text-3xl text-white/90 mb-8 font-light">
-              Full Stack Developer
+          <HeroAnimation>
+            <div ref={floatingRef}>
+              <h1 className="hero-title text-5xl md:text-7xl font-bold text-white mb-6">
+                Mohamed Mubeen A S
+              </h1>
+              <p className="hero-subtitle text-2xl md:text-3xl text-white/90 mb-8 font-light">
+                Full Stack Developer
+              </p>
+            </div>
+            
+            <p className="hero-description text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 leading-relaxed">
+              Specialized in React.js, Next.js, and TypeScript. Building scalable web solutions 
+              with modern technologies and clean architecture.
             </p>
-          </div>
-          
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Specialized in React.js, Next.js, and TypeScript. Building scalable web solutions 
-            with modern technologies and clean architecture.
-          </p>
-          
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 shadow-xl animate-glow"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Get In Touch
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Projects
-            </Button>
-          </div>
+            
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="hero-button bg-white text-primary hover:bg-white/90 shadow-xl"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get In Touch
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="hero-button border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Projects
+              </Button>
+            </div>
 
-          <div className="flex gap-6 justify-center mt-12">
-            <a href="https://linkedin.com/in/mohamed-mubeen" target="_blank" rel="noopener noreferrer" 
-               className="text-white/70 hover:text-white transition-colors">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-               className="text-white/70 hover:text-white transition-colors">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="mailto:mxbn18@gmail.com"
-               className="text-white/70 hover:text-white transition-colors">
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
+            <div className="flex gap-6 justify-center mt-12">
+              <a href="https://linkedin.com/in/mohamed-mubeen" target="_blank" rel="noopener noreferrer" 
+                 className="hero-social text-white/70 hover:text-white transition-colors">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                 className="hero-social text-white/70 hover:text-white transition-colors">
+                <Github className="w-6 h-6" />
+              </a>
+              <a href="mailto:mxbn18@gmail.com"
+                 className="hero-social text-white/70 hover:text-white transition-colors">
+                <Mail className="w-6 h-6" />
+              </a>
+            </div>
+          </HeroAnimation>
         </div>
       </section>
 
       {/* About Section */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <AnimatedSection className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text text-center">
               About Me
             </h2>
@@ -113,20 +139,23 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Skills Section */}
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
-            Technical Skills
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <AnimatedSection>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
+              Technical Skills
+            </h2>
+          </AnimatedSection>
+          <div ref={skillsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {skills.map((skill, index) => (
               <Card 
                 key={index} 
+                style={{ opacity: 0 }}
                 className="card-glass border-2 hover:scale-105 hover:border-primary/50 transition-all duration-300 cursor-pointer group"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
@@ -142,10 +171,12 @@ const Index = () => {
       {/* Experience Section */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
-            Experience
-          </h2>
-          <div className="max-w-4xl mx-auto">
+          <AnimatedSection>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
+              Experience
+            </h2>
+          </AnimatedSection>
+          <AnimatedSection className="max-w-4xl mx-auto">
             <Card className="card-glass border-2 border-primary/20">
               <CardHeader>
                 <div className="flex justify-between items-start flex-wrap gap-2">
@@ -173,20 +204,23 @@ const Index = () => {
                 </ul>
               </CardContent>
             </Card>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
-            Featured Projects
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <AnimatedSection>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
+              Featured Projects
+            </h2>
+          </AnimatedSection>
+          <div ref={projectsRef} className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {projects.map((project, index) => (
               <Card 
                 key={index}
+                style={{ opacity: 0 }}
                 className="card-glass border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl group"
               >
                 <CardHeader>
@@ -220,10 +254,12 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
-            Get In Touch
-          </h2>
-          <div className="max-w-3xl mx-auto">
+          <AnimatedSection>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
+              Get In Touch
+            </h2>
+          </AnimatedSection>
+          <AnimatedSection className="max-w-3xl mx-auto">
             <Card className="card-glass border-2 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-lg text-center text-muted-foreground mb-8">
@@ -284,7 +320,7 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
