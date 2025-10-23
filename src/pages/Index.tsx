@@ -11,6 +11,10 @@ import reactLogo from "@/assets/skills/react.png";
 import typescriptLogo from "@/assets/skills/typescript.png";
 import postgresLogo from "@/assets/skills/postgresql.png";
 import nextjsLogo from "@/assets/skills/nextjs.png";
+import nodejsLogo from "@/assets/skills/nodejs.png";
+import mongodbLogo from "@/assets/skills/mongodb.png";
+import expressLogo from "@/assets/skills/express.png";
+import tailwindLogo from "@/assets/skills/tailwind.png";
 
 const Index = () => {
   const skillsRef = useStaggerAnimation({ delay: 80 });
@@ -35,11 +39,15 @@ const Index = () => {
     { name: "Next.js", icon: Layers, logo: nextjsLogo },
     { name: "TypeScript", icon: Terminal, logo: typescriptLogo },
     { name: "JavaScript", icon: Code2 },
+    { name: "Node.js", icon: Terminal, logo: nodejsLogo },
+    { name: "Express", icon: Terminal, logo: expressLogo },
     { name: "TRPC", icon: Database },
     { name: "Drizzle ORM", icon: Database },
     { name: "PostgreSQL", icon: Database, logo: postgresLogo },
+    { name: "MongoDB", icon: Database, logo: mongodbLogo },
     { name: "MySQL", icon: Database },
     { name: "TanStack Query", icon: Code2 },
+    { name: "Tailwind CSS", icon: Layers, logo: tailwindLogo },
     { name: "Chakra UI", icon: Layers },
     { name: "SaaS UI", icon: Layers },
     { name: "HTML/CSS", icon: Code2 },
