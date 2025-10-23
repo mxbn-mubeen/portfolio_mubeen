@@ -1,11 +1,11 @@
-import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, FileText, Download } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, FileText, Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate } from 'animejs';
 import { FaReact, FaCss3Alt, FaHtml5, FaJava } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, SiReactquery, SiChakraui, SiSpring, SiBootstrap, SiHibernate, SiJquery, SiTrpc, SiDrizzle } from "react-icons/si";
@@ -42,6 +42,7 @@ const Index = () => {
   const toolsRef = useStaggerAnimation({ delay: 80 });
   const projectsRef = useStaggerAnimation({ delay: 150 });
   const floatingRef = useRef<HTMLDivElement>(null);
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
   useEffect(() => {
     // Continuous floating animation for hero content
@@ -221,51 +222,65 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
-              Technical Skills
+              Skills
             </h2>
           </AnimatedSection>
-          <div className="max-w-6xl mx-auto space-y-16">
-            {skillCategories.map((category, categoryIndex) => {
-              const categoryRef = categoryIndex === 0 ? languagesRef : categoryIndex === 1 ? frameworksRef : toolsRef;
-              return (
-                <div key={categoryIndex} className="relative">
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2 gradient-text">
-                      {category.category}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">{category.description}</p>
-                  </div>
-                  <div ref={categoryRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
-                    {category.skills.map((skill, skillIndex) => (
-                      <Card 
-                        key={skillIndex} 
-                        style={{ opacity: 1 }}
-                        className="card-glass border-2 hover:scale-105 hover:border-primary/50 hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden"
-                      >
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <CardContent className="flex flex-col items-center justify-center p-6 gap-4 relative z-10">
-                          <div className="relative">
-                            <skill.icon 
-                              className="w-16 h-16 group-hover:scale-110 transition-transform" 
-                              style={{ color: skill.color }}
-                            />
-                          </div>
-                          <div className="text-center space-y-1">
-                            <p className="font-semibold text-base">{skill.name}</p>
-                            <Badge 
-                              variant="secondary" 
-                              className="text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                            >
-                              {skill.level}
-                            </Badge>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
+          <div className="max-w-6xl mx-auto">
+            {selectedCategory === null ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {skillCategories.map((category, categoryIndex) => (
+                  <Card 
+                    key={categoryIndex}
+                    className="card-glass border-2 hover:scale-105 hover:border-primary/50 hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                    onClick={() => setSelectedCategory(categoryIndex)}
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <CardHeader className="relative z-10">
+                      <CardTitle className="text-2xl md:text-3xl text-center gradient-text">
+                        {category.category}
+                      </CardTitle>
+                      <CardDescription className="text-center text-base">
+                        {category.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-8">
+                <div className="flex items-center justify-center">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setSelectedCategory(null)}
+                    className="hover:bg-primary/10 hover:text-primary"
+                  >
+                    ← Back to Categories
+                  </Button>
                 </div>
-              );
-            })}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+                  {skillCategories[selectedCategory].skills.map((skill, skillIndex) => (
+                    <Card 
+                      key={skillIndex} 
+                      style={{ opacity: 1 }}
+                      className="card-glass border-2 hover:scale-105 hover:border-primary/50 hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                    >
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <CardContent className="flex flex-col items-center justify-center p-6 gap-4 relative z-10">
+                        <div className="relative">
+                          <skill.icon 
+                            className="w-16 h-16 group-hover:scale-110 transition-transform" 
+                            style={{ color: skill.color }}
+                          />
+                        </div>
+                        <div className="text-center">
+                          <p className="font-semibold text-base">{skill.name}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
