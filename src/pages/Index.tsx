@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, FileText, Download, X } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -158,18 +158,12 @@ const Index = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="hero-button bg-white text-primary hover:bg-white/90 shadow-xl"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Get In Touch
-              </Button>
-              <Button 
-                size="lg" 
                 variant="outline"
-                className="hero-button border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
-                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="hero-button border-white/30 text-white hover:bg-white/10 backdrop-blur-sm gap-2 hover:scale-110 hover:border-white/50 hover:shadow-2xl transition-all duration-300"
+                onClick={() => window.open('/resume.pdf', '_blank')}
               >
-                View Projects
+                <FileText className="w-5 h-5" />
+                View Resume
               </Button>
             </div>
 
@@ -411,51 +405,6 @@ const Index = () => {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Resume Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center">
-              Resume
-            </h2>
-          </AnimatedSection>
-          <AnimatedSection className="max-w-2xl mx-auto">
-            <Card className="card-glass border-2 border-primary/20">
-              <CardContent className="pt-6">
-                <p className="text-lg text-center text-muted-foreground mb-8">
-                  Download or view my resume to learn more about my experience and qualifications.
-                </p>
-                <div className="flex gap-4 justify-center">
-                  <Button 
-                    size="lg" 
-                    variant="default"
-                    className="gap-2"
-                    onClick={() => window.open('/resume.pdf', '_blank')}
-                  >
-                    <FileText className="w-5 h-5" />
-                    View Resume
-                  </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="gap-2"
-                    onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = '/resume.pdf';
-                      link.download = 'Mohamed_Mubeen_Resume.pdf';
-                      link.click();
-                    }}
-                  >
-                    <Download className="w-5 h-5" />
-                    Download
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </AnimatedSection>
         </div>
       </section>
 
