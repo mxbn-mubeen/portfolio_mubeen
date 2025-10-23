@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
-// @ts-ignore
-import anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 
 interface HeroAnimationProps {
   children: React.ReactNode;

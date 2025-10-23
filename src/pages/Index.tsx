@@ -6,8 +6,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
 import { useEffect, useRef } from "react";
-// @ts-ignore
-import anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 
 const Index = () => {
   const skillsRef = useStaggerAnimation({ delay: 80 });
