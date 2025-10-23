@@ -165,6 +165,14 @@ const Index = () => {
                 <FileText className="w-5 h-5" />
                 View Resume
               </Button>
+              <Button
+                size="lg"
+                className="hero-button bg-white text-primary hover:bg-white/90 shadow-xl gap-2 hover:scale-110 hover:shadow-2xl transition-all duration-300"
+                onClick={() => window.open('/resume.pdf', '_blank')}
+              >
+                <FileText className="w-5 h-5" />
+                View Resume
+              </Button>
             </div>
 
             <div className="flex gap-6 justify-center mt-12">
