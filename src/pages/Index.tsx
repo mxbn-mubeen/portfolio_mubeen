@@ -239,7 +239,7 @@ const Index = () => {
                     {category.skills.map((skill, skillIndex) => (
                       <Card 
                         key={skillIndex} 
-                        style={{ opacity: 0 }}
+                        style={{ opacity: 1 }}
                         className="card-glass border-2 hover:scale-105 hover:border-primary/50 hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden"
                       >
                         <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -363,7 +363,7 @@ const Index = () => {
               return (
                 <CardWrapper 
                   key={index}
-                  style={{ opacity: 0 }}
+                  style={{ opacity: 1 }}
                   className="card-glass border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl group"
                 >
                   <CardHeader>
