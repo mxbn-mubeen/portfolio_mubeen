@@ -121,6 +121,7 @@ All colors MUST be HSL.
       hsl(var(--hero-gradient-from)) 0%, 
       hsl(var(--hero-gradient-via)) 50%, 
       hsl(var(--hero-gradient-to)) 100%);
+    position: relative;
   }
   
   .card-glass {
@@ -143,5 +144,13 @@ All colors MUST be HSL.
   @keyframes glow {
     from { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3); }
     to { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6); }
+  }
+  
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1000ms;
   }
 }

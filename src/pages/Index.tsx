@@ -7,6 +7,10 @@ import { HeroAnimation } from "@/components/HeroAnimation";
 import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
 import { useEffect, useRef } from "react";
 import { animate } from 'animejs';
+import reactLogo from "@/assets/skills/react.png";
+import typescriptLogo from "@/assets/skills/typescript.png";
+import postgresLogo from "@/assets/skills/postgresql.png";
+import nextjsLogo from "@/assets/skills/nextjs.png";
 
 const Index = () => {
   const skillsRef = useStaggerAnimation({ delay: 80 });
@@ -27,13 +31,13 @@ const Index = () => {
   }, []);
 
   const skills = [
-    { name: "React.js", icon: Code2 },
-    { name: "Next.js", icon: Layers },
-    { name: "TypeScript", icon: Terminal },
+    { name: "React.js", icon: Code2, logo: reactLogo },
+    { name: "Next.js", icon: Layers, logo: nextjsLogo },
+    { name: "TypeScript", icon: Terminal, logo: typescriptLogo },
     { name: "JavaScript", icon: Code2 },
     { name: "TRPC", icon: Database },
     { name: "Drizzle ORM", icon: Database },
-    { name: "PostgreSQL", icon: Database },
+    { name: "PostgreSQL", icon: Database, logo: postgresLogo },
     { name: "MySQL", icon: Database },
     { name: "TanStack Query", icon: Code2 },
     { name: "Chakra UI", icon: Layers },
@@ -60,8 +64,16 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative hero-gradient min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:50px_50px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:50px_50px]" />
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-700" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000" />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+        </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <HeroAnimation>
@@ -156,8 +168,18 @@ const Index = () => {
                 style={{ opacity: 0 }}
                 className="card-glass border-2 hover:scale-105 hover:border-primary/50 transition-all duration-300 cursor-pointer group"
               >
-                <CardContent className="flex flex-col items-center justify-center p-6">
-                  <skill.icon className="w-8 h-8 mb-3 text-primary group-hover:text-accent transition-colors" />
+                <CardContent className="flex flex-col items-center justify-center p-6 gap-3">
+                  {skill.logo ? (
+                    <div className="relative w-16 h-16 flex items-center justify-center">
+                      <img 
+                        src={skill.logo} 
+                        alt={`${skill.name} logo`}
+                        className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                      />
+                    </div>
+                  ) : (
+                    <skill.icon className="w-12 h-12 text-primary group-hover:text-accent transition-colors" />
+                  )}
                   <p className="font-semibold text-center">{skill.name}</p>
                 </CardContent>
               </Card>
