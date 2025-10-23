@@ -178,7 +178,7 @@ const Index = () => {
                  className="hero-social text-white/70 hover:text-white transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/mxbn-mubeen" target="_blank" rel="noopener noreferrer"
                  className="hero-social text-white/70 hover:text-white transition-colors">
                 <Github className="w-6 h-6" />
               </a>
