@@ -158,12 +158,10 @@ const Index = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               <Button 
                 size="lg" 
-                variant="outline"
-                className="hero-button border-white/30 text-white hover:bg-white/10 backdrop-blur-sm gap-2 hover:scale-110 hover:border-white/50 hover:shadow-2xl transition-all duration-300"
-                onClick={() => window.open('/resume.pdf', '_blank')}
+                className="hero-button bg-white text-primary hover:bg-white/90 shadow-xl"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <FileText className="w-5 h-5" />
-                View Resume
+                Get In Touch
               </Button>
               <Button
                 size="lg"
