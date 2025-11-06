@@ -462,7 +462,7 @@ const Index = () => {
                     </div>
                     <div>
                       <p className="font-semibold">Location</p>
-                      <p className="text-sm text-muted-foreground">Dubai, UAE</p>
+                      <p className="text-sm text-muted-foreground">Sharjah,UAE</p>
                     </div>
                   </div>
                   
