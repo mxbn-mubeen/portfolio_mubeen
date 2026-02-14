@@ -8,91 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 25% 97%;
-    --foreground: 220 15% 10%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 10%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 10%;
-
-    --primary: 220 90% 56%;
-    --primary-foreground: 0 0% 100%;
-    
-    --primary-glow: 220 90% 66%;
-    --primary-deep: 220 95% 46%;
-
-    --secondary: 280 70% 60%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 40%;
-
-    --accent: 280 70% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 220 90% 56%;
-
-    --radius: 0.75rem;
-
-    /* Portfolio-specific tokens */
-    --hero-gradient-from: 220 90% 56%;
-    --hero-gradient-via: 260 80% 60%;
-    --hero-gradient-to: 280 70% 60%;
-    
-    --card-glass: 0 0% 100% / 0.7;
-    --card-border: 220 15% 88% / 0.5;
-    
-    --shadow-elegant: 0 10px 40px -10px hsl(220 90% 56% / 0.2);
-    --shadow-glow: 0 0 60px hsl(220 90% 66% / 0.3);
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .dark {
-    --background: 220 25% 8%;
+    --background: 220 25% 6%;
     --foreground: 220 15% 95%;
 
-    --card: 220 20% 12%;
+    --card: 220 20% 10%;
     --card-foreground: 220 15% 95%;
 
-    --popover: 220 20% 12%;
+    --popover: 220 20% 10%;
     --popover-foreground: 220 15% 95%;
 
     --primary: 220 90% 60%;
     --primary-foreground: 0 0% 100%;
     
     --primary-glow: 220 90% 70%;
-    --primary-deep: 220 95% 50%;
+    --primary-deep: 220 95% 45%;
 
     --secondary: 280 70% 65%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 220 15% 60%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 65%;
 
     --accent: 280 70% 65%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
     --ring: 220 90% 60%;
-    
-    --card-glass: 220 20% 12% / 0.7;
-    --card-border: 220 15% 25% / 0.5;
+
+    --radius: 1rem;
+
+    /* Portfolio-specific tokens */
+    --hero-gradient-from: 220 90% 56%;
+    --hero-gradient-via: 260 80% 60%;
+    --hero-gradient-to: 280 70% 60%;
     
     --shadow-elegant: 0 10px 40px -10px hsl(220 90% 60% / 0.3);
     --shadow-glow: 0 0 60px hsl(220 90% 70% / 0.4);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
@@ -124,10 +82,32 @@ All colors MUST be HSL.
     position: relative;
   }
   
-  .card-glass {
-    @apply backdrop-blur-md bg-card/70 border border-card-border shadow-lg;
+  .glass-panel {
+    @apply backdrop-blur-[20px] bg-white/[0.08] border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
-  
+
+  .glass-card {
+    @apply glass-panel rounded-2xl transition-all duration-300;
+    &:hover {
+      @apply bg-white/[0.12] border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)];
+      transform: translateY(-5px);
+    }
+  }
+
+  .glass-button {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 px-6 py-2 rounded-full transition-all duration-300 font-medium;
+    &:hover {
+      @apply bg-white/20 border-white/40 shadow-glow scale-105;
+    }
+  }
+
+  .glass-nav {
+    @apply sticky top-4 mx-auto z-50 w-[95%] max-w-5xl backdrop-blur-xl bg-white/[0.05] border border-white/10 px-6 py-3 rounded-2xl flex items-center justify-between shadow-2xl;
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -142,15 +122,13 @@ All colors MUST be HSL.
   }
   
   @keyframes glow {
-    from { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3); }
-    to { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6); }
+    from { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.2); }
+    to { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.5); }
   }
-  
-  .delay-700 {
-    animation-delay: 700ms;
-  }
-  
-  .delay-1000 {
-    animation-delay: 1000ms;
+}
+
+@layer utilities {
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
 }
