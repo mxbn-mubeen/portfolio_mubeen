@@ -148,7 +148,7 @@ export const Experience = () => {
     {
       role: "Full Stack Developer",
       company: "Nexobe",
-      logo: "/public/nexobe.png", 
+      logo: "/nexobe.png", 
       location: "Illinois, United States",
       period: "September 2024 – Present",
       type: "Full-time",
@@ -165,7 +165,7 @@ export const Experience = () => {
     {
       role: "Java Full Stack Developer Intern",
       company: "Inmakes Infotech",
-      logo: "/public/inmakes.png", 
+      logo: "/inmakes.png", 
       location: "Chennai, India",
       period: "May 2024 – July 2024",
       type: "Internship",
