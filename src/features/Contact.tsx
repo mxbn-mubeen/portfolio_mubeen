@@ -1,79 +1,184 @@
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from "lucide-react";
+import { useState } from "react";
+
+const ContactCard = ({ icon: Icon, title, info, href, color }: { icon: any, title: string, info: string, href?: string, color: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const CardWrapper = href 
+    ? ({ children, ...props }: any) => (
+        <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} {...props}>
+          {children}
+        </a>
+      )
+    : ({ children, ...props }: any) => <div {...props}>{children}</div>;
+
+  return (
+    <CardWrapper
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative"
+    >
+      {/* Glow effect */}
+      <div 
+        className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
+        style={{ backgroundColor: color }}
+      />
+      
+      <div className={`relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 ${
+        href ? 'hover:border-primary/50 hover:bg-white/10 cursor-pointer' : ''
+      }`}>
+        <div 
+          className="p-4 rounded-xl transition-all duration-300"
+          style={{ 
+            backgroundColor: isHovered ? `${color}20` : 'rgba(255,255,255,0.05)',
+          }}
+        >
+          <Icon 
+            className="w-6 h-6 transition-all duration-300" 
+            style={{ color: isHovered ? color : 'rgba(255,255,255,0.5)' }}
+          />
+        </div>
+        <div className="flex-1">
+          <p className="font-semibold text-white mb-1">{title}</p>
+          <p className="text-sm text-white/60">{info}</p>
+        </div>
+        {href && (
+          <Send className="w-5 h-5 text-white/30 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+        )}
+      </div>
+    </CardWrapper>
+  );
+};
 
 export const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-[#0a0c10] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection>
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white text-center">
-            Get In Touch
-          </h2>
+        <AnimatedSection variant="scale" duration={900}>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <MessageCircle className="w-4 h-4 text-primary-glow" />
+              <span className="text-sm text-white/70">Let's Connect</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+              Get In Touch
+            </h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              Currently based in Sharjah, UAE and available for immediate opportunities
+            </p>
+          </div>
         </AnimatedSection>
-        <AnimatedSection className="max-w-3xl mx-auto">
-          <Card className="glass-card border-none p-8">
-            <CardContent className="pt-6">
-              <p className="text-lg text-center text-white/70 mb-12 max-w-2xl mx-auto">
-                Currently based in Dubai and available for immediate opportunities. 
-                Let's discuss how I can contribute to your team!
-              </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <a 
-                  href="mailto:mxbn18@gmail.com"
-                  className="flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all group"
-                >
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors text-primary-glow">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Email</p>
-                    <p className="text-sm text-white/60">mxbn18@gmail.com</p>
-                  </div>
-                </a>
-                
-                <a 
-                  href="tel:+971523819286"
-                  className="flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all group"
-                >
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors text-primary-glow">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Phone</p>
-                    <p className="text-sm text-white/60">+971 52 381 9286</p>
-                  </div>
-                </a>
-                
-                <div className="flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="p-4 rounded-full bg-accent/10 text-accent">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Location</p>
-                    <p className="text-sm text-white/60">Sharjah, UAE</p>
-                  </div>
+
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection variant="fade-up" delay={200}>
+            <Card className="glass-card border-white/10 overflow-hidden mb-12">
+              <CardContent className="p-8 md:p-12">
+                <p className="text-lg text-center text-white/70 mb-4 leading-relaxed">
+                  I'm always interested in hearing about new projects and opportunities. 
+                  Whether you have a question or just want to say hi, feel free to reach out!
+                </p>
+                <p className="text-center text-white/60 text-sm">
+                  I'll try my best to get back to you as soon as possible.
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <AnimatedSection variant="fade-left" delay={300} duration={700}>
+              <ContactCard
+                icon={Mail}
+                title="Email"
+                info="mxbn18@gmail.com"
+                href="mailto:mxbn18@gmail.com"
+                color="#EA4335"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection variant="fade-right" delay={300} duration={700}>
+              <ContactCard
+                icon={Phone}
+                title="Phone"
+                info="+971 52 381 9286"
+                href="tel:+971523819286"
+                color="#34A853"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection variant="fade-left" delay={450} duration={700}>
+              <ContactCard
+                icon={Linkedin}
+                title="LinkedIn"
+                info="Connect with me"
+                href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288"
+                color="#0A66C2"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection variant="fade-right" delay={450} duration={700}>
+              <ContactCard
+                icon={Github}
+                title="GitHub"
+                info="@mxbn-mubeen"
+                href="https://github.com/mxbn-mubeen"
+                color="#FFFFFF"
+              />
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection variant="fade-up" delay={600} duration={800}>
+            <div className="grid md:grid-cols-3 gap-6">
+              <ContactCard
+                icon={MapPin}
+                title="Location"
+                info="Sharjah, UAE"
+                color="#F59E0B"
+              />
+              
+              <div className="glass-card border-white/10 p-6 rounded-2xl">
+                <div className="text-center">
+                  <p className="text-white/50 text-sm mb-1">Availability</p>
+                  <p className="text-white font-semibold text-lg">Immediate</p>
                 </div>
-                
-                <a 
-                  href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all group"
-                >
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors text-primary-glow">
-                    <Linkedin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">LinkedIn</p>
-                    <p className="text-sm text-white/60">Connect with me</p>
-                  </div>
-                </a>
               </div>
-            </CardContent>
-          </Card>
-        </AnimatedSection>
+
+              <div className="glass-card border-white/10 p-6 rounded-2xl">
+                <div className="text-center">
+                  <p className="text-white/50 text-sm mb-1">Visa Status</p>
+                  <p className="text-white font-semibold text-lg">Valid until Feb 2026</p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Final CTA */}
+          <AnimatedSection variant="scale" delay={750} duration={800}>
+            <div className="glass-card border-white/10 p-8 text-center mt-12">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Ready to Work Together?
+              </h3>
+              <p className="text-white/60 mb-6 max-w-xl mx-auto">
+                Let's discuss how I can help bring your project to life with modern web technologies
+              </p>
+              <a
+                href="mailto:mxbn18@gmail.com"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary/20 border border-primary/50 text-white font-semibold hover:bg-primary/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:scale-105"
+              >
+                <Mail className="w-5 h-5" />
+                <span>Send Me an Email</span>
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   );
