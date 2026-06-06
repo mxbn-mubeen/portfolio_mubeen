@@ -3,67 +3,8 @@ import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { MapPin, Code, Rocket, Target, Zap, Award, Download } from "lucide-react";
 import { useState } from "react";
 import { colorClasses } from "@/shared/lib/utils";
-
-const StatCard = ({ icon: Icon, value, label }: { icon: React.ElementType, value: string, label: string }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative group cursor-pointer"
-    >
-      <div className={`glass-card p-6 border-white/10 transition-all duration-500 ${
-        isHovered ? 'border-primary/50 shadow-lg shadow-primary/20' : ''
-      }`}>
-        <div className="flex flex-col items-center text-center gap-3">
-          <div className={`p-3 rounded-xl bg-white/5 transition-all duration-500 ${
-            isHovered ? 'bg-primary/20 scale-110' : ''
-          }`}>
-            <Icon className={`w-6 h-6 transition-colors duration-500 ${
-              isHovered ? 'text-primary-glow' : 'text-white/50'
-            }`} />
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-white mb-1">{value}</div>
-            <div className="text-sm text-white/60">{label}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const HighlightCard = ({ icon: Icon, title, description, color }: { icon: React.ElementType, title: string, description: string, color: string }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative group"
-    >
-      {/* Glow effect */}
-      <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 ${colorClasses[color]?.bg ?? 'bg-white/10'}`} />
-      
-      <div className="glass-card p-6 border-white/10 hover:border-primary/30 transition-all duration-300 relative">
-        <div className="flex items-start gap-4">
-          <div 
-            className={
-              `p-3 rounded-xl transition-all duration-300 ${isHovered ? (colorClasses[color]?.bg20 ?? 'bg-white/10') : 'bg-white/5'}`
-            }
-          >
-            <Icon className={`w-6 h-6 transition-all duration-300 ${isHovered ? (colorClasses[color]?.text ?? 'text-white') : 'text-white/50'}`} />
-          </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-            <p className="text-white/60 text-sm leading-relaxed">{description}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { StatCard } from "./components/StatCard";
+import { HighlightCard } from "./components/HighlightCard";
 
 export const About = () => {
  const stats = [
@@ -124,7 +65,7 @@ export const About = () => {
             </p>
           </div>
         </AnimatedSection>
-
+        
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Stats Grid */}
           <AnimatedSection>

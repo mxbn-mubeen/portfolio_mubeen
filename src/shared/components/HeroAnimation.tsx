@@ -35,7 +35,7 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
       y: [50, 0],
       scale: [0.8, 1],
       duration: 1000,
-      delay: (_el: Element, i: number) => i * 50,
+      delay: (_el: any, i: number) => i * 50,
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,7 +57,7 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
       opacity: [0, 1],
       scale: [0.8, 1],
       duration: 600,
-      delay: (_el: Element, i: number) => i * 100,
+      delay: (_el: any, i: number) => i * 100,
       easing: 'easeOutBack',
     });
 
@@ -67,7 +67,7 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
       y: [20, 0],
       scale: [0.8, 1],
       duration: 500,
-      delay: (_el: Element, i: number) => i * 80,
+      delay: (_el: any, i: number) => i * 80,
     });
 
   }, []);
