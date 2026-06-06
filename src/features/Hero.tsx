@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, FileText, Sparkles } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { HeroAnimation } from "@/shared/components/HeroAnimation";
 import { Link as ScrollLink } from "react-scroll";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const roles = ["Full Stack Developer", "Frontend Developer", "Backend Developer", "React Developer", "Java Developer"];
 

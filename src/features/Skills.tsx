@@ -1,4 +1,4 @@
-/* eslint-disable */
+ 
 import { Card } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Code2, Layers, Wrench, Sparkles } from "lucide-react";
@@ -7,10 +7,9 @@ import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, S
 import { BiData } from "react-icons/bi";
 import { useState } from "react";
 
-const SaasUIIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+const SaasUIIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
-    style={style}
     viewBox="0 0 100 100"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -39,83 +38,37 @@ interface Skill {
   level: string;
 }
 
+const sanitize = (hex: string) => hex.replace('#', '').toLowerCase();
+
 const SkillOrb = ({ skill, index }: { skill: Skill; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
   const sizes = ['w-24 h-24', 'w-28 h-28', 'w-32 h-32', 'w-20 h-20'];
   const size = sizes[index % sizes.length];
-  
+  const colorClass = `skill-${sanitize(skill.color)}`;
+
   return (
     <div
-      className={`${size} relative cursor-pointer group`}
+      className={`${size} relative cursor-pointer group orb orb-anim-${index} ${colorClass} ${isHovered ? 'orb-hover' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{
-        animation: `float ${3 + (index * 0.5)}s ease-in-out infinite`,
-        animationDelay: `${index * 0.2}s`,
-        zIndex: isHovered ? 50 : 10
-      }}
     >
-      {/* Outer glow ring */}
-      <div 
-        className={`absolute inset-0 rounded-full transition-all duration-500 pointer-events-none ${
-          isHovered ? 'scale-125 opacity-60' : 'scale-100 opacity-0'
-        }`}
-        style={{ 
-          background: `radial-gradient(circle, ${skill.color}40 0%, transparent 70%)`,
-          filter: 'blur(20px)'
-        }}
-      />
-      
-      {/* Main orb */}
-      <div 
-        className="absolute inset-0 rounded-full border-2 transition-all duration-500 backdrop-blur-sm flex items-center justify-center"
-        style={{
-          borderColor: isHovered ? skill.color : 'rgba(255,255,255,0.1)',
-          backgroundColor: isHovered ? `${skill.color}15` : 'rgba(255,255,255,0.05)',
-          boxShadow: isHovered ? `0 0 40px ${skill.color}50` : 'none'
-        }}
-      >
-        <skill.icon 
-          className={`transition-all duration-500 ${
-            isHovered ? 'w-12 h-12' : 'w-8 h-8'
-          }`}
-          style={{ color: skill.color }}
-        />
+      <div className={`absolute inset-0 rounded-full transition-all duration-500 pointer-events-none glow`} />
+
+      <div className="absolute inset-0 rounded-full border-2 transition-all duration-500 backdrop-blur-sm flex items-center justify-center orb-main">
+        <skill.icon className={`transition-all duration-500 ${isHovered ? 'w-12 h-12' : 'w-8 h-8'} orb-icon`} />
       </div>
-      
-      {/* Skill name tooltip */}
-      <div 
-        className={`absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 pointer-events-none z-50 ${
-          isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-        }`}
-      >
-        <div className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white backdrop-blur-md border"
-          style={{ 
-            backgroundColor: `${skill.color}20`,
-            borderColor: `${skill.color}40`
-          }}
-        >
+
+      <div className={`absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 pointer-events-none z-50 tooltip ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+        <div className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white backdrop-blur-md border tooltip-inner">
           {skill.name}
           <div className="text-[10px] opacity-70 mt-0.5">{skill.level}</div>
         </div>
       </div>
-      
-      {/* Particle effects */}
+
       {isHovered && (
         <>
           {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 rounded-full pointer-events-none"
-              style={{
-                backgroundColor: skill.color,
-                top: '50%',
-                left: '50%',
-                animation: `particle-${i} 1s ease-out infinite`,
-                animationDelay: `${i * 0.1}s`
-              }}
-            />
+            <div key={i} className={`absolute w-1 h-1 rounded-full pointer-events-none particle particle-${i}`} />
           ))}
         </>
       )}
@@ -196,6 +149,42 @@ export const Skills = () => {
             }
           }
         `).join('\n')}
+
+        /* Dynamically generated per-orb position and animation rules */
+        ${(() => {
+          // compute positions and animation timings for all orbs across activeSkills
+          const rules: string[] = [];
+          const skills = activeSkills.skills;
+          const radius = 200;
+          skills.forEach((_, index) => {
+            const angle = (index * 360) / skills.length;
+            const x = Math.cos((angle * Math.PI) / 180) * radius;
+            const y = Math.sin((angle * Math.PI) / 180) * radius;
+            const animDur = 3 + index * 0.5;
+            const animDelay = index * 0.2;
+            rules.push(`.orb-pos-${index} { transform: translate(calc(-50% + ${x}px), calc(-50% + ${y}px)); }`);
+            rules.push(`.orb-anim-${index} { animation: float ${animDur}s ease-in-out infinite; animation-delay: ${animDelay}s; }`);
+          });
+          return rules.join('\n');
+        })()}
+
+        /* Per-skill color classes */
+        ${(() => {
+          const uniqueColors = Array.from(new Set(activeSkills.skills.map(s => s.color)));
+          return uniqueColors.map(c => {
+            const id = c.replace('#', '').toLowerCase();
+            return `
+              .skill-${id} { --skill: ${c}; }
+              .skill-${id} .glow { background: radial-gradient(circle, var(--skill)40 0%, transparent 70%); filter: blur(20px); }
+              .skill-${id} .orb-main { border-color: rgba(255,255,255,0.1); background-color: rgba(255,255,255,0.05); }
+              .skill-${id}.orb-hover .orb-main { border-color: var(--skill); background-color: ${c}15; box-shadow: 0 0 40px ${c}50; }
+              .skill-${id} .orb-icon { color: ${c}; }
+              .skill-${id}.orb-hover .orb-icon { color: var(--skill); }
+              .skill-${id} .tooltip-inner { background-color: ${c}20; border-color: ${c}40; }
+              .skill-${id} .particle { background-color: ${c}; }
+            `;
+          }).join('\n');
+        })()}
       `}</style>
       
       <section id="skills" className="py-24 relative overflow-hidden bg-[#0a0c10]">
@@ -269,10 +258,7 @@ export const Skills = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute top-1/2 left-1/2"
-                        style={{
-                          transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                        }}
+                        className={`absolute top-1/2 left-1/2 orb-pos-${index}`}
                       >
                         <SkillOrb skill={skill} index={index} />
                       </div>
