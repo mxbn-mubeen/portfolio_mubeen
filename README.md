@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website for **Mohamed Mubeen A S**, Full Stack Developer based in Dubai, UAE. Built with React, TypeScript, and Tailwind CSS.
 
-**Live:** [mdmubeenportfolio.netlify.app](https://mdmubeenportfolio.netlify.app/)
+**Live:** [TAP LINK](https://portfolio-mxbn.vercel.app/)
 
 
 
