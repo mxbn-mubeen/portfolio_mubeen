@@ -85,8 +85,8 @@ All colors MUST be HSL.
   .glass-panel {
     @apply backdrop-blur-[20px] bg-white/[0.08] border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
   }
 
   .glass-card {
@@ -131,4 +131,32 @@ All colors MUST be HSL.
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+  .anim-delay-1s { animation-delay: 1s; }
+  .anim-delay-2s { animation-delay: 2s; }
+  .anim-delay-500 { animation-delay: 500ms; }
+  .anim-delay-1000 { animation-delay: 1000ms; }
+  .anim-delay-1500 { animation-delay: 1500ms; }
+  .anim-delay-2000 { animation-delay: 2000ms; }
+  .anim-delay-2500 { animation-delay: 2500ms; }
+
+  .anim-duration-8000 { animation-duration: 8s; }
+  .anim-duration-9000 { animation-duration: 9s; }
+  .anim-duration-10000 { animation-duration: 10s; }
+  .anim-duration-11000 { animation-duration: 11s; }
+  .anim-duration-12000 { animation-duration: 12s; }
+  .anim-duration-30000 { animation-duration: 30s; }
+  .anim-duration-40000 { animation-duration: 40s; }
+  .anim-direction-reverse { animation-direction: reverse; }
+
+  /* Orb transforms using CSS vars set on the hero container (--mx, --my are normalized 0..1) */
+  .orb-translate-30 { transform: translate(calc(var(--mx, 0) * 30px), calc(var(--my, 0) * 30px)); }
+  .orb-translate--20 { transform: translate(calc(var(--mx, 0) * -20px), calc(var(--my, 0) * -20px)); }
+  .orb-translate-40 { transform: translate(calc(var(--mx, 0) * 40px), calc(var(--my, 0) * 40px)); }
+  /* Predefined positions for floating snippets */
+  .snippet-pos-0 { top: 20%; left: 10%; }
+  .snippet-pos-1 { top: 35%; left: 25%; }
+  .snippet-pos-2 { top: 50%; left: 40%; }
+  .snippet-pos-3 { top: 65%; left: 55%; }
+  .snippet-pos-4 { top: 80%; left: 70%; }
+  .snippet-pos-5 { top: 95%; left: 85%; }
 }

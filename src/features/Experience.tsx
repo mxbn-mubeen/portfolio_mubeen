@@ -4,7 +4,18 @@ import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
-const ExperienceTimeline = ({ experience, index }: { experience: any; index: number }) => {
+interface ExperienceItem {
+  role: string;
+  company: string;
+  logo?: string;
+  location: string;
+  period: string;
+  type: string;
+  achievements: string[];
+  tech?: string[];
+}
+
+const ExperienceTimeline = ({ experience, index }: { experience: ExperienceItem; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -93,11 +104,7 @@ const ExperienceTimeline = ({ experience, index }: { experience: any; index: num
               {experience.achievements.map((achievement: string, i: number) => (
                 <li 
                   key={i} 
-                  className="flex gap-3 items-start group/item"
-                  style={{ 
-                    animation: `fadeInLeft 0.5s ease-out ${i * 0.1}s both`,
-                    opacity: isHovered ? 1 : 0.7
-                  }}
+                  className={`flex gap-3 items-start group/item opacity-70 group-hover:opacity-100 transition-opacity duration-300 timeline-item-${i}`}
                 >
                   <ChevronRight className="w-5 h-5 text-primary-glow mt-0.5 flex-shrink-0 group-hover/item:translate-x-1 transition-transform" />
                   <span className="text-white/70 group-hover/item:text-white/90 transition-colors leading-relaxed">
@@ -138,6 +145,13 @@ const ExperienceTimeline = ({ experience, index }: { experience: any; index: num
             transform: translateX(0);
           }
         }
+        .timeline-item-0 { animation: fadeInLeft 0.5s ease-out 0s both; }
+        .timeline-item-1 { animation: fadeInLeft 0.5s ease-out 0.1s both; }
+        .timeline-item-2 { animation: fadeInLeft 0.5s ease-out 0.2s both; }
+        .timeline-item-3 { animation: fadeInLeft 0.5s ease-out 0.3s both; }
+        .timeline-item-4 { animation: fadeInLeft 0.5s ease-out 0.4s both; }
+        .timeline-item-5 { animation: fadeInLeft 0.5s ease-out 0.5s both; }
+        .timeline-item-6 { animation: fadeInLeft 0.5s ease-out 0.6s both; }
       `}</style>
     </div>
   );
@@ -148,7 +162,7 @@ export const Experience = () => {
     {
       role: "Full Stack Developer",
       company: "Nexobe",
-      logo: "/nexobe.png", 
+      logo: "/Nexobe.png", 
       location: "Illinois, United States",
       period: "September 2024 – Present",
       type: "Full-time",
@@ -184,7 +198,7 @@ export const Experience = () => {
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/3 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/3 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse delay-1s" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -219,6 +233,11 @@ export const Experience = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        .delay-1s {
+          animation-delay: 1s;
+        }
+      `}</style>
     </section>
   );
 };

@@ -2,17 +2,18 @@ import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
+import { colorClasses } from "@/shared/lib/utils";
 
-const ContactCard = ({ icon: Icon, title, info, href, color }: { icon: any, title: string, info: string, href?: string, color: string }) => {
+const ContactCard = ({ icon: Icon, title, info, href, color }: { icon: React.ElementType, title: string, info: string, href?: string, color: string }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const CardWrapper = href 
-    ? ({ children, ...props }: any) => (
+    ? ({ children, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
         <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} {...props}>
           {children}
         </a>
       )
-    : ({ children, ...props }: any) => <div {...props}>{children}</div>;
+    : ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>;
 
   return (
     <CardWrapper
@@ -21,24 +22,17 @@ const ContactCard = ({ icon: Icon, title, info, href, color }: { icon: any, titl
       className="group relative"
     >
       {/* Glow effect */}
-      <div 
-        className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-        style={{ backgroundColor: color }}
-      />
+      <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 ${colorClasses[color]?.bg ?? 'bg-white/10'}`} />
       
       <div className={`relative flex items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 ${
         href ? 'hover:border-primary/50 hover:bg-white/10 cursor-pointer' : ''
       }`}>
         <div 
-          className="p-4 rounded-xl transition-all duration-300"
-          style={{ 
-            backgroundColor: isHovered ? `${color}20` : 'rgba(255,255,255,0.05)',
-          }}
+          className={
+            `p-4 rounded-xl transition-all duration-300 ${isHovered ? (colorClasses[color]?.bg20 ?? 'bg-white/10') : 'bg-white/5'}`
+          }
         >
-          <Icon 
-            className="w-6 h-6 transition-all duration-300" 
-            style={{ color: isHovered ? color : 'rgba(255,255,255,0.5)' }}
-          />
+          <Icon className={`w-6 h-6 transition-all duration-300 ${isHovered ? (colorClasses[color]?.text ?? 'text-white') : 'text-white/50'}`} />
         </div>
         <div className="flex-1">
           <p className="font-semibold text-white mb-1">{title}</p>
@@ -58,8 +52,8 @@ export const Contact = () => {
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

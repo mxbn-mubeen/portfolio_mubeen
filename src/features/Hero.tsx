@@ -2,20 +2,22 @@ import { Github, Linkedin, Mail, FileText, Sparkles } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { HeroAnimation } from "@/shared/components/HeroAnimation";
 import { Link as ScrollLink } from "react-scroll";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
+
+const roles = ["Full Stack Developer", "Frontend Developer", "Backend Developer", "React Developer", "Java Developer"];
 
 export const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (heroRef.current) {
         const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
-        });
+        // set CSS vars so CSS can handle transforms (avoids inline JSX styles)
+        const mx = (e.clientX - rect.left) / rect.width;
+        const my = (e.clientY - rect.top) / rect.height;
+        heroRef.current.style.setProperty('--mx', String(mx));
+        heroRef.current.style.setProperty('--my', String(my));
       }
     };
 
@@ -23,7 +25,6 @@ export const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const roles = ["Full Stack Developer", "Frontend Developer", "Backend Developer", "React Developer", "Java Developer"];
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
@@ -45,44 +46,15 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
         
         {/* Gradient Orbs with Mouse Interaction */}
-        <div 
-          className="absolute w-[600px] h-[600px] bg-primary/30 rounded-full blur-[120px] animate-pulse transition-transform duration-1000"
-          style={{
-            top: '10%',
-            left: '5%',
-            transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`,
-          }}
-        />
-        <div 
-          className="absolute w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[150px] animate-pulse transition-transform duration-1000"
-          style={{ 
-            bottom: '5%',
-            right: '5%',
-            animationDelay: '1s',
-            transform: `translate(${-mousePosition.x * 20}px, ${-mousePosition.y * 20}px)`,
-          }}
-        />
-        <div 
-          className="absolute w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] animate-pulse transition-transform duration-1000"
-          style={{ 
-            top: '30%',
-            right: '15%',
-            animationDelay: '2s',
-            transform: `translate(${mousePosition.x * 40}px, ${mousePosition.y * 40}px)`,
-          }}
-        />
+        <div className="absolute w-[600px] h-[600px] top-[10%] left-[5%] orb-translate-30 bg-primary/30 rounded-full blur-[120px] animate-pulse transition-transform duration-1000" />
+        <div className="absolute w-[700px] h-[700px] bottom-[5%] right-[5%] orb-translate--20 bg-secondary/20 rounded-full blur-[150px] animate-pulse transition-transform duration-1000 anim-delay-1s" />
+        <div className="absolute w-[400px] h-[400px] top-[30%] right-[15%] orb-translate-40 bg-accent/20 rounded-full blur-[100px] animate-pulse transition-transform duration-1000 anim-delay-2s" />
         
         {/* Floating Code Snippets */}
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute text-primary/10 font-mono text-sm animate-float opacity-20 hidden md:block"
-            style={{
-              top: `${20 + i * 15}%`,
-              left: `${10 + i * 15}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${8 + i}s`,
-            }}
+            className={`absolute text-primary/10 font-mono text-sm animate-float opacity-20 hidden md:block snippet-pos-${i} ${i > 0 ? `anim-delay-${i * 500}` : ''} anim-duration-${8000 + i * 1000}`}
           >
             {['</>', '{ }', '( )', '[ ]', '=>', 'fn()'][i]}
           </div>
@@ -124,7 +96,6 @@ export const Hero = () => {
                 <div
                   key={tech}
                   className="px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-white/5 border border-white/10 text-white/80 text-xs md:text-sm font-medium hover:bg-white/10 hover:border-primary/30 transition-all duration-300 cursor-default backdrop-blur-sm"
-                  style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {tech}
                 </div>

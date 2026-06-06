@@ -78,20 +78,41 @@ const AIProjectsSuiteLogo = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+// Project details interface
+interface ProjectDetails {
+  challenges?: string;
+  solutions?: string;
+  architecture?: string;
+}
+
+// Project interface
+interface Project {
+  title: string;
+  logo?: string;
+  customIcon?: React.ReactNode;
+  description: string;
+  tech: string[];
+  impact: string;
+  type: string;
+  link?: string;
+  showLink: boolean;
+  details?: ProjectDetails;
+}
+
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   
   const icons = [Rocket, Code, Zap];
   const Icon = icons[index % icons.length];
   
-  const CardWrapper = project.type === "personal" && project.link 
-    ? ({ children, ...props }: any) => (
+  const CardWrapper = project.link 
+    ? ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
         <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full">
           <div {...props}>{children}</div>
         </a>
       )
-    : ({ children, ...props }: any) => <div {...props}>{children}</div>;
+    : ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>;
 
   return (
     <CardWrapper>
@@ -228,6 +249,21 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 export const Projects = () => {
   const projects = [
     {
+      title: "AE Reporting",
+      logo: "/logo.jpg",
+      description: "A comprehensive regulatory-compliant clinical safety reporting system for Clin Solutions. Developed as a Freelancer, this platform features a three-tier validation engine, MedDRA hierarchy mapping, and dynamic translations for 137+ languages with Supabase caching.",
+      tech: ["React.js", "TypeScript", "tRPC", "PostgreSQL", "Drizzle ORM", "Saas UI", "Zod", "Azure Translator"],
+      impact: "100% compliance with E2B R3 safety standards",
+      type: "Freelance",
+      link: "https://sideeffects.viginess.com/",
+      showLink: true,
+      details: {
+        challenges: "Maintaining 100% compliance with complex E2B R3 (HL7 v3) XML specifications while supporting multi-lingual entry (137+ languages) and preventing translation latency and high API costs.",
+        solutions: "Engineered a three-tier validation framework (Business Rules, XSD Schema, and MedDRA Vocabularies). Designed a translation caching layer in Supabase to eliminate redundant Azure API calls.",
+        architecture: "React frontend leveraging Saas UI and react-i18next, connected via end-to-end type-safe tRPC APIs to a Node.js server. Persistent data and translation caches managed in Supabase Postgres via Drizzle ORM."
+      }
+    },
+    {
       title: "Caviti AI",
       logo: "/cavitiai.png",
       description: "Built type-safe TRPC APIs and responsive UIs with React.js & Chakra UI. Implemented PostgreSQL schema via Drizzle ORM for better scalability.",
@@ -277,7 +313,7 @@ export const Projects = () => {
       {/* Reduced background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-[10%] w-96 h-96 bg-primary/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 left-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[140px] animate-pulse delay-1s" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -309,6 +345,11 @@ export const Projects = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        .delay-1s {
+          animation-delay: 1s;
+        }
+      `}</style>
     </section>
   );
 };

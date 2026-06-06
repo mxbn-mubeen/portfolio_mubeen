@@ -29,6 +29,7 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
 
     const tl = createTimeline();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tl.add(title?.querySelectorAll('span') as any, {
       opacity: [0, 1],
       y: [50, 0],
@@ -37,18 +38,21 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
       delay: (_el: Element, i: number) => i * 50,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tl.add(subtitle as any, {
       opacity: [0, 1],
       y: [30, 0],
       duration: 800,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tl.add(description as any, {
       opacity: [0, 1],
       y: [20, 0],
       duration: 800,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tl.add(Array.from(buttons) as any, {
       opacity: [0, 1],
       scale: [0.8, 1],
@@ -57,6 +61,7 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
       easing: 'easeOutBack',
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tl.add(Array.from(socials) as any, {
       opacity: [0, 1],
       y: [20, 0],

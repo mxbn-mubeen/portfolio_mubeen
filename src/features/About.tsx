@@ -2,8 +2,9 @@ import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { MapPin, Code, Rocket, Target, Zap, Award, Download } from "lucide-react";
 import { useState } from "react";
+import { colorClasses } from "@/shared/lib/utils";
 
-const StatCard = ({ icon: Icon, value, label }: { icon: any, value: string, label: string }) => {
+const StatCard = ({ icon: Icon, value, label }: { icon: React.ElementType, value: string, label: string }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   return (
@@ -33,7 +34,7 @@ const StatCard = ({ icon: Icon, value, label }: { icon: any, value: string, labe
   );
 };
 
-const HighlightCard = ({ icon: Icon, title, description, color }: { icon: any, title: string, description: string, color: string }) => {
+const HighlightCard = ({ icon: Icon, title, description, color }: { icon: React.ElementType, title: string, description: string, color: string }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   return (
@@ -43,20 +44,16 @@ const HighlightCard = ({ icon: Icon, title, description, color }: { icon: any, t
       className="relative group"
     >
       {/* Glow effect */}
-      <div 
-        className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-        style={{ backgroundColor: color }}
-      />
+      <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 ${colorClasses[color]?.bg ?? 'bg-white/10'}`} />
       
       <div className="glass-card p-6 border-white/10 hover:border-primary/30 transition-all duration-300 relative">
         <div className="flex items-start gap-4">
           <div 
-            className="p-3 rounded-xl transition-all duration-300"
-            style={{ 
-              backgroundColor: isHovered ? `${color}20` : 'rgba(255,255,255,0.05)',
-            }}
+            className={
+              `p-3 rounded-xl transition-all duration-300 ${isHovered ? (colorClasses[color]?.bg20 ?? 'bg-white/10') : 'bg-white/5'}`
+            }
           >
-            <Icon className="w-6 h-6 transition-all duration-300" style={{ color: isHovered ? color : 'rgba(255,255,255,0.5)' }} />
+            <Icon className={`w-6 h-6 transition-all duration-300 ${isHovered ? (colorClasses[color]?.text ?? 'text-white') : 'text-white/50'}`} />
           </div>
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
@@ -107,9 +104,9 @@ export const About = () => {
     <section id="about" className="py-24 relative overflow-hidden bg-[#0d0f14]">
       {/* Enhanced background effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
+            <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
