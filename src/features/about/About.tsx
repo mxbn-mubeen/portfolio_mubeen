@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { MapPin, Code, Rocket, Target, Zap, Award, Download } from "lucide-react";
+import { MapPin, Code, Rocket, Target, Zap, Award, Download, ExternalLink } from "lucide-react";
+import { Badge } from "@/shared/components/ui/badge";
 import { useState } from "react";
 import { colorClasses } from "@/shared/lib/utils";
 import { StatCard } from "./components/StatCard";
@@ -8,7 +9,7 @@ import { HighlightCard } from "./components/HighlightCard";
 
 export const About = () => {
  const stats = [
-  { icon: Code, value: "1+", label: "Year Experience" },
+  { icon: Code, value: "2+", label: "Years Experience" },
   { icon: Rocket, value: "Multiple", label: "SaaS Projects" },
   { icon: Zap, value: "30%", label: "API Stability Boost" },
   { icon: Target, value: "20%", label: "Dev Time Saved" },
@@ -110,22 +111,142 @@ export const About = () => {
             </div>
           </AnimatedSection>
 
-          {/* Education */}
-          <AnimatedSection>
-            <div className="glass-card border-white/10 p-8">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
-                  <Award className="w-6 h-6 text-primary-glow" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-2">Education</h3>
-                  <p className="text-white/80 font-medium">B.E. in Computer Science and Engineering</p>
-                  <p className="text-white/60 text-sm">Aalim Muhammed Salegh College of Engineering</p>
-                  <p className="text-white/50 text-sm">Affiliated with Anna University • 2020-2024</p>
+          {/* Education & Certifications */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <AnimatedSection>
+              <div className="glass-card border-white/10 p-8 h-full">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
+                    <Award className="w-6 h-6 text-primary-glow" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-4">Education</h3>
+                    <p className="text-white/80 font-medium">B.E. in Computer Science and Engineering</p>
+                    <p className="text-white/60 text-sm">Aalim Muhammed Salegh College of Engineering</p>
+                    <p className="text-white/50 text-sm">Affiliated with Anna University • 2020-2024</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="glass-card border-white/10 p-8 h-full">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
+                    <Award className="w-6 h-6 text-primary-glow" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-6">Certifications</h3>
+                    <div className="space-y-3">
+
+                      {/* Data Science – GUVI */}
+                      <a
+                        href="https://www.guvi.in/verify-certificate?id=U46ax3103M6e8635W9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Data Science</p>
+                            <p className="text-white/40 text-xs">GUVI</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
+                      </a>
+
+                      {/* Introduction to Cloud – IBM / TNSDC */}
+                      <a
+                        href="https://courses.tnsdc.skillsnetwork.site/certificates/cbdbd74df85f47bebf1186b6a72a523d"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Introduction to Cloud</p>
+                            <p className="text-white/40 text-xs">IBM · TNSDC</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
+                      </a>
+
+                      {/* Cloud Core – IBM / TNSDC */}
+                      <a
+                        href="https://courses.tnsdc.skillsnetwork.site/certificates/247cc08c48a9400ca6be670318631c7c"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Cloud Core</p>
+                            <p className="text-white/40 text-xs">IBM · TNSDC</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
+                      </a>
+
+                      {/* Cloud Core Credly Badge – IBM */}
+                      <a
+                        href="https://www.credly.com/badges/6c346395-028f-4b57-8f7e-878e3db5caba/public_url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-400/40 hover:bg-yellow-400/5 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Cloud Core <Badge variant="outline" className="ml-1.5 px-1.5 py-0 text-[10px] border-yellow-400/40 text-yellow-400 bg-yellow-400/10">Badge</Badge></p>
+                            <p className="text-white/40 text-xs">IBM · Credly</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-yellow-400 flex-shrink-0 transition-colors" />
+                      </a>
+
+                      {/* JavaScript – GUVI */}
+                      <a
+                        href="https://www.guvi.in/verify-certificate?id=ID3Ns5652G1M39b005&course=javascript_en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">JavaScript</p>
+                            <p className="text-white/40 text-xs">GUVI</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
+                      </a>
+
+                      {/* Udemy */}
+                      <a
+                        href="https://www.udemy.com/certificate/UC-aa4ee1a9-dddb-4009-b54f-5d39e157ff44/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Data-Driven Insights: Olympic Sports</p>
+                            <p className="text-white/40 text-xs">Udemy · Internshala</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
 
           {/* Personal Info & Resume */}
           <AnimatedSection>

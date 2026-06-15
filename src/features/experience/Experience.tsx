@@ -10,36 +10,47 @@ import { ExperienceTimeline } from "./components/ExperienceTimeline";
 export const Experience = () => {
   const experiences = [
     {
-      role: "Full Stack Developer",
-      company: "Nexobe",
-      logo: "/Nexobe.png", 
-      location: "Illinois, United States",
-      period: "September 2024 – Present",
-      type: "Full-time",
+      role: "Freelance Full Stack Developer",
+      company: "Clin solution L.L.C",
+      location: "United States (Remote)",
+      period: "November 2025 – Present",
+      type: "Freelance",
       achievements: [
-        "Designed and developed end-to-end web applications using React.js, Next.js, and Java-based backend services",
-        "Built type-safe TRPC and REST APIs, reducing API errors and improving stability by 30%",
-        "Optimized PostgreSQL schemas using Drizzle ORM, reducing redundant queries and improving scalability",
-        "Improved application performance through frontend rendering optimizations and backend refactoring",
-        "Developed reusable UI components adopted across multiple SaaS products, saving 20% development time",
-        "Collaborated with cross-functional teams in Agile sprints to deliver features ahead of deadlines"
+        "Built AeroReporting, an end-to-end Adverse Event Reporting System using React, TypeScript, Node.js, PostgreSQL, and Supabase, enabling E2B-compliant XML and PDF report generation for pharmacovigilance workflows",
+        "Integrated Azure AI Translation API to power multilingual safety reporting, reducing manual localisation effort for international regulatory submissions",
+        "Implemented WHODrug dictionary integration, standardising pharmaceutical terminology across the reporting pipeline and improving data accuracy for regulatory teams",
+        "Delivered production-ready features across 3+ release cycles in direct collaboration with stakeholders, maintaining a fully responsive, accessible UI"
       ],
-      tech: ["React.js", "Next.js", "TypeScript", "TRPC", "PostgreSQL", "Drizzle ORM", "Java", "Chakra UI"]
+      tech: ["React.js", "TypeScript", "Node.js", "PostgreSQL", "Supabase", "Azure AI", "REST API", "XML/PDF"]
     },
     {
-      role: "Java Full Stack Developer Intern",
+      role: "Full Stack Developer",
+      company: "Nexobe",
+      logo: "/Nexobe.png",
+      location: "Illinois, United States",
+      period: "September 2024 – September 2025",
+      type: "Full-time",
+      achievements: [
+        "Developed and deployed interactive dashboards using Chakra UI and SaaS UI, boosting workflow efficiency by 40%",
+        "Integrated TanStack Query and TRPC, reducing API response times by 30% and enhancing backend communication",
+        "Optimized PostgreSQL schema with Drizzle ORM, cutting redundant queries by 25% and improving data integrity",
+        "Partnered with cross-functional teams to deliver scalable SaaS features, ensuring seamless frontend-backend integration"
+      ],
+      tech: ["React.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "TanStack Query", "tRPC", "Chakra UI", "SaaS UI"]
+    },
+    {
+      role: "Jr. Java Full Stack Developer Intern",
       company: "Inmakes Infotech",
-      logo: "/inmakes.png", 
-      location: "Chennai, India",
+      logo: "/inmakes.png",
+      location: "Kerala, India",
       period: "May 2024 – July 2024",
       type: "Internship",
       achievements: [
-        "Developed full stack web applications using Java, Spring Framework, and Hibernate ORM",
-        "Built responsive front-end interfaces with HTML, CSS, JavaScript, Bootstrap, and jQuery",
-        "Designed and implemented MySQL database schemas for efficient data management",
-        "Collaborated with team members to deliver project milestones on schedule"
+        "Developed full-stack modules using Java and React, enhancing system performance and user experience",
+        "Contributed to building REST APIs, optimizing data flow and ensuring backend consistency",
+        "Acquired practical experience with agile workflows and collaborative development methodologies"
       ],
-      tech: ["Java", "Spring Boot", "Hibernate", "MySQL", "HTML/CSS", "JavaScript", "Bootstrap", "jQuery"]
+      tech: ["Java", "React.js", "REST API", "Spring Boot", "MySQL", "Hibernate", "Agile"]
     }
   ];
 
@@ -70,9 +81,9 @@ export const Experience = () => {
         <div className="space-y-16 max-w-5xl mx-auto relative">
           {/* Vertical timeline line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden md:block" />
-          
+
           {experiences.map((experience, index) => (
-            <AnimatedSection 
+            <AnimatedSection
               key={index}
               variant="slide-left"
               delay={index * 200}
