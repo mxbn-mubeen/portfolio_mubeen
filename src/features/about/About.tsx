@@ -6,14 +6,15 @@ import { useState } from "react";
 import { colorClasses } from "@/shared/lib/utils";
 import { StatCard } from "./components/StatCard";
 import { HighlightCard } from "./components/HighlightCard";
+import { Certifications } from "./components/Certifications";
 
 export const About = () => {
- const stats = [
-  { icon: Code, value: "2+", label: "Years Experience" },
-  { icon: Rocket, value: "Multiple", label: "SaaS Projects" },
-  { icon: Zap, value: "30%", label: "API Stability Boost" },
-  { icon: Target, value: "20%", label: "Dev Time Saved" },
-];
+  const stats = [
+    { icon: Code, value: "2+", label: "Years Experience" },
+    { icon: Rocket, value: "Multiple", label: "SaaS Projects" },
+    { icon: Zap, value: "30%", label: "API Stability Boost" },
+    { icon: Target, value: "20%", label: "Dev Time Saved" },
+  ];
 
   const highlights = [
     {
@@ -46,11 +47,11 @@ export const About = () => {
     <section id="about" className="py-24 relative overflow-hidden bg-[#0d0f14]">
       {/* Enhanced background effects */}
       <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
+        <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection>
           <div className="text-center mb-16">
@@ -66,7 +67,7 @@ export const About = () => {
             </p>
           </div>
         </AnimatedSection>
-        
+
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Stats Grid */}
           <AnimatedSection>
@@ -83,17 +84,17 @@ export const About = () => {
               <CardContent className="p-8 md:p-12">
                 <div className="prose prose-invert max-w-none">
                   <p className="text-lg text-white/80 leading-relaxed mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-primary-glow first-letter:mr-3 first-letter:float-left">
-                    Full Stack Developer with hands-on experience designing and delivering scalable SaaS applications 
-                    using React.js, Next.js, Java, TRPC, and PostgreSQL. Strong background in building responsive frontends, 
+                    Full Stack Developer with hands-on experience designing and delivering scalable SaaS applications
+                    using React.js, Next.js, Java, TRPC, and PostgreSQL. Strong background in building responsive frontends,
                     developing secure backend APIs, and optimizing database performance.
                   </p>
                   <p className="text-lg text-white/70 leading-relaxed mb-6">
-                    Proven ability to improve application efficiency, reduce latency, and deliver end-to-end solutions 
-                    in Agile environments. I specialize in creating type-safe applications with modern architecture patterns, 
+                    Proven ability to improve application efficiency, reduce latency, and deliver end-to-end solutions
+                    in Agile environments. I specialize in creating type-safe applications with modern architecture patterns,
                     ensuring code quality, maintainability, and exceptional user experiences.
                   </p>
                   <p className="text-lg text-white/70 leading-relaxed">
-                    When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, 
+                    When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects,
                     and staying up-to-date with the latest trends in web development and software engineering.
                   </p>
                 </div>
@@ -128,124 +129,7 @@ export const About = () => {
                 </div>
               </div>
             </AnimatedSection>
-
-            <AnimatedSection>
-              <div className="glass-card border-white/10 p-8 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
-                    <Award className="w-6 h-6 text-primary-glow" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-6">Certifications</h3>
-                    <div className="space-y-3">
-
-                      {/* Data Science – GUVI */}
-                      <a
-                        href="https://www.guvi.in/verify-certificate?id=U46ax3103M6e8635W9"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Data Science</p>
-                            <p className="text-white/40 text-xs">GUVI</p>
-                          </div>
-                        </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
-                      </a>
-
-                      {/* Introduction to Cloud – IBM / TNSDC */}
-                      <a
-                        href="https://courses.tnsdc.skillsnetwork.site/certificates/cbdbd74df85f47bebf1186b6a72a523d"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Introduction to Cloud</p>
-                            <p className="text-white/40 text-xs">IBM · TNSDC</p>
-                          </div>
-                        </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
-                      </a>
-
-                      {/* Cloud Core – IBM / TNSDC */}
-                      <a
-                        href="https://courses.tnsdc.skillsnetwork.site/certificates/247cc08c48a9400ca6be670318631c7c"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Cloud Core</p>
-                            <p className="text-white/40 text-xs">IBM · TNSDC</p>
-                          </div>
-                        </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
-                      </a>
-
-                      {/* Cloud Core Credly Badge – IBM */}
-                      <a
-                        href="https://www.credly.com/badges/6c346395-028f-4b57-8f7e-878e3db5caba/public_url"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-400/40 hover:bg-yellow-400/5 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Cloud Core <Badge variant="outline" className="ml-1.5 px-1.5 py-0 text-[10px] border-yellow-400/40 text-yellow-400 bg-yellow-400/10">Badge</Badge></p>
-                            <p className="text-white/40 text-xs">IBM · Credly</p>
-                          </div>
-                        </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-yellow-400 flex-shrink-0 transition-colors" />
-                      </a>
-
-                      {/* JavaScript – GUVI */}
-                      <a
-                        href="https://www.guvi.in/verify-certificate?id=ID3Ns5652G1M39b005&course=javascript_en"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">JavaScript</p>
-                            <p className="text-white/40 text-xs">GUVI</p>
-                          </div>
-                        </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
-                      </a>
-
-                      {/* Udemy */}
-                      <a
-                        href="https://www.udemy.com/certificate/UC-aa4ee1a9-dddb-4009-b54f-5d39e157ff44/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-2 h-2 rounded-full bg-primary-glow flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors truncate">Data-Driven Insights: Olympic Sports</p>
-                            <p className="text-white/40 text-xs">Udemy · Internshala</p>
-                          </div>
-                        </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-primary-glow flex-shrink-0 transition-colors" />
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
+            <Certifications />
           </div>
 
           {/* Personal Info & Resume */}
@@ -281,8 +165,8 @@ export const About = () => {
                 <p className="text-white/60 text-sm mb-6">
                   Get a detailed overview of my experience, skills, and education
                 </p>
-                <a 
-                  href="/Mubeen_resume.pdf" 
+                <a
+                  href="/Mubeen_resume.pdf"
                   download
                   className="px-6 py-3 rounded-xl bg-primary/20 border border-primary/50 text-white font-medium hover:bg-primary/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
                 >
@@ -299,24 +183,24 @@ export const About = () => {
                 Let's Build Something Amazing Together
               </h3>
               <p className="text-white/60 mb-6 max-w-2xl mx-auto">
-                Currently seeking Full Stack Developer opportunities in the UAE. 
+                Currently seeking Full Stack Developer opportunities in the UAE.
                 Ready to contribute to innovative projects and drive business growth.
               </p>
               <div className="flex items-center justify-center gap-4 flex-wrap">
-                <a 
-                  href="#contact" 
+                <a
+                  href="#contact"
                   className="px-6 py-3 rounded-xl bg-primary/20 border border-primary/50 text-white font-medium hover:bg-primary/30 hover:shadow-lg hover:shadow-shadow-primary/20 transition-all duration-300"
                 >
                   Get In Touch
                 </a>
-                <a 
-                  href="#experience" 
+                <a
+                  href="#experience"
                   className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                 >
                   View Experience
                 </a>
-                <a 
-                  href="#projects" 
+                <a
+                  href="#projects"
                   className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                 >
                   View Projects
