@@ -126,6 +126,45 @@ All colors MUST be HSL.
     from { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.2); }
     to { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.5); }
   }
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  @keyframes float-complex {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.1;
+    }
+    50% { 
+      transform: translateY(-20px) translateX(10px) rotate(5deg);
+      opacity: 0.2;
+    }
+  }
+
+  .animate-float-complex {
+    animation: float-complex 8s ease-in-out infinite;
+  }
+
+  .avatar-tilt-container {
+    transform: perspective(1000px) rotateY(calc((var(--mx, 0.5) - 0.5) * 20deg)) rotateX(calc((var(--my, 0.5) - 0.5) * -20deg)) translateZ(20px);
+    transform-style: preserve-3d;
+  }
+
+  .avatar-glass-ring {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 0 1px rgba(255,255,255,0.2);
+  }
+
+  .avatar-img-translate {
+    transform: translateZ(30px);
+  }
 }
 
 @layer utilities {
@@ -145,6 +184,7 @@ All colors MUST be HSL.
   .anim-duration-10000 { animation-duration: 10s; }
   .anim-duration-11000 { animation-duration: 11s; }
   .anim-duration-12000 { animation-duration: 12s; }
+  .anim-duration-13000 { animation-duration: 13s; }
   .anim-duration-30000 { animation-duration: 30s; }
   .anim-duration-40000 { animation-duration: 40s; }
   .anim-direction-reverse { animation-direction: reverse; }
@@ -153,11 +193,28 @@ All colors MUST be HSL.
   .orb-translate-30 { transform: translate(calc(var(--mx, 0) * 30px), calc(var(--my, 0) * 30px)); }
   .orb-translate--20 { transform: translate(calc(var(--mx, 0) * -20px), calc(var(--my, 0) * -20px)); }
   .orb-translate-40 { transform: translate(calc(var(--mx, 0) * 40px), calc(var(--my, 0) * 40px)); }
-  /* Predefined positions for floating snippets */
-  .snippet-pos-0 { top: 20%; left: 10%; }
-  .snippet-pos-1 { top: 35%; left: 25%; }
-  .snippet-pos-2 { top: 50%; left: 40%; }
-  .snippet-pos-3 { top: 65%; left: 55%; }
-  .snippet-pos-4 { top: 80%; left: 70%; }
-  .snippet-pos-5 { top: 95%; left: 85%; }
+  /* Predefined positions for floating snippets — kept within 15%–75% vertical to avoid overflow */
+  .snippet-pos-0 { top: 15%; left: 8%; }
+  .snippet-pos-1 { top: 30%; left: 20%; }
+  .snippet-pos-2 { top: 48%; left: 38%; }
+  .snippet-pos-3 { top: 62%; left: 52%; }
+  .snippet-pos-4 { top: 72%; left: 65%; }
+  .snippet-pos-5 { top: 25%; left: 78%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-gradient,
+    .animate-float-complex,
+    .animate-float,
+    .animate-pulse {
+      animation: none !important;
+    }
+
+    .avatar-tilt-container,
+    .avatar-img-translate,
+    .orb-translate-30,
+    .orb-translate--20,
+    .orb-translate-40 {
+      transform: none !important;
+    }
+  }
 }
