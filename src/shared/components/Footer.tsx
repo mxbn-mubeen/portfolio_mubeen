@@ -39,7 +39,7 @@ export const Footer = () => {
                 <Linkedin size={18} />
               </a>
               <a
-                href="mailto:mxbn18@gmail.com"
+                href="mailto:mohamedmubeen.dev@gmail.com"
                 className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
                 aria-label="Email"
               >
@@ -73,11 +73,11 @@ export const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="mailto:mxbn18@gmail.com"
+                  href="mailto:mohamedmubeen.dev@gmail.com"
                   className="text-white/60 hover:text-white transition-colors flex items-center gap-2 justify-center md:justify-start"
                 >
                   <Mail size={16} className="text-primary-glow" />
-                  <span>mxbn18@gmail.com</span>
+                  <span>mohamedmubeen.dev@gmail.com</span>
                 </a>
               </li>
               <li className="text-white/60 flex items-center gap-2 justify-center md:justify-start">
@@ -105,7 +105,7 @@ export const Footer = () => {
           <p className="text-white/40 text-sm text-center md:text-left">
             © {new Date().getFullYear()} Mohamed Mubeen A S. All rights reserved.
           </p>
-          
+
           <div className="flex items-center gap-2 text-white/40 text-sm">
             <span>Built with</span>
             <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" />

@@ -2,8 +2,7 @@ import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { MapPin, Code, Rocket, Target, Zap, Award, Download, ExternalLink } from "lucide-react";
 import { Badge } from "@/shared/components/ui/badge";
-import { useState } from "react";
-import { colorClasses } from "@/shared/lib/utils";
+
 import { StatCard } from "./components/StatCard";
 import { HighlightCard } from "./components/HighlightCard";
 import { Certifications } from "./components/Certifications";

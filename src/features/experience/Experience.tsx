@@ -1,10 +1,8 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/ui/card";
-import { Badge } from "@/shared/components/ui/badge";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { Briefcase } from "lucide-react";
 
 import { ExperienceTimeline } from "./components/ExperienceTimeline";
+
 
 
 export const Experience = () => {

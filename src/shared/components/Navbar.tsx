@@ -56,11 +56,11 @@ export const Navbar = () => {
   const handleLinkClick = (section: string) => {
     // Prevent multiple clicks during scroll
     if (isScrollingRef.current) return;
-    
+
     isScrollingRef.current = true;
     setActiveSection(section);
     setMobileMenuOpen(false);
-    
+
     // Reset after scroll completes (matches 500ms scroll duration)
     setTimeout(() => {
       isScrollingRef.current = false;
@@ -69,13 +69,11 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-2' : 'py-4'
-      }`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'
+        }`}>
         <div className="container mx-auto px-4">
-          <div className={`glass-nav transition-all duration-300 ${
-            scrolled ? 'py-3 shadow-lg shadow-primary/10' : 'py-4'
-          }`}>
+          <div className={`glass-nav transition-all duration-300 ${scrolled ? 'py-3 shadow-lg shadow-primary/10' : 'py-4'
+            }`}>
             {/* Logo */}
             <div
               onClick={() => {
@@ -89,7 +87,7 @@ export const Navbar = () => {
               <span className="text-primary-glow group-hover:text-primary transition-colors">M</span>
               <span className="group-hover:text-primary-glow transition-colors">ubeen</span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1 flex-1 justify-center">
               {navLinks.map((link) => (
@@ -101,11 +99,10 @@ export const Navbar = () => {
                   spy={true}
                   offset={-100}
                   onClick={() => handleLinkClick(link.to)}
-                  className={`relative px-4 py-2 text-sm font-medium cursor-pointer transition-all duration-200 rounded-lg ${
-                    activeSection === link.to
+                  className={`relative px-4 py-2 text-sm font-medium cursor-pointer transition-all duration-200 rounded-lg ${activeSection === link.to
                       ? 'text-white bg-white/10'
                       : 'text-white/70 hover:text-white hover:bg-white/5'
-                  }`}
+                    }`}
                 >
                   {link.name}
                   {activeSection === link.to && (
@@ -117,26 +114,26 @@ export const Navbar = () => {
 
             {/* Desktop Social Links */}
             <div className="hidden md:flex items-center gap-2 flex-shrink-0">
-              <a 
-                href="https://github.com/mxbn-mubeen" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://github.com/mxbn-mubeen"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5"
                 aria-label="GitHub"
               >
                 <Github size={18} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
-              <a 
-                href="mailto:mxbn18@gmail.com"
+              <a
+                href="mailto:mohamedmubeen.dev@gmail.com"
                 className="p-2 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5"
                 aria-label="Email"
               >
@@ -157,19 +154,17 @@ export const Navbar = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
-        mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`}>
+      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}>
         {/* Backdrop */}
-        <div 
+        <div
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
         />
-        
+
         {/* Menu Content */}
-        <div className={`absolute top-20 left-4 right-4 glass-card border-white/10 p-6 transition-transform duration-300 ${
-          mobileMenuOpen ? 'translate-y-0' : '-translate-y-4'
-        }`}>
+        <div className={`absolute top-20 left-4 right-4 glass-card border-white/10 p-6 transition-transform duration-300 ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-4'
+          }`}>
           <div className="flex flex-col gap-2 mb-6">
             {navLinks.map((link) => (
               <Link
@@ -180,11 +175,10 @@ export const Navbar = () => {
                 spy={true}
                 offset={-100}
                 onClick={() => handleLinkClick(link.to)}
-                className={`px-4 py-3 text-base font-medium cursor-pointer transition-all duration-200 rounded-lg ${
-                  activeSection === link.to
+                className={`px-4 py-3 text-base font-medium cursor-pointer transition-all duration-200 rounded-lg ${activeSection === link.to
                     ? 'text-white bg-white/10 border border-primary/30'
                     : 'text-white/70 hover:text-white hover:bg-white/5'
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
@@ -193,26 +187,26 @@ export const Navbar = () => {
 
           <div className="border-t border-white/10 pt-6">
             <div className="flex items-center justify-center gap-4">
-              <a 
-                href="https://github.com/mxbn-mubeen" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://github.com/mxbn-mubeen"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5 border border-white/10"
                 aria-label="GitHub"
               >
                 <Github size={20} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5 border border-white/10"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
-              <a 
-                href="mailto:mxbn18@gmail.com"
+              <a
+                href="mohamedmubeen.dev@gmail.com"
                 className="p-3 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5 border border-white/10"
                 aria-label="Email"
               >

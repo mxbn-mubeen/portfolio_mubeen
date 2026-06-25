@@ -1,8 +1,7 @@
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from "lucide-react";
-import { useState } from "react";
-import { colorClasses } from "@/shared/lib/utils";
+
 import { ContactCard } from "./components/ContactCard";
 
 export const Contact = () => {
@@ -36,7 +35,7 @@ export const Contact = () => {
             <Card className="glass-card border-white/10 overflow-hidden mb-12">
               <CardContent className="p-8 md:p-12">
                 <p className="text-lg text-center text-white/70 mb-4 leading-relaxed">
-                  I'm always interested in hearing about new projects and opportunities. 
+                  I'm always interested in hearing about new projects and opportunities.
                   Whether you have a question or just want to say hi, feel free to reach out!
                 </p>
                 <p className="text-center text-white/60 text-sm">
@@ -51,12 +50,12 @@ export const Contact = () => {
               <ContactCard
                 icon={Mail}
                 title="Email"
-                info="mxbn18@gmail.com"
-                href="mailto:mxbn18@gmail.com"
+                info="mohamedmubeen.dev@gmail.com"
+                href="mailto:mohamedmubeen.dev@gmail.com"
                 color="#EA4335"
               />
             </AnimatedSection>
-            
+
             <AnimatedSection variant="fade-right" delay={300} duration={700}>
               <ContactCard
                 icon={Phone}
@@ -66,7 +65,7 @@ export const Contact = () => {
                 color="#34A853"
               />
             </AnimatedSection>
-            
+
             <AnimatedSection variant="fade-left" delay={450} duration={700}>
               <ContactCard
                 icon={Linkedin}
@@ -76,7 +75,7 @@ export const Contact = () => {
                 color="#0A66C2"
               />
             </AnimatedSection>
-            
+
             <AnimatedSection variant="fade-right" delay={450} duration={700}>
               <ContactCard
                 icon={Github}
@@ -96,7 +95,7 @@ export const Contact = () => {
                 info="Sharjah, UAE"
                 color="#F59E0B"
               />
-              
+
               <div className="glass-card border-white/10 p-6 rounded-2xl">
                 <div className="text-center">
                   <p className="text-white/50 text-sm mb-1">Availability</p>
@@ -123,7 +122,7 @@ export const Contact = () => {
                 Let's discuss how I can help bring your project to life with modern web technologies
               </p>
               <a
-                href="mailto:mxbn18@gmail.com"
+                href="mailto:mohamedmubeen.dev@gmail.com"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary/20 border border-primary/50 text-white font-semibold hover:bg-primary/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:scale-105"
               >
                 <Mail className="w-5 h-5" />
