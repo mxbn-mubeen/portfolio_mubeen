@@ -112,24 +112,29 @@ export const About = () => {
             </div>
           </AnimatedSection>
 
-          {/* Education & Certifications */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <AnimatedSection>
-              <div className="glass-card border-white/10 p-8 h-full">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
+          {/* Education & Certifications – Stacked Layout */}
+          <div className="grid grid-cols-1 gap-4 md:gap-6">
+            {/* Education row 1 */}
+            <AnimatedSection className="min-w-0">
+              <div className="glass-card border-white/10 p-6 md:p-8 overflow-hidden group hover:border-primary/30 active:border-primary/30 active:bg-white/[0.12] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] transition-all duration-300">
+                <div className="flex items-start gap-4 min-w-0">
+                  <div className="p-3 rounded-xl bg-primary/20 border border-primary/30 flex-shrink-0 group-hover:bg-primary/30 group-hover:scale-105 group-active:bg-primary/30 group-active:scale-105 transition-all duration-300">
                     <Award className="w-6 h-6 text-primary-glow" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-4">Education</h3>
-                    <p className="text-white/80 font-medium">B.E. in Computer Science and Engineering</p>
-                    <p className="text-white/60 text-sm">Aalim Muhammed Salegh College of Engineering</p>
-                    <p className="text-white/50 text-sm">Affiliated with Anna University • 2020-2024</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary-glow group-active:text-primary-glow transition-colors duration-300">Education</h3>
+                    <p className="text-white/80 font-medium break-words">B.E. in Computer Science and Engineering</p>
+                    <p className="text-white/60 text-sm break-words mt-1">Aalim Muhammed Salegh College of Engineering</p>
+                    <p className="text-white/50 text-sm mt-1">Affiliated with Anna University</p>
+                    <span className="inline-block mt-3 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary-glow">2020 – 2024</span>
                   </div>
                 </div>
               </div>
             </AnimatedSection>
-            <Certifications />
+            {/* Certifications row 2 */}
+            <AnimatedSection className="min-w-0">
+              <Certifications />
+            </AnimatedSection>
           </div>
 
           {/* Personal Info & Resume */}

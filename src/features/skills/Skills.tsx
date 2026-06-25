@@ -87,14 +87,20 @@ export const Skills = () => {
         ${(() => {
           const rules: string[] = [];
           const skills = activeSkills.skills;
-          const radius = 200;
           skills.forEach((_, index) => {
             const angle = (index * 360) / skills.length;
-            const x = Math.cos((angle * Math.PI) / 180) * radius;
-            const y = Math.sin((angle * Math.PI) / 180) * radius;
+            const xMobile = Math.cos((angle * Math.PI) / 180) * 130;
+            const yMobile = Math.sin((angle * Math.PI) / 180) * 130;
+            const xDesktop = Math.cos((angle * Math.PI) / 180) * 200;
+            const yDesktop = Math.sin((angle * Math.PI) / 180) * 200;
             const animDur = 3 + index * 0.5;
             const animDelay = index * 0.2;
-            rules.push(`.orb-pos-${index} { transform: translate(calc(-50% + ${x}px), calc(-50% + ${y}px)); }`);
+            rules.push(`
+              .orb-pos-${index} { transform: translate(calc(-50% + ${xMobile}px), calc(-50% + ${yMobile}px)); }
+              @media (min-width: 768px) {
+                .orb-pos-${index} { transform: translate(calc(-50% + ${xDesktop}px), calc(-50% + ${yDesktop}px)); }
+              }
+            `);
             rules.push(`.orb-anim-${index} { animation: float ${animDur}s ease-in-out infinite; animation-delay: ${animDelay}s; }`);
           });
           return rules.join('\n');
@@ -173,20 +179,15 @@ export const Skills = () => {
           {/* Skill Orbs Container */}
           <div className="max-w-6xl mx-auto">
             <AnimatedSection>
-              <div className="relative min-h-[600px] flex items-center justify-center py-16">
+              <div className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center py-16">
                 {/* Central core */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-white/20 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center z-20">
-                  <CategoryIcon className="w-12 h-12 text-primary-glow" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full border border-white/20 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center z-20">
+                  <CategoryIcon className="w-10 h-10 md:w-12 md:h-12 text-primary-glow" />
                 </div>
                 
                 {/* Orbiting skills */}
-                <div className="relative w-full h-[600px]">
+                <div className="relative w-full h-[350px] md:h-[600px]">
                   {activeSkills.skills.map((skill, index) => {
-                    const angle = (index * 360) / activeSkills.skills.length;
-                    const radius = 200;
-                    const x = Math.cos((angle * Math.PI) / 180) * radius;
-                    const y = Math.sin((angle * Math.PI) / 180) * radius;
-                    
                     return (
                       <div
                         key={index}
@@ -199,8 +200,8 @@ export const Skills = () => {
                 </div>
                 
                 {/* Orbital rings */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-30000" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-40000 anim-direction-reverse" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[450px] md:h-[450px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-30000" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-40000 anim-direction-reverse" />
               </div>
             </AnimatedSection>
             

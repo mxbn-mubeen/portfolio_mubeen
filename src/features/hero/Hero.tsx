@@ -195,9 +195,9 @@ export const Hero = () => {
 
           {/* Right Side: 3D Avatar & Speech Bubble */}
           <HeroAnimation>
-            <div className="h-[400px] md:h-[500px] lg:h-[600px] w-full relative z-20 pointer-events-auto">
+            <div className="h-[350px] md:h-[500px] lg:h-[600px] w-full relative z-20 pointer-events-auto mt-16 md:mt-0">
               {/* Speech Bubble */}
-              <div className="absolute top-10 right-10 md:right-20 lg:right-32 z-30 max-w-xs bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl rounded-tr-none shadow-xl transform animate-float">
+              <div className="absolute -top-12 right-2 md:top-10 md:right-20 lg:right-32 z-30 max-w-[260px] md:max-w-xs bg-white/10 backdrop-blur-md border border-white/20 p-3 md:p-4 rounded-2xl rounded-tr-none shadow-xl transform animate-float">
                 <div className="absolute -right-3 top-0 w-4 h-4 bg-white/10 backdrop-blur-md border-r border-t border-white/20 transform rotate-45" />
                 <p className="text-white/90 text-sm md:text-base font-medium leading-relaxed">
                   <TypewriterText 
@@ -213,7 +213,7 @@ export const Hero = () => {
                 className="w-full h-full flex items-center justify-center transition-transform duration-200 ease-out avatar-tilt-container"
               >
                 <div 
-                  className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-2 avatar-glass-ring"
+                  className="relative w-48 h-48 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-2 avatar-glass-ring"
                 >
                   <img 
                     src="/avatar.png" 

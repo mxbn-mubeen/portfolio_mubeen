@@ -90,17 +90,24 @@ export const Projects = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <AnimatedSection 
-              key={index}
-              variant="fade-up"
-              delay={index * 150}
-              duration={800}
-            >
-              <ProjectCard project={project} index={index} />
-            </AnimatedSection>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+          {projects.map((project, index) => {
+            // Bento Grid asymmetric layout
+            const isLarge = index === 0 || index === 3;
+            return (
+              <AnimatedSection 
+                key={index}
+                variant="fade-up"
+                delay={index * 150}
+                duration={800}
+                className={isLarge ? "md:col-span-2 lg:col-span-2" : "col-span-1"}
+              >
+                <div className="h-full">
+                  <ProjectCard project={project} index={index} isLarge={isLarge} />
+                </div>
+              </AnimatedSection>
+            );
+          })}
         </div>
       </div>
       <style>{`

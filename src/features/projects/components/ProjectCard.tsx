@@ -24,7 +24,7 @@ export interface Project {
   details?: ProjectDetails;
 }
 
-export const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+export const ProjectCard = ({ project, index, isLarge }: { project: Project; index: number; isLarge?: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -44,18 +44,18 @@ export const ProjectCard = ({ project, index }: { project: Project; index: numbe
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative group h-full"
+        className="relative group h-full rounded-2xl"
       >
-        {/* Subtle glow effect */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500" />
-        
-        <Card className="glass-card border-white/10 hover:border-primary/30 transition-all duration-300 h-full flex flex-col relative overflow-hidden">
+        <Card className={`glass-card border-white/10 hover:border-primary/30 active:border-primary/30 active:bg-white/[0.12] transition-all duration-300 h-full flex relative overflow-hidden hover:!transform-none ${isLarge ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>
+          {/* Glow effect — safely inside overflow-hidden Card */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-secondary/15 to-accent/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           {/* Thin top accent line */}
           <div 
             className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-secondary to-accent transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100"
           />
           
-          <CardHeader className="pb-4">
+          <div className={isLarge ? "flex-1 p-6" : ""}>
+            <CardHeader className="pb-4">
             <div className="flex items-start justify-between gap-4 mb-4">
               <div className="flex items-center gap-3">
                 {/* Logo or Icon */}
@@ -95,8 +95,10 @@ export const ProjectCard = ({ project, index }: { project: Project; index: numbe
               {project.description}
             </CardDescription>
           </CardHeader>
+          </div>
           
-          <CardContent className="mt-auto space-y-4 pt-0">
+          <div className={isLarge ? "flex-1 p-6 border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col h-full justify-center" : ""}>
+            <CardContent className="mt-auto space-y-4 pt-0">
             <div className="flex flex-wrap gap-2">
               {project.tech.map((tech: string, i: number) => (
                 <Badge 
@@ -165,6 +167,7 @@ export const ProjectCard = ({ project, index }: { project: Project; index: numbe
               </div>
             )}
           </CardContent>
+          </div>
         </Card>
       </div>
     </CardWrapper>

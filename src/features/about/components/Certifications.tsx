@@ -4,14 +4,14 @@ import { AnimatedSection } from "@/shared/components/AnimatedSection";
 
 export const Certifications = () => {
   return (
-    <AnimatedSection>
-      <div className="glass-card border-white/10 p-8 h-full">
-        <div className="flex items-start gap-4">
-          <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
+    <AnimatedSection className="min-w-0 h-full">
+      <div className="glass-card border-white/10 p-6 md:p-8 h-full overflow-hidden group hover:border-primary/30 active:border-primary/30 active:bg-white/[0.12] transition-all duration-300">
+        <div className="flex items-start gap-4 min-w-0">
+          <div className="p-3 rounded-xl bg-primary/20 border border-primary/30 flex-shrink-0 group-hover:bg-primary/30 group-hover:scale-105 group-active:bg-primary/30 group-active:scale-105 transition-all duration-300">
             <Award className="w-6 h-6 text-primary-glow" />
           </div>
-          <div className="flex-1">
-            <h3 className="text-xl font-bold text-white mb-6">Certifications</h3>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-xl font-bold text-white mb-6 group-hover:text-primary-glow group-active:text-primary-glow transition-colors duration-300">Certifications</h3>
             <div className="space-y-3">
               {/* Data Science – GUVI */}
               <a
