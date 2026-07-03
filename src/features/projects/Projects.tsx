@@ -1,7 +1,7 @@
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Rocket } from "lucide-react";
-import { ProjectCard } from "./components/ProjectCard";
-import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./components/ProjectLogos";
+import { ProjectCard } from "./Components/ProjectCard";
+import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./Components/ProjectLogos";
 
 
 export const Projects = () => {
@@ -95,7 +95,7 @@ export const Projects = () => {
             // Bento Grid asymmetric layout
             const isLarge = index === 0 || index === 3;
             return (
-              <AnimatedSection 
+              <AnimatedSection
                 key={index}
                 variant="fade-up"
                 delay={index * 150}

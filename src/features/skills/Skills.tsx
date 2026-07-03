@@ -6,7 +6,7 @@ import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, S
 import { BiData } from "react-icons/bi";
 import { useState } from "react";
 
-import { SkillOrb, sanitize, Skill, SaasUIIcon } from "./components/SkillOrb";
+import { SkillOrb, sanitize, Skill, SaasUIIcon } from "./Components/SkillOrb";
 
 
 export const Skills = () => {
@@ -124,7 +124,7 @@ export const Skills = () => {
           }).join('\n');
         })()}
       `}</style>
-      
+
       <section id="skills" className="py-24 relative overflow-hidden bg-[#0a0c10]">
         {/* Animated background */}
         <div className="absolute inset-0 pointer-events-none">
@@ -132,7 +132,7 @@ export const Skills = () => {
           <div className="absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
           <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection>
             <div className="text-center mb-20">
@@ -148,7 +148,7 @@ export const Skills = () => {
               </p>
             </div>
           </AnimatedSection>
-          
+
           {/* Category Tabs */}
           <div className="flex justify-center gap-4 mb-16 flex-wrap">
             {skillCategories.map((category, index) => {
@@ -157,25 +157,22 @@ export const Skills = () => {
                 <button
                   key={index}
                   onClick={() => setActiveCategory(index)}
-                  className={`group px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 ${
-                    activeCategory === index
+                  className={`group px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 ${activeCategory === index
                       ? 'bg-white/10 border border-primary/50 shadow-lg shadow-primary/20'
                       : 'bg-white/5 border border-white/10 hover:border-white/20'
-                  }`}
+                    }`}
                 >
-                  <Icon className={`w-5 h-5 transition-colors ${
-                    activeCategory === index ? 'text-primary-glow' : 'text-white/50 group-hover:text-white/70'
-                  }`} />
-                  <span className={`font-medium transition-colors ${
-                    activeCategory === index ? 'text-white' : 'text-white/50 group-hover:text-white/70'
-                  }`}>
+                  <Icon className={`w-5 h-5 transition-colors ${activeCategory === index ? 'text-primary-glow' : 'text-white/50 group-hover:text-white/70'
+                    }`} />
+                  <span className={`font-medium transition-colors ${activeCategory === index ? 'text-white' : 'text-white/50 group-hover:text-white/70'
+                    }`}>
                     {category.category}
                   </span>
                 </button>
               );
             })}
           </div>
-          
+
           {/* Skill Orbs Container */}
           <div className="max-w-6xl mx-auto">
             <AnimatedSection>
@@ -184,7 +181,7 @@ export const Skills = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full border border-white/20 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center z-20">
                   <CategoryIcon className="w-10 h-10 md:w-12 md:h-12 text-primary-glow" />
                 </div>
-                
+
                 {/* Orbiting skills */}
                 <div className="relative w-full h-[350px] md:h-[600px]">
                   {activeSkills.skills.map((skill, index) => {
@@ -198,13 +195,13 @@ export const Skills = () => {
                     );
                   })}
                 </div>
-                
+
                 {/* Orbital rings */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[450px] md:h-[450px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-30000" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-40000 anim-direction-reverse" />
               </div>
             </AnimatedSection>
-            
+
             {/* Category Description */}
             <div className="text-center mt-8">
               <p className="text-white/60 text-sm max-w-xl mx-auto">

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import { HeroBackground } from "./components/HeroBackground";
-import { HeroContent } from "./components/HeroContent";
-import { HeroAvatar } from "./components/HeroAvatar";
+import { HeroBackground } from "./Components/HeroBackground";
+import { HeroContent } from "./Components/HeroContent";
+import { HeroAvatar } from "./Components/HeroAvatar";
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
