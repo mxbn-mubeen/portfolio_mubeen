@@ -1,5 +1,5 @@
-import { Navbar } from "@/shared/components/navbar/Navbar";
-import { Footer } from "@/shared/components/Footer";
+import { Navbar } from "@/shared/Components/navbar/Navbar";
+import { Footer } from "@/shared/Components/Footer";
 import { Hero, About, Skills, Experience, Projects, Contact } from "@/features";
 
 const Index = () => {

@@ -1,8 +1,8 @@
-import { Card, CardContent } from "@/shared/components/ui/card";
-import { AnimatedSection } from "@/shared/components/AnimatedSection";
+import { Card, CardContent } from "@/shared/Components/ui/card";
+import { AnimatedSection } from "@/shared/Components/AnimatedSection";
 import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from "lucide-react";
 
-import { ContactCard } from "./components/ContactCard";
+import { ContactCard } from "./Components/ContactCard";
 
 export const Contact = () => {
   return (
@@ -46,7 +46,7 @@ export const Contact = () => {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <AnimatedSection variant="fade-left" delay={300} duration={700}>
+            <AnimatedSection variant="fade-left" delay={300} duration={700} className="min-w-0">
               <ContactCard
                 icon={Mail}
                 title="Email"
@@ -56,7 +56,7 @@ export const Contact = () => {
               />
             </AnimatedSection>
 
-            <AnimatedSection variant="fade-right" delay={300} duration={700}>
+            <AnimatedSection variant="fade-right" delay={300} duration={700} className="min-w-0">
               <ContactCard
                 icon={Phone}
                 title="Phone"
@@ -66,7 +66,7 @@ export const Contact = () => {
               />
             </AnimatedSection>
 
-            <AnimatedSection variant="fade-left" delay={450} duration={700}>
+            <AnimatedSection variant="fade-left" delay={450} duration={700} className="min-w-0">
               <ContactCard
                 icon={Linkedin}
                 title="LinkedIn"
@@ -76,7 +76,7 @@ export const Contact = () => {
               />
             </AnimatedSection>
 
-            <AnimatedSection variant="fade-right" delay={450} duration={700}>
+            <AnimatedSection variant="fade-right" delay={450} duration={700} className="min-w-0">
               <ContactCard
                 icon={Github}
                 title="GitHub"

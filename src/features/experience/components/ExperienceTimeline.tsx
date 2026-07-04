@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/ui/card";
-import { Badge } from "@/shared/components/ui/badge";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/Components/ui/card";
+import { Badge } from "@/shared/Components/ui/badge";
 import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
@@ -23,15 +23,13 @@ export const ExperienceTimeline = ({ experience, index }: { experience: Experien
       {index !== 0 && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/50 to-transparent -mt-12" />
       )}
-      
+
       {/* Timeline dot */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-6 z-10">
-        <div className={`w-12 h-12 rounded-full border-4 border-[#0a0c10] bg-gradient-to-br flex items-center justify-center transition-all duration-500 ${
-          isHovered ? 'from-primary to-secondary scale-125 shadow-lg shadow-primary/50' : 'from-primary/50 to-secondary/50'
-        }`}>
-          <Briefcase className={`w-5 h-5 text-white transition-transform duration-500 ${
-            isHovered ? 'rotate-12' : ''
-          }`} />
+        <div className={`w-12 h-12 rounded-full border-4 border-[#0a0c10] bg-gradient-to-br flex items-center justify-center transition-all duration-500 ${isHovered ? 'from-primary to-secondary scale-125 shadow-lg shadow-primary/50' : 'from-primary/50 to-secondary/50'
+          }`}>
+          <Briefcase className={`w-5 h-5 text-white transition-transform duration-500 ${isHovered ? 'rotate-12' : ''
+            }`} />
         </div>
       </div>
 
@@ -42,22 +40,21 @@ export const ExperienceTimeline = ({ experience, index }: { experience: Experien
         className="relative pt-8"
       >
         {/* Glow effect */}
-        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 blur-xl transition-opacity duration-500 ${
-          isHovered ? 'opacity-100' : ''
-        }`} />
+        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 blur-xl transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''
+          }`} />
 
         <Card className="glass-card border-white/10 hover:border-primary/30 transition-all duration-500 relative overflow-hidden group">
           {/* Animated corner accent */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
-          
+
           <CardHeader>
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
                   {/* Logo placeholder - add your logo here */}
                   {experience.logo ? (
-                    <img 
-                      src={experience.logo} 
+                    <img
+                      src={experience.logo}
                       alt={`${experience.company} logo`}
                       className="w-12 h-12 rounded-lg object-contain bg-white/5 p-2 border border-white/10"
                     />
@@ -72,11 +69,11 @@ export const ExperienceTimeline = ({ experience, index }: { experience: Experien
                     </CardTitle>
                   </div>
                 </div>
-                
+
                 <CardDescription className="text-lg text-primary-glow font-medium mb-3">
                   {experience.company}
                 </CardDescription>
-                
+
                 <div className="flex flex-wrap gap-3 text-sm text-white/60">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
@@ -88,21 +85,21 @@ export const ExperienceTimeline = ({ experience, index }: { experience: Experien
                   </div>
                 </div>
               </div>
-              
-              <Badge 
-                variant="secondary" 
+
+              <Badge
+                variant="secondary"
                 className="bg-primary/10 text-primary-glow border border-primary/30 hover:bg-primary/20 transition-colors self-start"
               >
                 {experience.type}
               </Badge>
             </div>
           </CardHeader>
-          
+
           <CardContent>
             <ul className="space-y-4">
               {experience.achievements.map((achievement: string, i: number) => (
-                <li 
-                  key={i} 
+                <li
+                  key={i}
                   className={`flex gap-3 items-start group/item opacity-70 group-hover:opacity-100 transition-opacity duration-300 timeline-item-${i}`}
                 >
                   <ChevronRight className="w-5 h-5 text-primary-glow mt-0.5 flex-shrink-0 group-hover/item:translate-x-1 transition-transform" />
@@ -118,7 +115,7 @@ export const ExperienceTimeline = ({ experience, index }: { experience: Experien
               <div className="mt-6 pt-6 border-t border-white/10">
                 <div className="flex flex-wrap gap-2">
                   {experience.tech.map((tech: string, i: number) => (
-                    <Badge 
+                    <Badge
                       key={i}
                       variant="outline"
                       className="bg-white/5 text-white/70 border-white/20 hover:border-primary/50 hover:text-white transition-all text-xs"

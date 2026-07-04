@@ -17,7 +17,7 @@ export const ContactCard = ({ icon: Icon, title, info, href, color }: { icon: Re
     <CardWrapper
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative"
+      className="group relative block w-full"
     >
       {/* Glow effect */}
       <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 ${colorClasses[color]?.bg ?? 'bg-white/10'}`} />
@@ -32,9 +32,9 @@ export const ContactCard = ({ icon: Icon, title, info, href, color }: { icon: Re
         >
           <Icon className={`w-6 h-6 transition-all duration-300 ${isHovered ? (colorClasses[color]?.text ?? 'text-white') : 'text-white/50'}`} />
         </div>
-        <div className="flex-1">
-          <p className="font-semibold text-white mb-1">{title}</p>
-          <p className="text-sm text-white/60">{info}</p>
+        <div className="flex-1 min-w-0">
+          <p className="font-semibold text-white mb-1 truncate">{title}</p>
+          <p className="text-sm text-white/60 truncate">{info}</p>
         </div>
         {href && (
           <Send className="w-5 h-5 text-white/30 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />

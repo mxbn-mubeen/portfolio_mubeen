@@ -1,5 +1,5 @@
-import { Card } from "@/shared/components/ui/card";
-import { AnimatedSection } from "@/shared/components/AnimatedSection";
+import { Card } from "@/shared/Components/ui/card";
+import { AnimatedSection } from "@/shared/Components/AnimatedSection";
 import { Code2, Layers, Wrench, Sparkles } from "lucide-react";
 import { FaReact, FaHtml5, FaJava } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, SiReactquery, SiChakraui, SiSpring, SiBootstrap, SiHibernate, SiJquery, SiTrpc, SiDrizzle } from "react-icons/si";
@@ -158,8 +158,8 @@ export const Skills = () => {
                   key={index}
                   onClick={() => setActiveCategory(index)}
                   className={`group px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 ${activeCategory === index
-                      ? 'bg-white/10 border border-primary/50 shadow-lg shadow-primary/20'
-                      : 'bg-white/5 border border-white/10 hover:border-white/20'
+                    ? 'bg-white/10 border border-primary/50 shadow-lg shadow-primary/20'
+                    : 'bg-white/5 border border-white/10 hover:border-white/20'
                     }`}
                 >
                   <Icon className={`w-5 h-5 transition-colors ${activeCategory === index ? 'text-primary-glow' : 'text-white/50 group-hover:text-white/70'
