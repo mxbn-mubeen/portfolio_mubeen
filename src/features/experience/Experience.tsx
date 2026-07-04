@@ -1,4 +1,4 @@
-import { AnimatedSection } from "@/shared/Components/AnimatedSection";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Briefcase } from "lucide-react";
 
 import { ExperienceTimeline } from "./components/ExperienceTimeline";

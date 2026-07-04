@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/Components/ui/card";
-import { Badge } from "@/shared/Components/ui/badge";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/ui/card";
+import { Badge } from "@/shared/components/ui/badge";
 import { ExternalLink, Code, Rocket, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 

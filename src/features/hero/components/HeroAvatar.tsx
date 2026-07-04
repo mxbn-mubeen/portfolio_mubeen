@@ -1,4 +1,4 @@
-import { HeroAnimation } from "@/shared/Components/HeroAnimation";
+import { HeroAnimation } from "@/shared/components/HeroAnimation";
 import { TypewriterText } from "./TypewriterText";
 
 export const HeroAvatar = () => {

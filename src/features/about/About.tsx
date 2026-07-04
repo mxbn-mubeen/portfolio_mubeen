@@ -1,11 +1,11 @@
-import { Card, CardContent } from "@/shared/Components/ui/card";
-import { AnimatedSection } from "@/shared/Components/AnimatedSection";
+import { Card, CardContent } from "@/shared/components/ui/card";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { MapPin, Code, Rocket, Target, Zap, Award, Download, ExternalLink } from "lucide-react";
-import { Badge } from "@/shared/Components/ui/badge";
+import { Badge } from "@/shared/components/ui/badge";
 
-import { StatCard } from "./Components/StatCard";
-import { HighlightCard } from "./Components/HighlightCard";
-import { Certifications } from "./Components/Certifications";
+import { StatCard } from "./components/StatCard";
+import { HighlightCard } from "./components/HighlightCard";
+import { Certifications } from "./components/Certifications";
 
 export const About = () => {
   const stats = [

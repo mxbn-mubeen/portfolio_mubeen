@@ -1,12 +1,12 @@
-import { Card } from "@/shared/Components/ui/card";
-import { AnimatedSection } from "@/shared/Components/AnimatedSection";
+import { Card } from "@/shared/components/ui/card";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Code2, Layers, Wrench, Sparkles } from "lucide-react";
 import { FaReact, FaHtml5, FaJava } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, SiReactquery, SiChakraui, SiSpring, SiBootstrap, SiHibernate, SiJquery, SiTrpc, SiDrizzle } from "react-icons/si";
 import { BiData } from "react-icons/bi";
 import { useState } from "react";
 
-import { SkillOrb, sanitize, Skill, SaasUIIcon } from "./Components/SkillOrb";
+import { SkillOrb, sanitize, Skill, SaasUIIcon } from "./components/SkillOrb";
 
 
 export const Skills = () => {

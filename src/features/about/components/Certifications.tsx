@@ -1,6 +1,6 @@
 import { Award, ExternalLink } from "lucide-react";
-import { Badge } from "@/shared/Components/ui/badge";
-import { AnimatedSection } from "@/shared/Components/AnimatedSection";
+import { Badge } from "@/shared/components/ui/badge";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
 
 export const Certifications = () => {
   return (

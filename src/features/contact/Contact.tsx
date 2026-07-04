@@ -1,8 +1,8 @@
-import { Card, CardContent } from "@/shared/Components/ui/card";
-import { AnimatedSection } from "@/shared/Components/AnimatedSection";
+import { Card, CardContent } from "@/shared/components/ui/card";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from "lucide-react";
 
-import { ContactCard } from "./Components/ContactCard";
+import { ContactCard } from "./components/ContactCard";
 
 export const Contact = () => {
   return (

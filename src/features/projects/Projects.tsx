@@ -1,7 +1,7 @@
-import { AnimatedSection } from "@/shared/Components/AnimatedSection";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Rocket } from "lucide-react";
-import { ProjectCard } from "./Components/ProjectCard";
-import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./Components/ProjectLogos";
+import { ProjectCard } from "./components/ProjectCard";
+import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./components/ProjectLogos";
 
 
 export const Projects = () => {

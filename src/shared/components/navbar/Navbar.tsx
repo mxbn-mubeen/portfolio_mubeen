@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
-import { NavbarLogo } from "./Components/NavbarLogo";
-import { DesktopNav } from "./Components/DesktopNav";
-import { MobileNav } from "./Components/MobileNav";
+import { NavbarLogo } from "./components/NavbarLogo";
+import { DesktopNav } from "./components/DesktopNav";
+import { MobileNav } from "./components/MobileNav";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
