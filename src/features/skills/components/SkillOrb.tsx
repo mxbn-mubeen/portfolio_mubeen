@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import type { Skill } from "./skill-utils";
+import { sanitize } from "./skill-utils";
+
 export const SaasUIIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
@@ -23,15 +26,6 @@ export const SaasUIIcon = ({ className }: { className?: string }) => (
     <circle cx="62.5" cy="62.5" r="7.5" fill="currentColor"/>
   </svg>
 );
-
-export interface Skill {
-  name: string;
-  icon: React.ElementType;
-  color: string;
-  level: string;
-}
-
-export const sanitize = (hex: string) => hex.replace('#', '').toLowerCase();
 
 export const SkillOrb = ({ skill, index }: { skill: Skill; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { animate, createTimeline } from 'animejs';
+import { createTimeline, type Target } from 'animejs';
 
 interface HeroAnimationProps {
   children: React.ReactNode;
@@ -12,11 +12,11 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const title = container.querySelector('.hero-title');
-    const subtitle = container.querySelector('.hero-subtitle');
-    const description = container.querySelector('.hero-description');
-    const buttons = container.querySelectorAll('.hero-button');
-    const socials = container.querySelectorAll('.hero-social');
+    const title = container.querySelector<HTMLElement>('.hero-title');
+    const subtitle = container.querySelector<HTMLElement>('.hero-subtitle');
+    const description = container.querySelector<HTMLElement>('.hero-description');
+    const buttons = container.querySelectorAll<HTMLElement>('.hero-button');
+    const socials = container.querySelectorAll<HTMLElement>('.hero-social');
 
     // Split text into spans for character animation
     if (title) {
@@ -28,46 +28,46 @@ export const HeroAnimation = ({ children }: HeroAnimationProps) => {
     }
 
     const tl = createTimeline();
+    const titleSpans = title?.querySelectorAll<HTMLSpanElement>('span') ?? [];
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    tl.add(title?.querySelectorAll('span') as any, {
+    tl.add(Array.from(titleSpans), {
       opacity: [0, 1],
       y: [50, 0],
       scale: [0.8, 1],
       duration: 1000,
-      delay: (_el: any, i: number) => i * 50,
+      delay: (_el: Target, i: number) => i * 50,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    tl.add(subtitle as any, {
-      opacity: [0, 1],
-      y: [30, 0],
-      duration: 800,
-    });
+    if (subtitle) {
+      tl.add(subtitle, {
+        opacity: [0, 1],
+        y: [30, 0],
+        duration: 800,
+      });
+    }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    tl.add(description as any, {
-      opacity: [0, 1],
-      y: [20, 0],
-      duration: 800,
-    });
+    if (description) {
+      tl.add(description, {
+        opacity: [0, 1],
+        y: [20, 0],
+        duration: 800,
+      });
+    }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    tl.add(Array.from(buttons) as any, {
+    tl.add(Array.from(buttons), {
       opacity: [0, 1],
       scale: [0.8, 1],
       duration: 600,
-      delay: (_el: any, i: number) => i * 100,
+      delay: (_el: Target, i: number) => i * 100,
       easing: 'easeOutBack',
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    tl.add(Array.from(socials) as any, {
+    tl.add(Array.from(socials), {
       opacity: [0, 1],
       y: [20, 0],
       scale: [0.8, 1],
       duration: 500,
-      delay: (_el: any, i: number) => i * 80,
+      delay: (_el: Target, i: number) => i * 80,
     });
 
   }, []);

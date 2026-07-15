@@ -6,7 +6,9 @@ import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, S
 import { BiData } from "react-icons/bi";
 import { useState } from "react";
 
-import { SkillOrb, sanitize, Skill, SaasUIIcon } from "./components/SkillOrb";
+import { SaasUIIcon, SkillOrb } from "./components/SkillOrb";
+import type { Skill } from "./components/skill-utils";
+import { sanitize } from "./components/skill-utils";
 
 
 export const Skills = () => {
