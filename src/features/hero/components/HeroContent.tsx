@@ -73,7 +73,7 @@ export const HeroContent = () => {
           <Button
             size="lg"
             className="glass-button w-full sm:w-auto bg-white/5 text-white border-white/10 hover:bg-white/10 hover:scale-105 px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold transition-all duration-300 group"
-            onClick={() => window.open('/Mubeen_resume.pdf', '_blank')}
+            onClick={() => window.open('/Mohamed_Mubeen_Resume.pdf', '_blank')}
           >
             <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:rotate-12 transition-transform" />
             <span>View Resume</span>
