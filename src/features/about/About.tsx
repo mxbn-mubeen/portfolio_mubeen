@@ -170,7 +170,7 @@ export const About = () => {
                   Get a detailed overview of my experience, skills, and education
                 </p>
                 <a
-                  href="/Mubeen_resume.pdf"
+                  href="/Mohamed_Mubeen_Resume.pdf"
                   download
                   className="px-6 py-3 rounded-xl bg-primary/20 border border-primary/50 text-white font-medium hover:bg-primary/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
                 >
