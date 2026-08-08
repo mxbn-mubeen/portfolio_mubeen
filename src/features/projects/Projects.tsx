@@ -2,6 +2,7 @@ import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Rocket } from "lucide-react";
 import { ProjectCard } from "./components/ProjectCard";
 import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./components/ProjectLogos";
+import MagicBento, { MagicBentoCard } from "./components/MagicBento";
 
 
 export const Projects = () => {
@@ -90,9 +91,21 @@ export const Projects = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+        <MagicBento 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto w-full !max-w-none"
+          textAutoHide={true}
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          enableTilt={false}
+          enableMagnetism={false}
+          clickEffect={true}
+          spotlightRadius={400}
+          particleCount={12}
+          glowColor="132, 0, 255"
+          disableAnimations={false}
+        >
           {projects.map((project, index) => {
-            // Bento Grid asymmetric layout
             const isLarge = index === 0 || index === 3;
             return (
               <AnimatedSection
@@ -102,13 +115,13 @@ export const Projects = () => {
                 duration={800}
                 className={isLarge ? "md:col-span-2 lg:col-span-2" : "col-span-1"}
               >
-                <div className="h-full">
+                <MagicBentoCard className="h-full p-0 !rounded-2xl">
                   <ProjectCard project={project} index={index} isLarge={isLarge} />
-                </div>
+                </MagicBentoCard>
               </AnimatedSection>
             );
           })}
-        </div>
+        </MagicBento>
       </div>
       <style>{`
         .delay-1s {

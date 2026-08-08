@@ -34,10 +34,12 @@ export const ProjectCard = ({ project, index, isLarge }: { project: Project; ind
   const CardWrapper = project.link 
     ? ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
         <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full">
-          <div {...props}>{children}</div>
+          <div {...props} className={`h-full w-full ${props.className || ''}`}>{children}</div>
         </a>
       )
-    : ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>;
+    : ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+        <div {...props} className={`h-full w-full ${props.className || ''}`}>{children}</div>
+      );
 
   return (
     <CardWrapper>
@@ -46,7 +48,7 @@ export const ProjectCard = ({ project, index, isLarge }: { project: Project; ind
         onMouseLeave={() => setIsHovered(false)}
         className="relative group h-full rounded-2xl"
       >
-        <Card className={`glass-card border-white/10 hover:border-primary/30 active:border-primary/30 active:bg-white/[0.12] transition-all duration-300 h-full flex relative overflow-hidden hover:!transform-none ${isLarge ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>
+        <Card className={`bg-transparent border-none shadow-none transition-all duration-300 h-full flex relative overflow-hidden hover:!transform-none ${isLarge ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>
           {/* Glow effect — safely inside overflow-hidden Card */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-secondary/15 to-accent/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           {/* Thin top accent line */}
