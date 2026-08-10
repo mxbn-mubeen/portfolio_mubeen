@@ -41,6 +41,18 @@ const updateCardGlowProperties = (card: HTMLElement, mouseX: number, mouseY: num
   card.style.setProperty('--glow-radius', `${radius}px`);
 };
 
+interface ParticleCardProps {
+  children?: React.ReactNode;
+  className?: string;
+  disableAnimations?: boolean;
+  style?: React.CSSProperties;
+  particleCount?: number;
+  glowColor?: string;
+  enableTilt?: boolean;
+  clickEffect?: boolean;
+  enableMagnetism?: boolean;
+}
+
 const ParticleCard = ({
   children,
   className = '',
@@ -51,14 +63,14 @@ const ParticleCard = ({
   enableTilt = true,
   clickEffect = false,
   enableMagnetism = false
-}: any) => {
+}: ParticleCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLElement[]>([]);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const isHoveredRef = useRef(false);
   const memoizedParticles = useRef<HTMLElement[]>([]);
   const particlesInitialized = useRef(false);
-  const magnetismAnimationRef = useRef<any>(null);
+  const magnetismAnimationRef = useRef<gsap.core.Tween | null>(null);
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return;
@@ -278,13 +290,21 @@ const ParticleCard = ({
   );
 };
 
+interface GlobalSpotlightProps {
+  gridRef: React.RefObject<HTMLDivElement>;
+  disableAnimations?: boolean;
+  enabled?: boolean;
+  spotlightRadius?: number;
+  glowColor?: string;
+}
+
 const GlobalSpotlight = ({
   gridRef,
   disableAnimations = false,
   enabled = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
   glowColor = DEFAULT_GLOW_COLOR
-}: any) => {
+}: GlobalSpotlightProps) => {
   const spotlightRef = useRef<HTMLDivElement | null>(null);
   const isInsideSection = useRef(false);
 
@@ -332,8 +352,8 @@ const GlobalSpotlight = ({
           duration: 0.3,
           ease: 'power2.out'
         });
-        cards.forEach((card: any) => {
-          card.style.setProperty('--glow-intensity', '0');
+        cards.forEach((card) => {
+          (card as HTMLElement).style.setProperty('--glow-intensity', '0');
         });
         return;
       }
@@ -341,8 +361,8 @@ const GlobalSpotlight = ({
       const { proximity, fadeDistance } = calculateSpotlightValues(spotlightRadius);
       let minDistance = Infinity;
 
-      cards.forEach((card: any) => {
-        const cardElement = card;
+      cards.forEach((card) => {
+        const cardElement = card as HTMLElement;
         const cardRect = cardElement.getBoundingClientRect();
         const centerX = cardRect.left + cardRect.width / 2;
         const centerY = cardRect.top + cardRect.height / 2;
@@ -385,8 +405,8 @@ const GlobalSpotlight = ({
 
     const handleMouseLeave = () => {
       isInsideSection.current = false;
-      gridRef.current?.querySelectorAll('.magic-bento-card').forEach((card: any) => {
-        card.style.setProperty('--glow-intensity', '0');
+      gridRef.current?.querySelectorAll('.magic-bento-card').forEach((card) => {
+        (card as HTMLElement).style.setProperty('--glow-intensity', '0');
       });
       if (spotlightRef.current) {
         gsap.to(spotlightRef.current, {
@@ -410,7 +430,13 @@ const GlobalSpotlight = ({
   return null;
 };
 
-const BentoCardGrid = ({ children, gridRef, className }: any) => (
+interface BentoCardGridProps {
+  children?: React.ReactNode;
+  gridRef?: React.RefObject<HTMLDivElement>;
+  className?: string;
+}
+
+const BentoCardGrid = ({ children, gridRef, className }: BentoCardGridProps) => (
   <div className={`bento-section ${className || ''}`} ref={gridRef}>
     {children}
   </div>
@@ -431,6 +457,22 @@ const useMobileDetection = () => {
   return isMobile;
 };
 
+interface MagicBentoProps {
+  children?: React.ReactNode;
+  className?: string;
+  textAutoHide?: boolean;
+  enableStars?: boolean;
+  enableSpotlight?: boolean;
+  enableBorderGlow?: boolean;
+  disableAnimations?: boolean;
+  spotlightRadius?: number;
+  particleCount?: number;
+  enableTilt?: boolean;
+  glowColor?: string;
+  clickEffect?: boolean;
+  enableMagnetism?: boolean;
+}
+
 const MagicBento = ({
   children,
   className,
@@ -445,7 +487,7 @@ const MagicBento = ({
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true
-}: any) => {
+}: MagicBentoProps) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
@@ -469,6 +511,21 @@ const MagicBento = ({
   );
 };
 
+interface MagicBentoCardProps {
+  children?: React.ReactNode;
+  className?: string;
+  color?: string;
+  textAutoHide?: boolean;
+  enableStars?: boolean;
+  enableBorderGlow?: boolean;
+  disableAnimations?: boolean;
+  particleCount?: number;
+  enableTilt?: boolean;
+  glowColor?: string;
+  clickEffect?: boolean;
+  enableMagnetism?: boolean;
+}
+
 export const MagicBentoCard = ({
   children,
   className,
@@ -482,14 +539,14 @@ export const MagicBentoCard = ({
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true
-}: any) => {
+}: MagicBentoCardProps) => {
   const baseClassName = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''} ${className || ''}`;
   const cardProps = {
     className: baseClassName,
     style: {
       backgroundColor: color,
       '--glow-color': glowColor
-    } as any
+    } as React.CSSProperties
   };
 
   const isMobile = useMobileDetection();
