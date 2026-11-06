@@ -2,7 +2,15 @@ import { Award, ExternalLink } from "lucide-react";
 import { Badge } from "@/shared/components/ui/badge";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 
+// Microsoft Learn verification link for the AI-103 credential.
+const AZURE_AI_103_URL = "https://learn.microsoft.com/api/credentials/share/en-us/MohamedMubeenAS-6291/CF6991BC4159A25D?sharingId";
+
 export const Certifications = () => {
+  const Azure = AZURE_AI_103_URL ? "a" : "div";
+  const azureLinkProps = AZURE_AI_103_URL
+    ? { href: AZURE_AI_103_URL, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
     <AnimatedSection className="min-w-0 h-full">
       <div className="glass-card border-white/10 p-6 md:p-8 h-full overflow-hidden group hover:border-primary/30 active:border-primary/30 active:bg-white/[0.12] transition-all duration-300">
@@ -13,6 +21,26 @@ export const Certifications = () => {
           <div className="flex-1 min-w-0">
             <h3 className="text-xl font-bold text-white mb-6 group-hover:text-primary-glow group-active:text-primary-glow transition-colors duration-300">Certifications</h3>
             <div className="space-y-3">
+              {/* Azure AI Apps and Agents Developer Associate (AI-103) – MICROSOFT */}
+              <Azure
+                {...azureLinkProps}
+                className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-sky-400/5 border border-sky-400/30 hover:border-sky-400/60 hover:bg-sky-400/10 transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-2 h-2 rounded-full bg-sky-400 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-white/90 text-sm font-medium group-hover:text-white transition-colors">
+                      Microsoft Certified: Azure AI Apps and Agents Developer Associate{" "}
+                      <Badge variant="outline" className="ml-1.5 px-1.5 py-0 text-[10px] border-sky-400/40 text-sky-400 bg-sky-400/10">AI-103</Badge>
+                    </p>
+                    <p className="text-white/40 text-xs">Microsoft · Oct 2026 – Oct 2027</p>
+                  </div>
+                </div>
+                {AZURE_AI_103_URL && (
+                  <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-sky-400 flex-shrink-0 transition-colors" />
+                )}
+              </Azure>
+
               {/* Data Science – GUVI */}
               <a
                 href="https://www.guvi.in/verify-certificate?id=U46ax3103M6e8635W9"
