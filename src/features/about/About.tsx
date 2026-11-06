@@ -153,7 +153,7 @@ export const About = () => {
                   </div>
                   <div>
                     <p className="text-white/50 text-sm mb-1">Visa Status</p>
-                    <p className="text-white/80">Visit Visa (Valid until Feb 2026)</p>
+                    <p className="text-white/80">Visit Visa (Valid until 4 jan 2027)</p>
                   </div>
                   <div>
                     <p className="text-white/50 text-sm mb-1">Availability</p>
