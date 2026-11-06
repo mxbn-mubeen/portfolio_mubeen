@@ -106,7 +106,7 @@ export const Contact = () => {
               <div className="glass-card border-white/10 p-6 rounded-2xl">
                 <div className="text-center">
                   <p className="text-white/50 text-sm mb-1">Visa Status</p>
-                  <p className="text-white font-semibold text-lg">Valid until SEP 2026</p>
+                  <p className="text-white font-semibold text-lg">Valid until 4 jan 2027</p>
                 </div>
               </div>
             </div>
