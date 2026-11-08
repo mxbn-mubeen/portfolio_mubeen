@@ -60,8 +60,8 @@ export const Contact = () => {
               <ContactCard
                 icon={Phone}
                 title="Phone"
-                info="+971 52 381 9286"
-                href="tel:+971523819286"
+                info="+971 50 469 5147"
+                href="tel:++971 50 469 5147"
                 color="#34A853"
               />
             </AnimatedSection>
