@@ -73,3 +73,19 @@ Append-only log. Never delete entries. Mark resolved ones as `Status: Resolved`.
 - Fix: Cleaned `public/logo.svg` into valid standalone XML with proper gradient defs, viewBox attributes, and added `<link rel="apple-touch-icon" href="/logo.svg" />` to `index.html`.
 - Status: Resolved
 - Date: 2026-11-10
+
+---
+
+- Problem: Merge conflict — remote pushed phone, visa date, and Azure AI-103 cert directly to origin/main without coordinating with local working branch
+- Cause: Diverged history (remote had 8 commits; local had 1). No branch protection / PR workflow in place.
+- Fix: Manual 3-way merge of Certifications.tsx, Contact.tsx, About.tsx. Concluded merge with single commit `d92daad`. Kept remote's `+971 50 469 5147` phone and `4 Jan 2027` visa date as source of truth.
+- Status: Resolved
+- Date: 2026-11-10
+
+---
+
+- Problem: Dead code accumulation — 6 unused component files left in src after earlier refactors
+- Cause: Refactors replaced MagicBento wrapper and old glass-card components without removing the orphaned source files
+- Fix: Deleted MagicBento.tsx, MagicBento.css, ContactCard.tsx, HighlightCard.tsx, StatCard.tsx, SkillOrb.tsx. Extracted SaasUIIcon to its own file. Removed unused MapPin import from About.tsx.
+- Status: Resolved
+- Date: 2026-11-10

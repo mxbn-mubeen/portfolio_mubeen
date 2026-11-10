@@ -21,3 +21,4 @@ export const SaasUIIcon = ({ className }: { className?: string }) => (
     <circle cx="62.5" cy="62.5" r="7.5" fill="currentColor"/>
   </svg>
 );
+
