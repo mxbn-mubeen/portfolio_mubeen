@@ -1,5 +1,5 @@
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { MapPin, Code, Rocket, Zap, Award, Download, FileText, CheckCircle, ShieldCheck, Sparkles } from "lucide-react";
+import { Code, Rocket, Zap, Award, Download, FileText, CheckCircle, ShieldCheck, Sparkles } from "lucide-react";
 import { Certifications } from "./components/Certifications";
 
 export const About = () => {
@@ -11,30 +11,10 @@ export const About = () => {
   ];
 
   const pillars = [
-    {
-      icon: Rocket,
-      title: "Full-Stack SaaS Architecture",
-      desc: "Specialized in React, Next.js, and TypeScript frontends backed by Node.js and Java Spring Boot services.",
-      tag: "Architecture"
-    },
-    {
-      icon: Zap,
-      title: "End-to-End Type Safety",
-      desc: "Zero-mismatch API contracts linking PostgreSQL schemas via Drizzle ORM to client components using tRPC & Zod.",
-      tag: "Type Safety"
-    },
-    {
-      icon: Code,
-      title: "Database Optimization",
-      desc: "Crafted relational PostgreSQL schemas, indexing strategies, and caching layers in Supabase that eliminate redundant queries.",
-      tag: "Performance"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Regulatory Standards",
-      desc: "Engineered three-tier validation engines (business rules, XSD schemas, MedDRA dictionaries) for clinical compliance.",
-      tag: "Compliance"
-    }
+    { icon: Rocket, title: "Full-Stack SaaS Architecture", desc: "Specialized in React, Next.js, and TypeScript frontends backed by Node.js and Java Spring Boot services.", tag: "Architecture" },
+    { icon: Zap, title: "End-to-End Type Safety", desc: "Zero-mismatch API contracts linking PostgreSQL schemas via Drizzle ORM to client components using tRPC & Zod.", tag: "Type Safety" },
+    { icon: Code, title: "Database Optimization", desc: "Crafted relational PostgreSQL schemas, indexing strategies, and caching layers in Supabase that eliminate redundant queries.", tag: "Performance" },
+    { icon: ShieldCheck, title: "Regulatory Standards", desc: "Engineered three-tier validation engines (business rules, XSD schemas, MedDRA dictionaries) for clinical compliance.", tag: "Compliance" }
   ];
 
   return (
@@ -188,7 +168,7 @@ export const About = () => {
                   </div>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 mb-4">
                   <p className="text-sm font-semibold text-zinc-200">
                     B.E. in Computer Science and Engineering
                   </p>
@@ -198,6 +178,21 @@ export const About = () => {
                   <p className="text-xs text-zinc-400">
                     Affiliated with Anna University
                   </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-1 text-xs">
+                  <div className="flex items-center justify-between text-zinc-400">
+                    <span>Nationality:</span>
+                    <span className="text-zinc-200 font-medium">Indian</span>
+                  </div>
+                  <div className="flex items-center justify-between text-zinc-400">
+                    <span>Visa Status:</span>
+                    <span className="text-emerald-400 font-medium">Visit Visa (Valid until Jan 2027)</span>
+                  </div>
+                  <div className="flex items-center justify-between text-zinc-400">
+                    <span>Availability:</span>
+                    <span className="text-blue-400 font-medium">Immediate</span>
+                  </div>
                 </div>
               </div>
 

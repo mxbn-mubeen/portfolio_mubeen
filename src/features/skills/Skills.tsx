@@ -7,7 +7,7 @@ import {
   SiReactquery, SiSpring, SiTrpc, SiDrizzle, SiSupabase, SiZod 
 } from "react-icons/si";
 import { TechCard, type TechItem } from "./components/TechCard";
-import { SaasUIIcon } from "./components/SkillOrb";
+import { SaasUIIcon } from "./components/SaasUIIcon";
 
 const curatedSkills: TechItem[] = [
   // Frontend & UI
