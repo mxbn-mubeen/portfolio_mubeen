@@ -26,7 +26,7 @@ export const Hero = () => {
     <section
       ref={heroRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0c10] pt-20 pb-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#09090b] pt-28 pb-20"
     >
       <HeroBackground />
       <div className="container mx-auto px-4 relative z-10">

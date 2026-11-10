@@ -1,56 +1,52 @@
 import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
 import { Link } from "react-scroll";
+import { BrandLogo } from "@/shared/components/BrandLogo";
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-[#050608] border-t border-white/10">
-      {/* Background Effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/5 rounded-full blur-[100px]" />
-      </div>
-
-      <div className="container mx-auto px-4 py-12 relative z-10">
+    <footer className="relative overflow-hidden bg-[#09090b] border-t border-white/[0.08]">
+      <div className="container mx-auto px-4 py-12 relative z-10 max-w-5xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8">
           {/* Brand Section */}
           <div className="text-center md:text-left">
-            <h3 className="text-2xl font-bold text-white mb-3">
-              <span className="text-primary-glow">M</span>ubeen
-            </h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-4">
-              Full Stack Developer crafting exceptional digital experiences with modern web technologies.
+            <div className="mb-3 inline-block">
+              <BrandLogo size="md" showWordmark={false} />
+            </div>
+            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4 max-w-sm">
+              Full Stack Software Engineer building mission-critical web applications with React, Next.js, and TypeScript.
             </p>
-            <div className="flex gap-3 justify-center md:justify-start">
+            <div className="flex gap-2.5 justify-center md:justify-start">
               <a
                 href="https://github.com/mxbn-mubeen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
+                className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/20 transition-all duration-200"
                 aria-label="GitHub"
               >
-                <Github size={18} />
+                <Github size={16} />
               </a>
               <a
                 href="https://www.linkedin.com/in/mohamed-mubeen-a-s-3b6a3a288"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
+                className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/20 transition-all duration-200"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={18} />
+                <Linkedin size={16} />
               </a>
               <a
                 href="mailto:mohamedmubeen.dev@gmail.com"
-                className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
+                className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/20 transition-all duration-200"
                 aria-label="Email"
               >
-                <Mail size={18} />
+                <Mail size={16} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="text-center md:text-left">
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white text-xs font-mono uppercase tracking-wider mb-4 font-semibold">Navigation</h4>
             <ul className="space-y-2">
               {["About", "Skills", "Experience", "Projects", "Contact"].map((item) => (
                 <li key={item}>
@@ -58,7 +54,7 @@ export const Footer = () => {
                     to={item.toLowerCase()}
                     smooth={true}
                     duration={500}
-                    className="text-white/60 hover:text-white text-sm cursor-pointer transition-colors inline-block"
+                    className="text-zinc-400 hover:text-white text-xs sm:text-sm cursor-pointer transition-colors inline-block"
                   >
                     {item}
                   </Link>
@@ -69,56 +65,39 @@ export const Footer = () => {
 
           {/* Contact Info */}
           <div className="text-center md:text-left">
-            <h4 className="text-white font-semibold mb-4">Get In Touch</h4>
-            <ul className="space-y-3 text-sm">
+            <h4 className="text-white text-xs font-mono uppercase tracking-wider mb-4 font-semibold">Location & Status</h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-zinc-400">
               <li>
                 <a
                   href="mailto:mohamedmubeen.dev@gmail.com"
-                  className="text-white/60 hover:text-white transition-colors flex items-center gap-2 justify-center md:justify-start"
+                  className="hover:text-white transition-colors flex items-center gap-2 justify-center md:justify-start"
                 >
-                  <Mail size={16} className="text-primary-glow" />
+                  <Mail size={14} className="text-blue-400" />
                   <span>mohamedmubeen.dev@gmail.com</span>
                 </a>
               </li>
-              <li className="text-white/60 flex items-center gap-2 justify-center md:justify-start">
-                <svg className="w-4 h-4 text-primary-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span>Sharjah, UAE</span>
-              </li>
-              <li className="text-white/60 flex items-center gap-2 justify-center md:justify-start">
-                <svg className="w-4 h-4 text-primary-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Available Immediately</span>
+              <li className="flex items-center gap-2 justify-center md:justify-start font-mono text-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span>Sharjah, UAE • Immediate Start</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/10 my-8"></div>
+        <div className="border-t border-white/[0.06] my-6"></div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Mohamed Mubeen A S. All rights reserved.
-          </p>
-
-          <div className="flex items-center gap-2 text-white/40 text-sm">
-            <span>Built with</span>
-            <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" />
-            <span>using React & TypeScript</span>
-          </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+          <p>© {new Date().getFullYear()} Mohamed Mubeen A S. Crafted with React, Vite & Tailwind CSS.</p>
 
           {/* Back to Top Button */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-primary/30 transition-all duration-300 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/20 transition-all duration-200 cursor-pointer"
           >
-            <span className="text-sm">Back to Top</span>
-            <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
+            <span>Back to top</span>
+            <ArrowUp size={13} />
           </button>
         </div>
       </div>

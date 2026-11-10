@@ -1,216 +1,224 @@
-import { Card, CardContent } from "@/shared/components/ui/card";
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { MapPin, Code, Rocket, Target, Zap, Award, Download, ExternalLink } from "lucide-react";
-import { Badge } from "@/shared/components/ui/badge";
-
-import { StatCard } from "./components/StatCard";
-import { HighlightCard } from "./components/HighlightCard";
+import { MapPin, Code, Rocket, Zap, Award, Download, FileText, CheckCircle, ShieldCheck, Sparkles } from "lucide-react";
 import { Certifications } from "./components/Certifications";
 
 export const About = () => {
   const stats = [
-    { icon: Code, value: "2+", label: "Years Experience" },
-    { icon: Rocket, value: "Multiple", label: "SaaS Projects" },
-    { icon: Zap, value: "30%", label: "API Stability Boost" },
-    { icon: Target, value: "20%", label: "Dev Time Saved" },
+    { value: "2+", label: "Years Experience", desc: "Production SaaS & Web Applications" },
+    { value: "30%", label: "API Latency Drop", desc: "tRPC & Query caching optimizations" },
+    { value: "137+", label: "Languages Scaled", desc: "Multi-lingual translation pipelines" },
+    { value: "100%", label: "E2B Compliance", desc: "HL7 v3 Pharmacovigilance safety" },
   ];
 
-  const highlights = [
+  const pillars = [
     {
       icon: Rocket,
-      title: "Modern Full Stack Expertise",
-      description: "Specialized in React.js, Next.js, TypeScript, TRPC, and Java Spring Boot for building scalable, type-safe applications with PostgreSQL.",
-      color: "#61DAFB"
-    },
-    {
-      icon: Code,
-      title: "API Development Excellence",
-      description: "Built type-safe TRPC and REST APIs that reduced errors by 30% and improved application stability across multiple SaaS products.",
-      color: "#7C3AED"
+      title: "Full-Stack SaaS Architecture",
+      desc: "Specialized in React, Next.js, and TypeScript frontends backed by Node.js and Java Spring Boot services.",
+      tag: "Architecture"
     },
     {
       icon: Zap,
-      title: "Database Optimization",
-      description: "Expert in optimizing PostgreSQL schemas using Drizzle ORM, reducing redundant queries and significantly improving scalability.",
-      color: "#F59E0B"
+      title: "End-to-End Type Safety",
+      desc: "Zero-mismatch API contracts linking PostgreSQL schemas via Drizzle ORM to client components using tRPC & Zod.",
+      tag: "Type Safety"
     },
     {
-      icon: Award,
-      title: "Component Architecture",
-      description: "Developed reusable UI components adopted across multiple products, saving 20% development time and ensuring consistency.",
-      color: "#10B981"
+      icon: Code,
+      title: "Database Optimization",
+      desc: "Crafted relational PostgreSQL schemas, indexing strategies, and caching layers in Supabase that eliminate redundant queries.",
+      tag: "Performance"
+    },
+    {
+      icon: ShieldCheck,
+      title: "Regulatory Standards",
+      desc: "Engineered three-tier validation engines (business rules, XSD schemas, MedDRA dictionaries) for clinical compliance.",
+      tag: "Compliance"
     }
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-[#0d0f14]">
-      {/* Enhanced background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-[-10%] w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
+    <section id="about" className="py-28 relative overflow-hidden bg-[#09090b]">
+      {/* Subtle top divider */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent" />
+
+      {/* Top Ambient Celestial Light Ray */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-gradient-to-b from-indigo-500/12 via-blue-500/5 to-transparent blur-[140px] pointer-events-none" />
+
+      {/* Floating Stardust Motes */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-indigo-300 animate-pulse"
+            style={{
+              top: `${15 + (i * 12) % 75}%`,
+              left: `${8 + (i * 15) % 82}%`,
+              opacity: 0.2 + (i % 3) * 0.25,
+              animationDuration: `${2.3 + (i % 3)}s`
+            }}
+          />
+        ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         <AnimatedSection>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <MapPin className="w-4 h-4 text-primary-glow" />
-              <span className="text-sm text-white/70">Based in Sharjah, UAE • Available Immediately</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 border border-blue-400/30 mb-5 text-xs font-mono text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+              <span>Sharjah, UAE • Available for Immediate Roles</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-              About Me
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+              Engineering Background
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Full Stack Developer crafting scalable SaaS solutions
+            <p className="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+              Driven by type safety, robust architectures, and high-impact digital experiences.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="max-w-6xl mx-auto space-y-12">
-          {/* Stats Grid */}
-          <AnimatedSection>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
-              {stats.map((stat, index) => (
-                <StatCard key={index} {...stat} />
-              ))}
-            </div>
-          </AnimatedSection>
-
-          {/* Main Introduction */}
-          <AnimatedSection>
-            <Card className="glass-card border-white/10 overflow-hidden">
-              <CardContent className="p-8 md:p-12">
-                <div className="prose prose-invert max-w-none">
-                  <p className="text-lg text-white/80 leading-relaxed mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-primary-glow first-letter:mr-3 first-letter:float-left">
-                    Full Stack Developer with hands-on experience designing and delivering scalable SaaS applications
-                    using React.js, Next.js, Java, TRPC, and PostgreSQL. Strong background in building responsive frontends,
-                    developing secure backend APIs, and optimizing database performance.
-                  </p>
-                  <p className="text-lg text-white/70 leading-relaxed mb-6">
-                    Proven ability to improve application efficiency, reduce latency, and deliver end-to-end solutions
-                    in Agile environments. I specialize in creating type-safe applications with modern architecture patterns,
-                    ensuring code quality, maintainability, and exceptional user experiences.
-                  </p>
-                  <p className="text-lg text-white/70 leading-relaxed">
-                    When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects,
-                    and staying up-to-date with the latest trends in web development and software engineering.
-                  </p>
+        {/* 4 Quick Stat Metric Cards */}
+        <AnimatedSection>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10">
+            {stats.map((stat, i) => (
+              <div 
+                key={i} 
+                className="p-5 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-950/95 to-indigo-950/20 border border-white/[0.08] hover:border-blue-400/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)] transition-all duration-300"
+              >
+                <div className="text-2xl sm:text-3xl font-bold text-white font-mono tracking-tight text-blue-400">
+                  {stat.value}
                 </div>
-              </CardContent>
-            </Card>
-          </AnimatedSection>
-
-          {/* Highlights Grid */}
-          <AnimatedSection>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">What I Bring to the Table</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {highlights.map((highlight, index) => (
-                <HighlightCard key={index} {...highlight} />
-              ))}
-            </div>
-          </AnimatedSection>
-
-          {/* Education & Certifications – Stacked Layout */}
-          <div className="grid grid-cols-1 gap-4 md:gap-6">
-            {/* Education row 1 */}
-            <AnimatedSection className="min-w-0">
-              <div className="glass-card border-white/10 p-6 md:p-8 overflow-hidden group hover:border-primary/30 active:border-primary/30 active:bg-white/[0.12] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] transition-all duration-300">
-                <div className="flex items-start gap-4 min-w-0">
-                  <div className="p-3 rounded-xl bg-primary/20 border border-primary/30 flex-shrink-0 group-hover:bg-primary/30 group-hover:scale-105 group-active:bg-primary/30 group-active:scale-105 transition-all duration-300">
-                    <Award className="w-6 h-6 text-primary-glow" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary-glow group-active:text-primary-glow transition-colors duration-300">Education</h3>
-                    <p className="text-white/80 font-medium break-words">B.E. in Computer Science and Engineering</p>
-                    <p className="text-white/60 text-sm break-words mt-1">Aalim Muhammed Salegh College of Engineering</p>
-                    <p className="text-white/50 text-sm mt-1">Affiliated with Anna University</p>
-                    <span className="inline-block mt-3 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary-glow">2020 – 2024</span>
-                  </div>
+                <div className="text-sm font-semibold text-zinc-200 mt-1">
+                  {stat.label}
+                </div>
+                <div className="text-xs text-zinc-400 mt-1">
+                  {stat.desc}
                 </div>
               </div>
-            </AnimatedSection>
-            {/* Certifications row 2 */}
-            <AnimatedSection className="min-w-0">
-              <Certifications />
-            </AnimatedSection>
+            ))}
           </div>
+        </AnimatedSection>
 
-          {/* Personal Info & Resume */}
-          <AnimatedSection>
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Languages & Availability */}
-              <div className="glass-card border-white/10 p-8">
-                <h3 className="text-xl font-bold text-white mb-6">Personal Details</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-white/50 text-sm mb-1">Languages</p>
-                    <p className="text-white/80">English, Tamil</p>
-                  </div>
-                  <div>
-                    <p className="text-white/50 text-sm mb-1">Nationality</p>
-                    <p className="text-white/80">Indian</p>
-                  </div>
-                  <div>
-                    <p className="text-white/50 text-sm mb-1">Visa Status</p>
-                    <p className="text-white/80">Visit Visa (Valid until Feb 2026)</p>
-                  </div>
-                  <div>
-                    <p className="text-white/50 text-sm mb-1">Availability</p>
-                    <p className="text-primary-glow font-medium">Immediate</p>
-                  </div>
+        {/* Core Narrative & Pillars Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+          {/* Narrative Column (5 cols) */}
+          <AnimatedSection className="lg:col-span-5 h-full">
+            <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-950/95 to-zinc-900/40 border border-white/[0.08] hover:border-blue-400/30 transition-all duration-300 h-full flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-blue-400 font-semibold">
+                  About Mohamed
+                </span>
+                <h3 className="text-xl font-bold text-white mt-1 mb-4">
+                  Building Scalable, Resilient Software
+                </h3>
+                <div className="space-y-4 text-sm text-zinc-300 leading-relaxed">
+                  <p>
+                    I am a Full Stack Developer with hands-on experience designing and deploying scalable SaaS applications and clinical reporting pipelines.
+                  </p>
+                  <p className="text-zinc-400">
+                    My engineering approach emphasizes end-to-end type safety, deterministic database queries, and clean component architecture. In past projects, I helped cut API response times by 30% and architected multilingual compliance systems scaling across 137+ languages.
+                  </p>
+                  <p className="text-zinc-400">
+                    Currently located in Sharjah, UAE, and actively available for full-time frontend, backend, or full-stack software engineering positions locally or remotely.
+                  </p>
                 </div>
               </div>
 
-              {/* Download Resume */}
-              <div className="glass-card border-white/10 p-8 flex flex-col justify-center items-center text-center">
-                <Download className="w-12 h-12 text-primary-glow mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Download Resume</h3>
-                <p className="text-white/60 text-sm mb-6">
-                  Get a detailed overview of my experience, skills, and education
-                </p>
+              <div className="pt-6 mt-6 border-t border-white/[0.06] flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span>Immediate Availability</span>
+                </div>
+                <a
+                  href="/resume"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Full CV</span>
+                </a>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Pillars Grid (7 cols) */}
+          <AnimatedSection className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+              {pillars.map((pillar, idx) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-2xl bg-gradient-to-b from-zinc-900/80 via-zinc-950/90 to-zinc-900/30 border border-white/[0.08] hover:border-blue-400/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] transition-all duration-300 flex flex-col justify-between group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-zinc-400">
+                          {pillar.tag}
+                        </span>
+                      </div>
+                      <h4 className="text-sm font-semibold text-white tracking-tight mb-1.5 group-hover:text-blue-400 transition-colors">
+                        {pillar.title}
+                      </h4>
+                      <p className="text-xs text-zinc-400 leading-relaxed">
+                        {pillar.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* Education & Certifications Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <AnimatedSection className="lg:col-span-5">
+            <div className="p-6 rounded-2xl bg-gradient-to-b from-zinc-900/80 via-zinc-950/90 to-zinc-900/30 border border-white/[0.08] hover:border-blue-400/30 transition-all duration-300 h-full flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                    <Award className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white">Education</h3>
+                    <p className="text-xs text-zinc-400 font-mono">Computer Science & Engineering</p>
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold text-zinc-200">
+                    B.E. in Computer Science and Engineering
+                  </p>
+                  <p className="text-xs text-zinc-400">
+                    Aalim Muhammed Salegh College of Engineering
+                  </p>
+                  <p className="text-xs text-zinc-400">
+                    Affiliated with Anna University
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-6 border-t border-white/[0.06] flex items-center justify-between">
+                <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-300">
+                  2020 – 2024
+                </span>
                 <a
                   href="/Mohamed_Mubeen_Resume.pdf"
                   download
-                  className="px-6 py-3 rounded-xl bg-primary/20 border border-primary/50 text-white font-medium hover:bg-primary/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-white hover:text-blue-400 transition-colors cursor-pointer"
                 >
-                  Download CV
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download CV</span>
                 </a>
               </div>
             </div>
           </AnimatedSection>
 
-          {/* Call to Action */}
-          <AnimatedSection>
-            <div className="glass-card border-white/10 p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Let's Build Something Amazing Together
-              </h3>
-              <p className="text-white/60 mb-6 max-w-2xl mx-auto">
-                Currently seeking Full Stack Developer opportunities in the UAE.
-                Ready to contribute to innovative projects and drive business growth.
-              </p>
-              <div className="flex items-center justify-center gap-4 flex-wrap">
-                <a
-                  href="#contact"
-                  className="px-6 py-3 rounded-xl bg-primary/20 border border-primary/50 text-white font-medium hover:bg-primary/30 hover:shadow-lg hover:shadow-shadow-primary/20 transition-all duration-300"
-                >
-                  Get In Touch
-                </a>
-                <a
-                  href="#experience"
-                  className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                >
-                  View Experience
-                </a>
-                <a
-                  href="#projects"
-                  className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                >
-                  View Projects
-                </a>
-              </div>
-            </div>
+          <AnimatedSection className="lg:col-span-7">
+            <Certifications />
           </AnimatedSection>
         </div>
       </div>

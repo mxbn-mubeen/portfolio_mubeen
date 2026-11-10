@@ -20,17 +20,23 @@ export const DesktopNav = ({ activeSection, onLinkClick }: DesktopNavProps) => {
             spy={true}
             offset={-100}
             onClick={() => onLinkClick(link.to)}
-            className={`relative px-4 py-2 text-sm font-medium cursor-pointer transition-all duration-200 rounded-lg ${activeSection === link.to
-              ? 'text-white bg-white/10'
-              : 'text-white/70 hover:text-white hover:bg-white/5'
+            className={`relative px-3 py-1.5 text-xs tracking-wide font-medium cursor-pointer transition-all duration-200 rounded-full ${activeSection === link.to
+              ? 'text-white bg-white/10 shadow-sm'
+              : 'text-zinc-400 hover:text-white hover:bg-white/[0.05]'
               }`}
           >
             {link.name}
             {activeSection === link.to && (
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-primary-glow rounded-full" />
+              <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
             )}
           </Link>
         ))}
+        <a
+          href="/resume"
+          className="relative px-3 py-1.5 text-xs tracking-wide font-medium transition-all duration-200 rounded-full text-zinc-400 hover:text-white hover:bg-white/[0.05]"
+        >
+          Resume
+        </a>
       </div>
       <SocialLinks className="hidden md:flex flex-shrink-0" />
     </>

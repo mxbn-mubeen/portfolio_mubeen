@@ -71,9 +71,11 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
-        <div className="container mx-auto px-4">
-          <div className={`glass-nav transition-all duration-300 ${scrolled ? 'py-3 shadow-lg shadow-primary/10' : 'py-4'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center px-4 ${scrolled ? 'py-3' : 'py-5'}`}>
+        <div className="w-full max-w-4xl">
+          <div className={`glass-nav px-4 md:px-6 flex items-center justify-between transition-all duration-300 ${
+            scrolled ? 'py-2.5 shadow-2xl shadow-black/80 border-white/[0.12] bg-[#09090b]/90' : 'py-3 bg-[#09090b]/70 border-white/[0.08]'
+          }`}>
 
             <NavbarLogo onClick={handleLogoClick} />
 
@@ -82,10 +84,10 @@ export const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5 flex-shrink-0"
+              className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-white/5 flex-shrink-0"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>

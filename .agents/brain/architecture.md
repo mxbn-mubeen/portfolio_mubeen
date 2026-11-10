@@ -7,7 +7,6 @@ Single-page React application (SPA) with client-side routing. No backend. Deploy
 ```
 portfolio_mubeen/
 ├── index.html               # Primary entry HTML — SEO meta, OG tags, font imports
-├── site.html                # ⚠️ Near-duplicate root HTML — also present at repo root. Has non-identical meta tags (references og-image.png which does NOT exist; only og-image.webp exists → broken OG image reference). Logged in mistakes.md.
 ├── vite.config.ts           # Vite config — path aliases (@, @/app, @/features, @/shared)
 ├── tailwind.config.ts       # Tailwind config — CSS variable-based design tokens
 ├── tsconfig.app.json        # TS config for src
@@ -35,7 +34,7 @@ portfolio_mubeen/
     │   │   ├── Footer.tsx              # Site-wide footer with social links
     │   │   ├── navbar/
     │   │   │   ├── Navbar.tsx          # Top sticky navigation bar
-    │   │   │   └── Components/         # ⚠️ Capitalized — inconsistent with all other lowercase component dirs. Should be renamed to `components/`. Logged in mistakes.md.
+    │   │   │   └── components/         # Nav subcomponents (DesktopNav, MobileNav, etc.)
     │   │   └── ui/                     # shadcn/ui generated components (buttons, cards, etc.)
     │   ├── hooks/
     │   │   ├── use-scroll-animation.ts # IntersectionObserver + anime.js scroll reveal
@@ -49,6 +48,8 @@ portfolio_mubeen/
 | Path | Component | Description |
 |------|-----------|-------------|
 | `/` | `Index.tsx` | Single scrolling portfolio page |
+| `/resume` | `Resume.tsx` | Dedicated recruiter-friendly interactive printable CV |
+| `/projects/:id` | `ProjectDetail.tsx` | Architectural case-study deep dive page |
 | `*` | `NotFound.tsx` | 404 catch-all |
 
 BrowserRouter with Vercel SPA rewrite handles deep-link refresh.

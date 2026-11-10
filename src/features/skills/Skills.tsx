@@ -1,218 +1,170 @@
-import { Card } from "@/shared/components/ui/card";
-import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { Code2, Layers, Wrench, Sparkles } from "lucide-react";
-import { FaReact, FaHtml5, FaJava } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiJavascript, SiReactquery, SiChakraui, SiSpring, SiBootstrap, SiHibernate, SiJquery, SiTrpc, SiDrizzle } from "react-icons/si";
-import { BiData } from "react-icons/bi";
 import { useState } from "react";
+import { AnimatedSection } from "@/shared/components/AnimatedSection";
+import { Layers, Terminal, Database, Wrench, Sparkles, Code2, CheckCircle2 } from "lucide-react";
+import { FaReact, FaNodeJs, FaGitAlt } from "react-icons/fa";
+import { 
+  SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, 
+  SiReactquery, SiSpring, SiTrpc, SiDrizzle, SiSupabase, SiZod 
+} from "react-icons/si";
+import { TechCard, type TechItem } from "./components/TechCard";
+import { SaasUIIcon } from "./components/SkillOrb";
 
-import { SaasUIIcon, SkillOrb } from "./components/SkillOrb";
-import type { Skill } from "./components/skill-utils";
-import { sanitize } from "./components/skill-utils";
+const curatedSkills: TechItem[] = [
+  // Frontend & UI
+  { name: "React.js", category: "frontend", icon: FaReact, color: "#61DAFB", level: "Expert", context: "Primary Frontend", isCore: true },
+  { name: "Next.js", category: "frontend", icon: SiNextdotjs, color: "#FFFFFF", level: "Advanced", context: "Full Stack SSR/SSG", isCore: true },
+  { name: "TypeScript", category: "frontend", icon: SiTypescript, color: "#3178C6", level: "Expert", context: "Strict Type Safety", isCore: true },
+  { name: "Tailwind CSS", category: "frontend", icon: SiTailwindcss, color: "#06B6D4", level: "Expert", context: "Design Systems", isCore: true },
+  { name: "TanStack Query", category: "frontend", icon: SiReactquery, color: "#FF4154", level: "Advanced", context: "Server State & Cache" },
+  { name: "SaaS UI", category: "frontend", icon: SaasUIIcon, color: "#7C3AED", level: "Advanced", context: "Dashboard Components" },
 
+  // Backend & APIs
+  { name: "tRPC", category: "backend", icon: SiTrpc, color: "#2596BE", level: "Expert", context: "End-to-End Contract", isCore: true },
+  { name: "Node.js", category: "backend", icon: FaNodeJs, color: "#5FA04E", level: "Advanced", context: "Backend Services", isCore: true },
+  { name: "Zod", category: "backend", icon: SiZod, color: "#3E67B1", level: "Expert", context: "Schema Validation", isCore: true },
+  { name: "Spring Boot", category: "backend", icon: SiSpring, color: "#6DB33F", level: "Advanced", context: "Java Services" },
+
+  // Database & ORM
+  { name: "PostgreSQL", category: "database", icon: SiPostgresql, color: "#4169E1", level: "Expert", context: "Relational Database", isCore: true },
+  { name: "Drizzle ORM", category: "database", icon: SiDrizzle, color: "#C5F74F", level: "Expert", context: "Type-Safe Queries", isCore: true },
+  { name: "Supabase", category: "database", icon: SiSupabase, color: "#3ECF8E", level: "Advanced", context: "Postgres & Auth", isCore: true },
+
+  // Architecture & Tools
+  { name: "Azure AI", category: "tools", icon: Wrench, color: "#0078D4", level: "Advanced", context: "Translation Pipelines" },
+  { name: "E2B R3 / XML", category: "tools", icon: Code2, color: "#A855F7", level: "Expert", context: "Clinical Safety Standard" },
+  { name: "Git & GitHub", category: "tools", icon: FaGitAlt, color: "#F05032", level: "Expert", context: "CI/CD & Version Control" }
+];
 
 export const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState(0);
+  const [filter, setFilter] = useState<"frontend" | "backend" | "database" | "tools">("frontend");
 
-  const skillCategories = [
-    {
-      category: "Languages",
-      icon: Code2,
-      description: "Core programming languages",
-      skills: [
-        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", level: "Expert" },
-        { name: "TypeScript", icon: SiTypescript, color: "#3178C6", level: "Expert" },
-        { name: "Java", icon: FaJava, color: "#007396", level: "Advanced" },
-        { name: "HTML/CSS", icon: FaHtml5, color: "#E34F26", level: "Expert" },
-      ]
-    },
-    {
-      category: "Frameworks & Libraries",
-      icon: Layers,
-      description: "Frontend & backend frameworks",
-      skills: [
-        { name: "React.js", icon: FaReact, color: "#61DAFB", level: "Expert" },
-        { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", level: "Advanced" },
-        { name: "Spring", icon: SiSpring, color: "#6DB33F", level: "Advanced" },
-        { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4", level: "Expert" },
-        { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3", level: "Advanced" },
-        { name: "Chakra UI", icon: SiChakraui, color: "#319795", level: "Advanced" },
-        { name: "SaaS UI", icon: SaasUIIcon, color: "#7C3AED", level: "Advanced" },
-      ]
-    },
-    {
-      category: "Tools & Technologies",
-      icon: Wrench,
-      description: "Development tools & databases",
-      skills: [
-        { name: "tRPC", icon: SiTrpc, color: "#2596BE", level: "Advanced" },
-        { name: "Drizzle ORM", icon: SiDrizzle, color: "#C5F74F", level: "Advanced" },
-        { name: "Hibernate", icon: SiHibernate, color: "#59666C", level: "Intermediate" },
-        { name: "TanStack Query", icon: SiReactquery, color: "#FF4154", level: "Advanced" },
-        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", level: "Advanced" },
-        { name: "MySQL", icon: BiData, color: "#4479A1", level: "Advanced" },
-        { name: "jQuery", icon: SiJquery, color: "#0769AD", level: "Intermediate" },
-      ]
-    }
+  const filteredSkills = curatedSkills.filter(s => s.category === filter);
+
+  const categories = [
+    { id: "frontend", label: "Frontend & UI", count: curatedSkills.filter(s => s.category === "frontend").length, icon: Layers },
+    { id: "backend", label: "Backend & APIs", count: curatedSkills.filter(s => s.category === "backend").length, icon: Terminal },
+    { id: "database", label: "Databases & ORM", count: curatedSkills.filter(s => s.category === "database").length, icon: Database },
+    { id: "tools", label: "Architecture & Tools", count: curatedSkills.filter(s => s.category === "tools").length, icon: Wrench }
   ];
 
-  const activeSkills = skillCategories[activeCategory];
-  const CategoryIcon = activeSkills.icon;
-
   return (
-    <>
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          25% { transform: translateY(-20px) translateX(10px); }
-          50% { transform: translateY(-10px) translateX(-10px); }
-          75% { transform: translateY(-15px) translateX(5px); }
-        }
-        
-        ${[...Array(6)].map((_, i) => `
-          @keyframes particle-${i} {
-            0% {
-              transform: translate(-50%, -50%) translate(0, 0);
-              opacity: 1;
-            }
-            100% {
-              transform: translate(-50%, -50%) translate(
-                ${Math.cos((i * 60 * Math.PI) / 180) * 50}px,
-                ${Math.sin((i * 60 * Math.PI) / 180) * 50}px
-              );
-              opacity: 0;
-            }
-          }
-        `).join('\n')}
+    <section id="skills" className="py-24 relative overflow-hidden bg-[#09090b]">
+      {/* Subtle top divider line */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
-        /* Dynamically generated per-orb position and animation rules */
-        ${(() => {
-          const rules: string[] = [];
-          const skills = activeSkills.skills;
-          skills.forEach((_, index) => {
-            const angle = (index * 360) / skills.length;
-            const xMobile = Math.cos((angle * Math.PI) / 180) * 130;
-            const yMobile = Math.sin((angle * Math.PI) / 180) * 130;
-            const xDesktop = Math.cos((angle * Math.PI) / 180) * 200;
-            const yDesktop = Math.sin((angle * Math.PI) / 180) * 200;
-            const animDur = 3 + index * 0.5;
-            const animDelay = index * 0.2;
-            rules.push(`
-              .orb-pos-${index} { transform: translate(calc(-50% + ${xMobile}px), calc(-50% + ${yMobile}px)); }
-              @media (min-width: 768px) {
-                .orb-pos-${index} { transform: translate(calc(-50% + ${xDesktop}px), calc(-50% + ${yDesktop}px)); }
-              }
-            `);
-            rules.push(`.orb-anim-${index} { animation: float ${animDur}s ease-in-out infinite; animation-delay: ${animDelay}s; }`);
-          });
-          return rules.join('\n');
-        })()}
+      {/* Top Ambient Celestial Light Ray */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-gradient-to-b from-cyan-500/10 via-blue-500/5 to-transparent blur-[140px] pointer-events-none" />
 
-        /* Per-skill color classes */
-        ${(() => {
-          const uniqueColors = Array.from(new Set(activeSkills.skills.map(s => s.color)));
-          return uniqueColors.map(c => {
-            const id = c.replace('#', '').toLowerCase();
-            return `
-              .skill-${id} { --skill: ${c}; }
-              .skill-${id} .glow { background: radial-gradient(circle, var(--skill)40 0%, transparent 70%); filter: blur(20px); }
-              .skill-${id} .orb-main { border-color: rgba(255,255,255,0.1); background-color: rgba(255,255,255,0.05); }
-              .skill-${id}.orb-hover .orb-main { border-color: var(--skill); background-color: ${c}15; box-shadow: 0 0 40px ${c}50; }
-              .skill-${id} .orb-icon { color: ${c}; }
-              .skill-${id}.orb-hover .orb-icon { color: var(--skill); }
-              .skill-${id} .tooltip-inner { background-color: ${c}20; border-color: ${c}40; }
-              .skill-${id} .particle { background-color: ${c}; }
-            `;
-          }).join('\n');
-        })()}
-      `}</style>
+      {/* Floating Stardust Motes */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-cyan-300 animate-pulse"
+            style={{
+              top: `${14 + (i * 12) % 75}%`,
+              left: `${8 + (i * 14) % 82}%`,
+              opacity: 0.2 + (i % 3) * 0.25,
+              animationDuration: `${2.6 + (i % 3)}s`
+            }}
+          />
+        ))}
+      </div>
 
-      <section id="skills" className="py-24 relative overflow-hidden bg-[#0a0c10]">
-        {/* Animated background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-20 right-[15%] w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse anim-delay-1s" />
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/5 rounded-full blur-[80px] animate-pulse anim-delay-2s" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <AnimatedSection>
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-                <Sparkles className="w-4 h-4 text-primary-glow" />
-                <span className="text-sm text-white/70">Tech Stack Constellation</span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white bg-gradient-to-r from-white via-primary-glow to-white bg-clip-text text-transparent">
-                Skills Universe
-              </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto">
-                Explore my technical galaxy — hover over each skill orb
-              </p>
+      <div className="container mx-auto px-4 relative z-10 max-w-5xl">
+        <AnimatedSection>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 border border-cyan-400/30 mb-5 text-xs font-mono text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Type-Safe Production Arsenal</span>
             </div>
-          </AnimatedSection>
-
-          {/* Category Tabs */}
-          <div className="flex justify-center gap-4 mb-16 flex-wrap">
-            {skillCategories.map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveCategory(index)}
-                  className={`group px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 ${activeCategory === index
-                    ? 'bg-white/10 border border-primary/50 shadow-lg shadow-primary/20'
-                    : 'bg-white/5 border border-white/10 hover:border-white/20'
-                    }`}
-                >
-                  <Icon className={`w-5 h-5 transition-colors ${activeCategory === index ? 'text-primary-glow' : 'text-white/50 group-hover:text-white/70'
-                    }`} />
-                  <span className={`font-medium transition-colors ${activeCategory === index ? 'text-white' : 'text-white/50 group-hover:text-white/70'
-                    }`}>
-                    {category.category}
-                  </span>
-                </button>
-              );
-            })}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Skills & Expertise
+            </h2>
+            <p className="text-zinc-400 text-sm sm:text-base max-w-lg mx-auto">
+              Curated, production-tested technologies focused on type safety, high API performance, and scalable SaaS architecture.
+            </p>
           </div>
+        </AnimatedSection>
 
-          {/* Skill Orbs Container */}
-          <div className="max-w-6xl mx-auto">
-            <AnimatedSection>
-              <div className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center py-16">
-                {/* Central core */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full border border-white/20 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center z-20">
-                  <CategoryIcon className="w-10 h-10 md:w-12 md:h-12 text-primary-glow" />
-                </div>
-
-                {/* Orbiting skills */}
-                <div className="relative w-full h-[350px] md:h-[600px]">
-                  {activeSkills.skills.map((skill, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className={`absolute top-1/2 left-1/2 orb-pos-${index}`}
-                      >
-                        <SkillOrb skill={skill} index={index} />
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Orbital rings */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[450px] md:h-[450px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-30000" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 animate-spin pointer-events-none anim-duration-40000 anim-direction-reverse" />
+        {/* Core Stack Feature Bento */}
+        <AnimatedSection>
+          <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-zinc-950/80 border border-white/[0.08] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-40 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-blue-400 font-semibold">
+                  Primary Modern Blueprint
+                </span>
+                <h3 className="text-base sm:text-lg font-bold text-white mt-0.5">
+                  End-to-End Type-Safe Architecture
+                </h3>
               </div>
-            </AnimatedSection>
+              <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Zero Runtime Mismatch</span>
+              </div>
+            </div>
 
-            {/* Category Description */}
-            <div className="text-center mt-8">
-              <p className="text-white/60 text-sm max-w-xl mx-auto">
-                {activeSkills.description}
-              </p>
+            <p className="text-xs sm:text-sm text-zinc-400 mb-5 max-w-2xl leading-relaxed">
+              Connecting Next.js frontends to Node.js services via tRPC & Zod, querying PostgreSQL through Drizzle ORM.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+              {[
+                { name: "React / Next.js", desc: "Interactive UI" },
+                { name: "TypeScript 5", desc: "Strict Types" },
+                { name: "tRPC v10", desc: "API Contract" },
+                { name: "Zod Schema", desc: "Validation" },
+                { name: "PostgreSQL", desc: "Persistence" },
+                { name: "Drizzle ORM", desc: "Type-Safe DB" }
+              ].map((item) => (
+                <div key={item.name} className="p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-center">
+                  <p className="text-xs font-semibold text-white tracking-tight">{item.name}</p>
+                  <p className="text-[10px] font-mono text-zinc-400 mt-0.5">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
+        </AnimatedSection>
+
+        {/* Category Tabs (No overwhelming 'All' tab) */}
+        <div className="flex items-center justify-center gap-2 mb-8 flex-wrap">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            const active = filter === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setFilter(cat.id as any)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-2 cursor-pointer border ${
+                  active
+                    ? "bg-white text-zinc-950 border-white shadow-sm font-semibold"
+                    : "bg-white/[0.03] text-zinc-400 border-white/[0.08] hover:border-white/20 hover:text-white"
+                }`}
+              >
+                <Icon className={`w-3.5 h-3.5 ${active ? "text-zinc-950" : "text-zinc-400"}`} />
+                <span>{cat.label}</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                  active ? "bg-zinc-200 text-zinc-950" : "bg-white/[0.06] text-zinc-400"
+                }`}>
+                  {cat.count}
+                </span>
+              </button>
+            );
+          })}
         </div>
-      </section>
-    </>
+
+        {/* Focused Tech Grid: Clean, compact 3-6 cards per tab */}
+        <AnimatedSection>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
+            {filteredSkills.map((tech) => (
+              <TechCard key={tech.name} tech={tech} />
+            ))}
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   );
 };

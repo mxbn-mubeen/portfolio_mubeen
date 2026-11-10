@@ -44,6 +44,13 @@ export const MobileNav = ({ isOpen, onClose, activeSection, onLinkClick }: Mobil
               {link.name}
             </Link>
           ))}
+          <a
+            href="/resume"
+            onClick={onClose}
+            className="px-4 py-3 text-base font-medium transition-all duration-200 rounded-lg text-white/70 hover:text-white hover:bg-white/5"
+          >
+            Interactive Resume
+          </a>
         </div>
 
         <div className="border-t border-white/10 pt-6">

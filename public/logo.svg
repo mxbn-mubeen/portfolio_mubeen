@@ -1,10 +1,67 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="128" fill="#0f172a"/>
-  <path d="M144 368V144L256 256L368 144V368" stroke="url(#paint0_linear)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
   <defs>
-    <linearGradient id="paint0_linear" x1="144" y1="144" x2="368" y2="368" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#38bdf8"/>
-      <stop offset="1" stop-color="#818cf8"/>
+    <linearGradient id="brandGlow" x1="80" y1="80" x2="432" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8" />
+      <stop offset="0.5" stop-color="#3B82F6" />
+      <stop offset="1" stop-color="#6366F1" />
     </linearGradient>
+
+    <linearGradient id="facetAccent" x1="160" y1="160" x2="352" y2="352" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60A5FA" />
+      <stop offset="1" stop-color="#A855F7" />
+    </linearGradient>
+
+    <linearGradient id="borderGlow" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8" stop-opacity="0.8" />
+      <stop offset="0.5" stop-color="#3B82F6" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0.2" />
+    </linearGradient>
+
+    <radialGradient id="centerAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0" />
+    </radialGradient>
   </defs>
+
+  <rect width="512" height="512" rx="128" fill="#09090B" />
+  <rect x="8" y="8" width="496" height="496" rx="120" stroke="url(#borderGlow)" stroke-width="16" />
+
+  <circle cx="256" cy="256" r="190" fill="url(#centerAura)" />
+
+  <path
+    d="M 90 216 L 46 256 L 90 296"
+    stroke="#38BDF8"
+    stroke-width="26"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.85"
+  />
+  <path
+    d="M 422 216 L 466 256 L 422 296"
+    stroke="#818CF8"
+    stroke-width="26"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.85"
+  />
+
+  <path
+    d="M 180 348 V 240 L 256 300 L 332 240 V 348"
+    stroke="url(#facetAccent)"
+    stroke-width="26"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.5"
+  />
+
+  <path
+    d="M 136 348 V 176 C 136 160 154 150 168 159 L 256 222 L 344 159 C 358 150 376 160 376 176 V 348"
+    stroke="url(#brandGlow)"
+    stroke-width="36"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle cx="256" cy="222" r="24" fill="#38BDF8" />
+  <circle cx="256" cy="222" r="12" fill="#FFFFFF" />
 </svg>

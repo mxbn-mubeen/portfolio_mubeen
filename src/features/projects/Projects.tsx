@@ -1,21 +1,20 @@
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
-import { Rocket } from "lucide-react";
-import { ProjectCard } from "./components/ProjectCard";
+import { Sparkles } from "lucide-react";
+import { ProjectCard, type Project } from "./components/ProjectCard";
 import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./components/ProjectLogos";
-import MagicBento, { MagicBentoCard } from "./components/MagicBento";
-
 
 export const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "AE Reporting",
+      title: "AE Reporting (AeroReporting)",
       logo: "/logo.jpg",
-      description: "A comprehensive regulatory-compliant clinical safety reporting system for Clin Solutions. Developed as a Freelancer, this platform features a three-tier validation engine, MedDRA hierarchy mapping, and dynamic translations for 137+ languages with Supabase caching.",
+      description: "A comprehensive regulatory-compliant clinical safety reporting system for Clin Solutions. Features a three-tier validation engine, MedDRA hierarchy mapping, and dynamic translations for 137+ languages with Supabase caching.",
       tech: ["React.js", "TypeScript", "tRPC", "PostgreSQL", "Drizzle ORM", "Saas UI", "Zod", "Azure Translator"],
       impact: "100% compliance with E2B R3 safety standards",
-      type: "Freelance",
+      type: "Freelance Production",
       link: "https://sideeffects.viginess.com/",
       showLink: true,
+      caseStudySlug: "ae-reporting",
       details: {
         challenges: "Maintaining 100% compliance with complex E2B R3 (HL7 v3) XML specifications while supporting multi-lingual entry (137+ languages) and preventing translation latency and high API costs.",
         solutions: "Engineered a three-tier validation framework (Business Rules, XSD Schema, and MedDRA Vocabularies). Designed a translation caching layer in Supabase to eliminate redundant Azure API calls.",
@@ -28,8 +27,9 @@ export const Projects = () => {
       description: "Built type-safe TRPC APIs and responsive UIs with React.js & Chakra UI. Implemented PostgreSQL schema via Drizzle ORM for better scalability.",
       tech: ["React.js", "TRPC", "Chakra UI", "PostgreSQL", "Drizzle ORM"],
       impact: "Improved API stability by 30%",
-      type: "company",
+      type: "Full-Time SaaS",
       showLink: false,
+      caseStudySlug: "caviti-ai",
       details: {
         challenges: "Managing complex state across multiple dashboard components while maintaining type safety and preventing data inconsistencies.",
         solutions: "Implemented TRPC for end-to-end type safety, used React Query for efficient data caching, and optimized PostgreSQL queries with proper indexing.",
@@ -40,10 +40,11 @@ export const Projects = () => {
       title: "AI Projects Suite",
       customIcon: <AIProjectsSuiteLogo className="w-10 h-10" />,
       description: "Contributed to multiple AI-powered applications including Otteri.ai, Pickel.ai, Vipery.ai, Snap.photo, and GoodOff. Built reusable UI components and enhanced frontend functionality.",
-      tech: ["React.js", "TypeScript", "API Integration", "Git"],
-      impact: "Improved load time and user experience across projects",
-      type: "company",
+      tech: ["React.js", "TypeScript", "API Integration", "Git", "Shared Components"],
+      impact: "Improved load time and user experience across 5+ products",
+      type: "Component Architecture",
       showLink: false,
+      caseStudySlug: "ai-projects-suite",
       details: {
         challenges: "Creating consistent, reusable components across multiple AI applications with different requirements and branding.",
         solutions: "Developed a shared component library with configurable theming, implemented lazy loading for better performance, and standardized API integration patterns.",
@@ -53,12 +54,13 @@ export const Projects = () => {
     {
       title: "Marine Debris Detection System",
       customIcon: <MarineDebrisLogo className="w-10 h-10" />,
-      description: "College project: AI-powered system for detecting and tracking marine debris using computer vision and machine learning techniques to help protect ocean ecosystems.",
-      tech: ["Python", "Machine Learning", "Computer Vision", "AI"],
-      impact: "Environmental conservation through technology",
-      type: "personal",
+      description: "AI-powered computer vision system for detecting and tracking marine debris using convolutional neural networks to help protect ocean ecosystems.",
+      tech: ["Python", "Machine Learning", "Computer Vision", "TensorFlow", "Flask"],
+      impact: "Environmental conservation through deep learning",
+      type: "Computer Vision Research",
       link: "https://github.com/mxbn-mubeen/MARINE-DEBRIS-DETECTION-SYSTEM",
       showLink: true,
+      caseStudySlug: "marine-debris",
       details: {
         challenges: "Accurately detecting and classifying marine debris in varying water conditions, lighting, and underwater environments.",
         solutions: "Trained custom CNN models on diverse marine debris datasets, implemented image preprocessing techniques, and used transfer learning for better accuracy.",
@@ -68,66 +70,61 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-[#0d0f14]">
-      {/* Reduced background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-[10%] w-96 h-96 bg-primary/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 left-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[140px] animate-pulse delay-1s" />
+    <section id="projects" className="py-28 relative overflow-hidden bg-[#09090b]">
+      {/* Subtle top divider line */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent" />
+
+      {/* Top Ambient Celestial Light Ray */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-gradient-to-b from-blue-500/12 via-indigo-500/5 to-transparent blur-[140px] pointer-events-none" />
+
+      {/* Floating Stardust Motes */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-blue-300 animate-pulse"
+            style={{
+              top: `${18 + (i * 12) % 75}%`,
+              left: `${10 + (i * 14) % 80}%`,
+              opacity: 0.2 + (i % 3) * 0.25,
+              animationDuration: `${2.5 + (i % 3)}s`
+            }}
+          />
+        ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         <AnimatedSection variant="scale" duration={800}>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <Rocket className="w-4 h-4 text-primary-glow" />
-              <span className="text-sm text-white/70">Showcasing Innovation</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 border border-blue-400/30 mb-5 text-xs font-mono text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+              <span>Production Systems & Architectural Case Studies</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-              Featured Projects
+            
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+              Featured Engineering Projects
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Building scalable solutions with modern technologies
+            
+            <p className="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+              Real-world systems delivering clinical regulatory compliance, sub-second API performance, and enterprise component architecture.
             </p>
           </div>
         </AnimatedSection>
 
-        <MagicBento 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto w-full !max-w-none"
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={false}
-          enableMagnetism={false}
-          clickEffect={true}
-          spotlightRadius={400}
-          particleCount={12}
-          glowColor="132, 0, 255"
-          disableAnimations={false}
-        >
-          {projects.map((project, index) => {
-            const isLarge = index === 0 || index === 3;
-            return (
-              <AnimatedSection
-                key={index}
-                variant="fade-up"
-                delay={index * 150}
-                duration={800}
-                className={isLarge ? "md:col-span-2 lg:col-span-2" : "col-span-1"}
-              >
-                <MagicBentoCard className="h-full p-0 !rounded-2xl">
-                  <ProjectCard project={project} index={index} isLarge={isLarge} />
-                </MagicBentoCard>
-              </AnimatedSection>
-            );
-          })}
-        </MagicBento>
+        {/* Clean, Perfectly Balanced 2-Column Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto w-full items-start">
+          {projects.map((project, index) => (
+            <AnimatedSection
+              key={index}
+              variant="fade-up"
+              delay={index * 150}
+              duration={800}
+            >
+              <ProjectCard project={project} index={index} />
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
-      <style>{`
-        .delay-1s {
-          animation-delay: 1s;
-        }
-      `}</style>
     </section>
   );
 };

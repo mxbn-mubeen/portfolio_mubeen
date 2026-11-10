@@ -1,6 +1,6 @@
 # Master Memory — portfolio_mubeen
 
-last_brain_review: 2026-07-03
+last_brain_review: 2026-11-10
 
 ## What the Project Does
 
@@ -33,7 +33,7 @@ A single-page application (SPA) that scrolls through sections: Hero → About �
 | Styling | Tailwind CSS 3 + tailwindcss-animate |
 | UI components | shadcn/ui (Radix UI primitives) |
 | Animation | anime.js 4, @splinetool/react-spline |
-| Routing | react-router-dom v6 (BrowserRouter, 2 routes: `/` and `*`) |
+| Routing | react-router-dom v6 (BrowserRouter; routes: `/`, `/resume`, `/projects/:id`, `*`) |
 | State / data | @tanstack/react-query (QueryClient set up in App.tsx; not heavily used yet) |
 | Forms | react-hook-form + zod + @hookform/resolvers |
 | Icons | lucide-react, react-icons |

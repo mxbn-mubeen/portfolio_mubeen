@@ -50,3 +50,27 @@
 - **Reason**: Early-stage personal portfolio; velocity prioritised over test coverage.
 - **Alternatives considered**: Vitest + React Testing Library — recommended to add if component complexity grows.
 - **Date**: 2026-07-03
+
+---
+
+- **Decision**: Full End-to-End Modernization to Linear/Vercel Dark Engineering Aesthetic
+- **Reason**: Replace outdated 2020 glassmorphism, heavy blurry glow blobs, cartoon avatar speech bubble, and awkward circular orbiting skills with a high-impact, refined, professional developer portfolio aesthetic (#09090b canvas, hairline borders, spotlight micro-interactions, clean typography, and interactive tech/project Bento).
+- **Alternatives considered**: Cyberpunk high-contrast or minimalist editorial — user selected Linear/Vercel dark style for maximum professional appeal to tech recruiters and engineering leads.
+- **Affected modules**: `src/style/`, `src/features/hero/`, `src/features/skills/`, `src/features/about/`, `src/features/projects/`, `src/features/experience/`, `src/features/contact/`, `src/shared/components/`
+- **Date**: 2026-11-10
+
+---
+
+- **Decision**: Unified Celestial Luminous Aesthetic Across Full Site & Balanced 2-Column Projects
+- **Reason**: Propagate the glowing aura, stardust motes, and ambient rays from the Experience section across all sections (Hero, About, Skills, Experience, Projects, Contact, Resume, 404) while removing childish terminology. Replace awkward 3-column bento and nested `MagicBentoCard` with a symmetrical 2-column grid (`grid-cols-1 md:grid-cols-2 gap-6 items-start`) and inline left-accent spec accordions.
+- **Alternatives considered**: Retaining 3-column bento — rejected due to uneven card widths and vertical empty voids when expanding cards.
+- **Affected modules**: `src/features/projects/`, `src/features/skills/`, `src/features/contact/`, `src/pages/`
+- **Date**: 2026-11-10
+
+---
+
+- **Decision**: Brand Emblem Monogram Mark, Valid XML SVG Favicon & Full SEO + 1200x630 OG Image
+- **Reason**: Remove plain text "mubeen" from the logo in favor of a minimalist geometric code-bracket monogram emblem. Replace broken/outdated favicon and OG metadata with a dedicated 1200x630 PNG card, JSON-LD Schema.org Person/WebSite structured data, expanded `sitemap.xml` routes (`/`, `/resume`, and project case study deep links), and enhanced Twitter cards.
+- **Alternatives considered**: Text-heavy logo mark — rejected per user request for clean emblem-only brand identity.
+- **Affected modules**: `src/shared/components/BrandLogo.tsx`, `public/logo.svg`, `public/og-image.png`, `public/sitemap.xml`, `index.html`
+- **Date**: 2026-11-10

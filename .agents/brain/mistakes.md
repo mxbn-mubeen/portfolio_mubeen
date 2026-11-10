@@ -22,17 +22,33 @@ Append-only log. Never delete entries. Mark resolved ones as `Status: Resolved`.
 
 - Problem: `site.html` exists at repo root as a near-duplicate of `index.html` with non-identical meta tags. `architecture.md` previously omitted `site.html` entirely.
 - Cause: Initial brain scan likely only checked `index.html` as the "obvious" entry file.
-- Fix: Clarify intent — is `site.html` a staging/alternate entry or orphaned? If orphaned, delete it or unify meta tags with `index.html`.
-- Status: Open
-- Date: 2026-07-03
+- Fix: `site.html` was removed from the repository root.
+- Status: Resolved
+- Date: 2026-07-03 (Resolved: 2026-11-10)
 
 ---
 
 - Problem: `src/shared/components/navbar/Components/` folder uses a capital C, inconsistent with every other lowercase `components/` directory in the project.
 - Cause: Likely a manual folder creation that bypassed naming conventions.
-- Fix: Rename `Components/` → `components/` and update all import paths referencing it.
+- Fix: Renamed `Components/` → `components/` via commit b640c8f.
+- Status: Resolved
+- Date: 2026-07-03 (Resolved: 2026-11-10)
+
+---
+
+- Problem: Conflicting and potentially outdated Visa validity dates across sections (`About.tsx` specifies "Valid until Feb 2026" while `Contact.tsx` specifies "Valid until SEP 2026").
+- Cause: Manual text duplication without a shared single source of truth or constants file.
+- Fix: Consolidate personal status details into a shared constant configuration.
 - Status: Open
-- Date: 2026-07-03
+- Date: 2026-11-10
+
+---
+
+- Problem: `ProjectCard` used `lg:flex-row` with `lg:border-l` for `isLarge` cards, causing an empty half-card split and awkward stretching when neighboring cards expanded.
+- Cause: Legacy split-card markup assumed horizontal side-by-side content, but the right column only contained tags, leaving a giant empty black space and stretching sibling cards.
+- Fix: Unify `ProjectCard` layout into a clean vertical flow and remove the artificial two-column split.
+- Status: Resolved
+- Date: 2026-11-10
 
 ---
 
@@ -41,3 +57,19 @@ Append-only log. Never delete entries. Mark resolved ones as `Status: Resolved`.
 - Fix: Rewrite meta description/keywords to accurately reflect: React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui, anime.js, Spline.
 - Status: Resolved
 - Date: 2026-07-03
+
+---
+
+- Problem: Nested double-border ("box inside box") and asymmetrical stretching across project cards.
+- Cause: `Projects.tsx` previously wrapped `ProjectCard` inside `MagicBentoCard` (each applying their own borders, backgrounds, and radiuses), and used an uneven 3-column bento span (`col-span-2` vs `col-span-1`).
+- Fix: Removed `MagicBentoCard` wrapper completely, refactored project cards into a balanced 2-column responsive grid (`grid-cols-1 md:grid-cols-2 gap-6 items-start`), and gave each card an inline left-accent spec accordion without nested card containers.
+- Status: Resolved
+- Date: 2026-11-10
+
+---
+
+- Problem: `public/logo.svg` had JSX-style comments `{/* ... */}` which made the SVG invalid XML, preventing browser favicon rendering.
+- Cause: React JSX comment syntax inadvertently used in a static SVG file.
+- Fix: Cleaned `public/logo.svg` into valid standalone XML with proper gradient defs, viewBox attributes, and added `<link rel="apple-touch-icon" href="/logo.svg" />` to `index.html`.
+- Status: Resolved
+- Date: 2026-11-10
