@@ -89,3 +89,19 @@ Append-only log. Never delete entries. Mark resolved ones as `Status: Resolved`.
 - Fix: Deleted MagicBento.tsx, MagicBento.css, ContactCard.tsx, HighlightCard.tsx, StatCard.tsx, SkillOrb.tsx. Extracted SaasUIIcon to its own file. Removed unused MapPin import from About.tsx.
 - Status: Resolved
 - Date: 2026-11-10
+
+---
+
+- Problem: ESLint CI failure — `@typescript-eslint/no-explicit-any` in Skills.tsx line 140 (`setFilter(cat.id as any)`)
+- Cause: Filter state typed as union `"frontend" | "backend" | "database" | "tools"` but categories array `id` field inferred as `string`, requiring a cast. Used `as any` shortcut instead of the proper union cast.
+- Fix: Replaced `as any` with `as "frontend" | "backend" | "database" | "tools"` — lint now passes with 0 errors, 0 warnings.
+- Status: Resolved
+- Date: 2026-11-11
+
+---
+
+- Problem: Resume.tsx had stale/incomplete content — only 3 bullet points per experience role, Accreditations section missing 3 of 6 certs (no Azure AI-103, no AI Skills Fest 2026, no Udemy)
+- Cause: Resume.tsx written as a standalone page without being synced to Experience.tsx and Certifications.tsx source data
+- Fix: Synced all 3 experience entries to match Experience.tsx bullet counts and wording. Added all 6 certs to Accreditations matching Certifications.tsx.
+- Status: Resolved
+- Date: 2026-11-11

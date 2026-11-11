@@ -137,7 +137,7 @@ export const Skills = () => {
             return (
               <button
                 key={cat.id}
-                onClick={() => setFilter(cat.id as any)}
+                onClick={() => setFilter(cat.id as "frontend" | "backend" | "database" | "tools")}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-2 cursor-pointer border ${
                   active
                     ? "bg-white text-zinc-950 border-white shadow-sm font-semibold"

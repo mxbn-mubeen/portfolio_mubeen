@@ -151,9 +151,10 @@ const Resume = () => {
               </div>
               <p className="text-xs text-amber-300/90 print:text-blue-800 font-mono mt-1">Phase III: Clinical & Enterprise Systems • Project: AeroReporting</p>
               <ul className="mt-2 space-y-1.5 text-xs text-zinc-300 print:text-zinc-700 list-disc list-inside leading-relaxed">
-                <li>Built an Adverse Event Reporting System adhering to E2B R3 (HL7 v3) XML standards using React, TypeScript, Node.js, and Supabase Postgres.</li>
-                <li>Integrated Azure AI Translation to dynamically handle multilingual safety reporting across 137+ languages with a Supabase caching layer.</li>
-                <li>Implemented WHODrug and MedDRA medical terminology mappings, cutting manual validation errors and standardizing clinical submissions.</li>
+                <li>Built AeroReporting, an end-to-end Adverse Event Reporting System using React, TypeScript, Node.js, PostgreSQL, and Supabase, enabling E2B-compliant XML and PDF report generation for pharmacovigilance workflows.</li>
+                <li>Integrated Azure AI Translation API to power multilingual safety reporting across 137+ languages, reducing manual localisation effort for international regulatory submissions.</li>
+                <li>Implemented WHODrug dictionary integration, standardising pharmaceutical terminology across the reporting pipeline and improving data accuracy for regulatory teams.</li>
+                <li>Delivered production-ready features across 3+ release cycles in direct collaboration with stakeholders, maintaining a fully responsive, accessible UI.</li>
               </ul>
             </div>
 
@@ -168,9 +169,10 @@ const Resume = () => {
               </div>
               <p className="text-xs text-indigo-300/90 print:text-blue-800 font-mono mt-1">Phase II: High-Velocity SaaS & APIs</p>
               <ul className="mt-2 space-y-1.5 text-xs text-zinc-300 print:text-zinc-700 list-disc list-inside leading-relaxed">
-                <li>Developed high-performance dashboards with Chakra UI and SaaS UI, improving workflow efficiency by 40%.</li>
+                <li>Developed and deployed interactive dashboards using Chakra UI and SaaS UI, boosting workflow efficiency by 40%.</li>
                 <li>Integrated TanStack Query and tRPC, reducing API response times by 30% and eliminating client-server runtime mismatches.</li>
-                <li>Optimized PostgreSQL queries via Drizzle ORM, eliminating redundant roundtrips by 25%.</li>
+                <li>Optimized PostgreSQL schema via Drizzle ORM, cutting redundant queries by 25% and improving data integrity.</li>
+                <li>Partnered with cross-functional teams to deliver scalable SaaS features, ensuring seamless frontend-backend integration.</li>
               </ul>
             </div>
 
@@ -185,8 +187,9 @@ const Resume = () => {
               </div>
               <p className="text-xs text-blue-300/90 print:text-blue-800 font-mono mt-1">Phase I: Core Engineering Bedrock</p>
               <ul className="mt-2 space-y-1.5 text-xs text-zinc-300 print:text-zinc-700 list-disc list-inside leading-relaxed">
-                <li>Developed full-stack modules using Java Spring Boot, React, and MySQL.</li>
-                <li>Engineered clean REST APIs and adhered to agile sprint delivery workflows.</li>
+                <li>Developed full-stack modules using Java Spring Boot, React, and MySQL, enhancing system performance and user experience.</li>
+                <li>Engineered clean REST APIs and optimized data flow, ensuring backend consistency across modules.</li>
+                <li>Acquired practical experience with agile workflows and collaborative development methodologies.</li>
               </ul>
             </div>
           </div>
@@ -211,9 +214,12 @@ const Resume = () => {
                 Accreditations
               </h2>
               <div className="text-xs text-zinc-300 print:text-zinc-800 space-y-1">
+                <p>• <span className="font-semibold text-white print:text-black">Azure AI Apps &amp; Agents (AI-103):</span> Microsoft Certified — Oct 2026</p>
+                <p>• <span className="font-semibold text-white print:text-black">AI Skills Fest 2026:</span> Microsoft · Credly</p>
                 <p>• <span className="font-semibold text-white print:text-black">Data Science:</span> GUVI Verified</p>
                 <p>• <span className="font-semibold text-white print:text-black">Cloud Computing Core:</span> IBM / TNSDC</p>
                 <p>• <span className="font-semibold text-white print:text-black">JavaScript Specialist:</span> GUVI</p>
+                <p>• <span className="font-semibold text-white print:text-black">Olympic Data Insights:</span> Udemy · Internshala</p>
               </div>
             </div>
           </div>
