@@ -121,3 +121,11 @@ Append-only log. Never delete entries. Mark resolved ones as `Status: Resolved`.
 - Fix: Extracted `projectsDatabase` and `ProjectData` into `src/pages/project-detail-data.ts` (111 lines), bringing `ProjectDetail.tsx` down to 152 lines. Both files remain well below 230 lines.
 - Status: Resolved
 - Date: 2026-11-12
+
+---
+
+- Problem: LinkedIn Post Inspector reported "Image: No image found" and status "206 Success" on https://portfolio-mxbn.vercel.app/
+- Cause: (1) vercel.json had a wildcard rewrite `/(.*)` to `/index.html` which could intercept static assets like `og-image.png` without CORS headers. (2) LinkedInBot sends a `Range: bytes=0-` header; Vercel's edge network responds with `206 Partial Content`, and `og:image` was buried far down in `<head>` after long keywords and description (byte 1851), so LinkedInBot's truncated 206 chunk missed it. (3) `<meta name="author">` placed before `og:type` caused LinkedIn to switch to Article mode.
+- Fix: (1) Reordered `<head>` in `index.html` so `og:image`, `og:type="website"`, and `<meta name="image">` are placed at the very top right under `<title>` (within byte 800). (2) Updated `vercel.json` rewrite to `/(?!.*\\.[a-zA-Z0-9]+$).*` so static assets are never rewritten. (3) Added CORS and public Cache-Control headers for images in `vercel.json`.
+- Status: Resolved
+- Date: 2026-11-12
