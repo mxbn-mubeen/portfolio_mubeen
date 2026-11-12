@@ -105,3 +105,19 @@ Append-only log. Never delete entries. Mark resolved ones as `Status: Resolved`.
 - Fix: Synced all 3 experience entries to match Experience.tsx bullet counts and wording. Added all 6 certs to Accreditations matching Certifications.tsx.
 - Status: Resolved
 - Date: 2026-11-11
+
+---
+
+- Problem: Mobile hero (iPhone SE 375px) — name "Mohamed Mubeen A S" wrapping to put "S" alone on its own line; role typewriter text clipped because fixed `h-12` container too short when text wraps
+- Cause: `text-4xl` (36px) × 18 chars overflows 375px with padding. Fixed `h-12` height never accommodated 2-line role text on small screens.
+- Fix: `text-[1.75rem]` base + `whitespace-nowrap` on name span (fits at 28px); `sm:text-5xl` restores desktop size. `min-h-[3rem]` on role span lets it grow if needed instead of clipping.
+- Status: Resolved
+- Date: 2026-11-12
+
+---
+
+- Problem: ProjectDetail.tsx was at 229 lines, and adding the new "AI Virtual Mouse Using Hand Gestures" case study data would have breached the ~230 line protocol threshold.
+- Cause: Case study data dictionary was co-located inside the UI component file.
+- Fix: Extracted `projectsDatabase` and `ProjectData` into `src/pages/project-detail-data.ts` (111 lines), bringing `ProjectDetail.tsx` down to 152 lines. Both files remain well below 230 lines.
+- Status: Resolved
+- Date: 2026-11-12

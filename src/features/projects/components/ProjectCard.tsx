@@ -72,57 +72,29 @@ export const ProjectCard = ({ project, index }: { project: Project; index: numbe
       <div className={`absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-24 blur-xl pointer-events-none ${theme.ray}`} />
 
       <div>
-        {/* Header: Logo, Type Badge & Action Links */}
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className="flex items-center gap-3">
-            {project.logo ? (
-              <div className="w-11 h-11 rounded-xl bg-white/[0.04] p-1.5 border border-white/[0.08] flex items-center justify-center overflow-hidden flex-shrink-0">
-                <img 
-                  src={project.logo} 
-                  alt={`${project.title} logo`}
-                  className="w-full h-full object-contain rounded-lg"
-                />
-              </div>
-            ) : project.customIcon ? (
-              <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0">
-                {project.customIcon}
-              </div>
-            ) : (
-              <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
-                <Icon className="w-5 h-5" />
-              </div>
-            )}
-
-            <div>
-              <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full border ${theme.badge}`}>
-                {project.type}
-              </span>
+        {/* Header: Logo + Type Badge only */}
+        <div className="flex items-center gap-3 mb-4">
+          {project.logo ? (
+            <div className="w-11 h-11 rounded-xl bg-white/[0.04] p-1.5 border border-white/[0.08] flex items-center justify-center overflow-hidden flex-shrink-0">
+              <img 
+                src={project.logo} 
+                alt={`${project.title} logo`}
+                className="w-full h-full object-contain rounded-lg"
+              />
             </div>
-          </div>
+          ) : project.customIcon ? (
+            <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0">
+              {project.customIcon}
+            </div>
+          ) : (
+            <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+              <Icon className="w-5 h-5" />
+            </div>
+          )}
 
-          {/* Action Links */}
-          <div className="flex items-center gap-2">
-            {project.caseStudySlug && (
-              <a
-                href={`/projects/${project.caseStudySlug}`}
-                className="text-[11px] font-mono text-blue-400 hover:text-blue-300 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 hover:border-blue-500/40 transition-all flex items-center gap-1 shadow-sm"
-              >
-                <span>Case Study</span>
-                <span className="text-xs">→</span>
-              </a>
-            )}
-            {project.showLink && project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-mono text-zinc-400 hover:text-white px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-all"
-              >
-                <span>Live</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            )}
-          </div>
+          <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full border ${theme.badge}`}>
+            {project.type}
+          </span>
         </div>
 
         <h3 className={`text-xl font-bold tracking-tight mb-2.5 ${theme.title}`}>
@@ -134,7 +106,7 @@ export const ProjectCard = ({ project, index }: { project: Project; index: numbe
         </p>
       </div>
 
-      {/* Footer Area: Tech Badges & Impact */}
+      {/* Footer Area */}
       <div className="space-y-3.5 mt-2">
         {/* Tech Badges */}
         <div className="flex flex-wrap gap-1.5">
@@ -148,15 +120,39 @@ export const ProjectCard = ({ project, index }: { project: Project; index: numbe
           ))}
         </div>
         
-        {/* Impact Line */}
-        <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        {/* Impact + CTAs row */}
+        <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-2 min-w-0">
             <Zap className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-            <p className="text-xs font-medium text-zinc-200 font-mono">{project.impact}</p>
+            <p className="text-xs font-medium text-zinc-200 font-mono truncate">{project.impact}</p>
+          </div>
+
+          {/* Action Links — now at the bottom */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {project.caseStudySlug && (
+              <a
+                href={`/projects/${project.caseStudySlug}`}
+                className={`text-[11px] font-mono px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 whitespace-nowrap ${theme.btn} bg-white/[0.03] border-white/[0.08] hover:border-white/20`}
+              >
+                <span>Case Study</span>
+                <span className="text-xs">→</span>
+              </a>
+            )}
+            {project.showLink && project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-[11px] font-mono text-zinc-400 hover:text-white px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition-all whitespace-nowrap"
+              >
+                <span>Live</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Seamless Architecture Specs (No nested box) */}
+        {/* Architecture Specs accordion */}
         {project.details && (
           <div className="border-t border-white/[0.06] pt-2.5">
             <button

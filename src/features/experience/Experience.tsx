@@ -26,18 +26,19 @@ export const Experience = () => {
       tier: "ADVANCED",
       role: "Full Stack Developer",
       company: "Nexobe",
+      companyUrl: "https://nexobe.com/",
       logo: "/Nexobe.png",
       location: "Illinois, United States",
       period: "September 2024 – September 2025",
       type: "Full-time",
-      engineeringTagline: "Scaling distributed SaaS architectures: boosted workflow efficiency by 40%, cut API response times by 30%, and optimized database queries.",
+      engineeringTagline: "Engineered scalable frontend architectures for Nexobe's AI tools, including Otteri.ai and the complete dynamic blog section for GoodOff (goodoff.co/blog).",
       achievements: [
-        "Developed and deployed interactive dashboards using Chakra UI and SaaS UI, boosting workflow efficiency by 40%",
-        "Integrated TanStack Query and TRPC, reducing API response times by 30% and enhancing backend communication",
-        "Optimized PostgreSQL schema with Drizzle ORM, cutting redundant queries by 25% and improving data integrity",
-        "Partnered with cross-functional teams to deliver scalable SaaS features, ensuring seamless frontend-backend integration"
+        "Developed interactive UI components and multi-model streaming chat interfaces for Otteri.ai using React, TypeScript, and Chakra/SaaS UI",
+        "Independently engineered and shipped the full dynamic blog section for GoodOff (goodoff.co/blog), implementing responsive layouts, reading time estimations, and SEO metadata",
+        "Integrated TanStack Query and tRPC across frontend modules, reducing API response times by 30% and eliminating client-server schema drift",
+        "Optimized relational PostgreSQL schemas via Drizzle ORM, cutting redundant roundtrips by 25% with indexed query patterns"
       ],
-      tech: ["React.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "TanStack Query", "tRPC", "Chakra UI", "SaaS UI"]
+      tech: ["React.js", "TypeScript", "tRPC", "PostgreSQL", "Drizzle ORM", "TanStack Query", "Chakra UI", "SaaS UI"]
     },
     {
       stage: "Phase I • Core Engineering Bedrock",

@@ -1,7 +1,7 @@
 import { AnimatedSection } from "@/shared/components/AnimatedSection";
 import { Sparkles } from "lucide-react";
 import { ProjectCard, type Project } from "./components/ProjectCard";
-import { MarineDebrisLogo, AIProjectsSuiteLogo } from "./components/ProjectLogos";
+import { MarineDebrisLogo, AIProjectsSuiteLogo, AIVirtualMouseLogo } from "./components/ProjectLogos";
 
 export const Projects = () => {
   const projects: Project[] = [
@@ -24,11 +24,12 @@ export const Projects = () => {
     {
       title: "Caviti AI",
       logo: "/cavitiai.png",
-      description: "Built type-safe TRPC APIs and responsive UIs with React.js & Chakra UI. Implemented PostgreSQL schema via Drizzle ORM for better scalability.",
-      tech: ["React.js", "TRPC", "Chakra UI", "PostgreSQL", "Drizzle ORM"],
+      description: "Autonomous inventory management & AI agents for Dental SupplyOps. Built type-safe tRPC APIs and responsive dashboard UIs with React.js & Chakra UI, backed by PostgreSQL via Drizzle ORM.",
+      tech: ["React.js", "TypeScript", "tRPC", "Chakra UI", "PostgreSQL", "Drizzle ORM"],
       impact: "Improved API stability by 30%",
       type: "Full-Time SaaS",
-      showLink: false,
+      link: "https://caviti.ai/",
+      showLink: true,
       caseStudySlug: "caviti-ai",
       details: {
         challenges: "Managing complex state across multiple dashboard components while maintaining type safety and preventing data inconsistencies.",
@@ -37,18 +38,18 @@ export const Projects = () => {
       }
     },
     {
-      title: "AI Projects Suite",
+      title: "Otteri.ai",
       customIcon: <AIProjectsSuiteLogo className="w-10 h-10" />,
-      description: "Contributed to multiple AI-powered applications including Otteri.ai, Pickel.ai, Vipery.ai, Snap.photo, and GoodOff. Built reusable UI components and enhanced frontend functionality.",
-      tech: ["React.js", "TypeScript", "API Integration", "Git", "Shared Components"],
-      impact: "Improved load time and user experience across 5+ products",
-      type: "Component Architecture",
+      description: "Multi-model AI productivity workspace at Nexobe. Engineered streaming chat interfaces and modular UI components for Otteri.ai, along with developing the complete dynamic blog section for GoodOff (goodoff.co/blog).",
+      tech: ["React.js", "TypeScript", "tRPC", "Tailwind CSS", "Design Systems", "TanStack Query"],
+      impact: "Streaming chat interfaces & full blog delivery",
+      type: "Frontend & Component Architecture",
       showLink: false,
-      caseStudySlug: "ai-projects-suite",
+      caseStudySlug: "otteri-ai",
       details: {
-        challenges: "Creating consistent, reusable components across multiple AI applications with different requirements and branding.",
-        solutions: "Developed a shared component library with configurable theming, implemented lazy loading for better performance, and standardized API integration patterns.",
-        architecture: "Shared React component library, TypeScript for type safety, modular CSS architecture, centralized API client with interceptors."
+        challenges: "Developing responsive streaming interfaces for Otteri.ai's multi-model AI workspace, while building an end-to-end SEO-optimized blog platform for GoodOff.",
+        solutions: "Engineered headless React component primitives, virtualized streaming message views, dynamic reading layouts, and structured metadata for content discoverability.",
+        architecture: "React & TypeScript component architecture with tRPC APIs, tokenized theming, and modular content rendering."
       }
     },
     {
@@ -65,6 +66,22 @@ export const Projects = () => {
         challenges: "Accurately detecting and classifying marine debris in varying water conditions, lighting, and underwater environments.",
         solutions: "Trained custom CNN models on diverse marine debris datasets, implemented image preprocessing techniques, and used transfer learning for better accuracy.",
         architecture: "Python-based ML pipeline with OpenCV for image processing, TensorFlow/Keras for model training, Flask API for serving predictions."
+      }
+    },
+    {
+      title: "AI Virtual Mouse Using Hand Gestures",
+      customIcon: <AIVirtualMouseLogo className="w-10 h-10" />,
+      description: "A touchless computer vision control system using MediaPipe and OpenCV. Tracks 21 3D hand landmarks in real-time, mapping finger positions to smooth cursor motions and pinch clicks.",
+      tech: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI", "NumPy"],
+      impact: "Touchless navigation via 21-landmark tracking",
+      type: "Computer Vision & HCI",
+      link: "https://github.com/mxbn-mubeen/AI_Virtual_Mouse_Using_Hand_Gestures",
+      showLink: true,
+      caseStudySlug: "ai-virtual-mouse",
+      details: {
+        challenges: "Minimizing rapid hand jitter and erratic cursor movement across varied lighting conditions while distinguishing intentional clicks from finger transitions.",
+        solutions: "Implemented coordinate interpolation with an 8.0 smoothening factor and designed a dual-mode state machine for pointer movement vs. Euclidean pinch click detection (<35px).",
+        architecture: "Python pipeline featuring an isolated HandTrackingModule for landmark extraction and PyAutoGUI for OS-level mouse control and click dispatching."
       }
     }
   ];

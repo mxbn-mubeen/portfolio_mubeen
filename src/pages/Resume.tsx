@@ -37,7 +37,6 @@ const Resume = () => {
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Portfolio</span>
         </Link>
-
         <div className="flex items-center gap-2.5">
           <Button
             size="sm"
@@ -48,7 +47,6 @@ const Resume = () => {
             <Printer className="w-3.5 h-3.5 mr-1.5" />
             <span>Print CV</span>
           </Button>
-
           <a 
             href="/Mohamed_Mubeen_Resume.pdf" 
             download
@@ -133,7 +131,6 @@ const Resume = () => {
             </div>
           </div>
         </section>
-
         {/* Work Experience with Milestone Badges */}
         <section className="mb-8">
           <h2 className="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-4 print:text-blue-700">
@@ -167,12 +164,12 @@ const Resume = () => {
                 </div>
                 <span className="text-xs font-mono text-zinc-400 print:text-zinc-600 font-normal">Sep 2024 – Sep 2025 • Illinois, US</span>
               </div>
-              <p className="text-xs text-indigo-300/90 print:text-blue-800 font-mono mt-1">Phase II: High-Velocity SaaS & APIs</p>
+              <p className="text-xs text-indigo-300/90 print:text-blue-800 font-mono mt-1">Phase II: High-Velocity AI SaaS & APIs • Products: Otteri.ai, GoodOff Blog</p>
               <ul className="mt-2 space-y-1.5 text-xs text-zinc-300 print:text-zinc-700 list-disc list-inside leading-relaxed">
-                <li>Developed and deployed interactive dashboards using Chakra UI and SaaS UI, boosting workflow efficiency by 40%.</li>
-                <li>Integrated TanStack Query and tRPC, reducing API response times by 30% and eliminating client-server runtime mismatches.</li>
-                <li>Optimized PostgreSQL schema via Drizzle ORM, cutting redundant queries by 25% and improving data integrity.</li>
-                <li>Partnered with cross-functional teams to deliver scalable SaaS features, ensuring seamless frontend-backend integration.</li>
+                <li>Developed interactive UI components and multi-model streaming chat interfaces for Otteri.ai using React, TypeScript, and Chakra/SaaS UI.</li>
+                <li>Independently engineered and shipped the full dynamic blog section for GoodOff (goodoff.co/blog), implementing responsive layouts, reading time calculations, and SEO metadata.</li>
+                <li>Integrated TanStack Query and tRPC across frontend modules, reducing API response times by 30% and eliminating client-server schema drift.</li>
+                <li>Optimized PostgreSQL queries via Drizzle ORM, cutting redundant query roundtrips by 25% with indexed relational query patterns.</li>
               </ul>
             </div>
 

@@ -41,10 +41,14 @@ export const HeroContent = () => {
         </div>
 
         {/* Main Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-[1.1]">
-          <span className="block text-white">Mohamed Mubeen A S</span>
+        <h1 className="font-bold tracking-tight mb-4 leading-[1.1]">
+          {/* Name: whitespace-nowrap + stepped font size keeps it on one line at all widths */}
+          <span className="block text-white text-[1.75rem] sm:text-5xl lg:text-6xl whitespace-nowrap">
+            Mohamed Mubeen A S
+          </span>
+          {/* Rotating role — min-height reserves space so layout never jumps when text wraps */}
           <span
-            className={`block mt-2 h-12 sm:h-14 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent transition-opacity duration-200 text-3xl sm:text-4xl lg:text-5xl ${
+            className={`block mt-2 min-h-[3rem] sm:min-h-[3.5rem] bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent transition-opacity duration-200 text-2xl sm:text-4xl lg:text-5xl leading-snug ${
               fade ? "opacity-100" : "opacity-0"
             }`}
           >

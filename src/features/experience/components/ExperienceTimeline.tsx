@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Sparkles, Calendar, MapPin, CheckCircle2, ShieldCheck, Zap, Code2 } from "lucide-react";
+import { Sparkles, Calendar, MapPin, CheckCircle2, ShieldCheck, Zap, Code2, ExternalLink } from "lucide-react";
 
 export interface ExperienceStage {
   stage: string;
   tier: "APEX" | "ADVANCED" | "FOUNDATION";
   role: string;
   company: string;
+  companyUrl?: string;
   logo?: string;
   location: string;
   period: string;
@@ -128,9 +129,21 @@ export const ExperienceTimeline = ({ experience, index }: ExperienceTimelineProp
               >
                 {experience.role}
               </h3>
-              <p className="text-sm font-medium text-zinc-300 mt-0.5">
-                {experience.company}
-              </p>
+              {experience.companyUrl ? (
+                <a
+                  href={experience.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-300 hover:text-white mt-0.5 group/company transition-colors"
+                >
+                  <span>{experience.company}</span>
+                  <ExternalLink className="w-3 h-3 text-zinc-500 group-hover/company:text-zinc-300" />
+                </a>
+              ) : (
+                <p className="text-sm font-medium text-zinc-300 mt-0.5">
+                  {experience.company}
+                </p>
+              )}
             </div>
           </div>
         </div>
