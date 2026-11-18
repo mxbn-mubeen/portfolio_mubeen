@@ -146,9 +146,9 @@ export const Certifications = () => {
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white flex-shrink-0 transition-colors" />
               </a>
 
-              {/* Data-Driven Insights – Udemy */}
+              {/* Project on Data-Driven insights on Olympic Sports Participation and Performance – IBM */}
               <a
-                href="https://www.udemy.com/certificate/UC-aa4ee1a9-dddb-4009-b54f-5d39e157ff44/"
+                href="https://courses.tnsdc.skillsnetwork.site/certificates/247cc08c48a9400ca6be670318631c7c"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-white/20 hover:bg-white/[0.06] transition-all duration-200 group"
@@ -157,9 +157,9 @@ export const Certifications = () => {
                   <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
                   <div className="min-w-0">
                     <p className="text-white/90 text-xs font-medium group-hover:text-white transition-colors truncate">
-                      Olympic Insights
+                    Project on Data-Driven insights on Olympic Sports Participation and Performance
                     </p>
-                    <p className="text-zinc-400 text-[11px]">Udemy · Internshala</p>
+                    <p className="text-zinc-400 text-[11px]">IBM</p>
                   </div>
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white flex-shrink-0 transition-colors" />
