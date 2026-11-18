@@ -89,9 +89,9 @@ export const Certifications = () => {
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white flex-shrink-0 transition-colors" />
               </a>
 
-              {/* Data Science – GUVI */}
+              {/* Data Science – Internshala Trainings */}
               <a
-                href="https://www.guvi.in/verify-certificate?id=U46ax3103M6e8635W9"
+                href="https://trainings.internshala.com/verify-certificate/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-white/20 hover:bg-white/[0.06] transition-all duration-200 group"
@@ -102,7 +102,7 @@ export const Certifications = () => {
                     <p className="text-white/90 text-xs font-medium group-hover:text-white transition-colors truncate">
                       Data Science
                     </p>
-                    <p className="text-zinc-400 text-[11px]">GUVI</p>
+                    <p className="text-zinc-400 text-[11px]">Internshala Trainings</p>
                   </div>
                 </div>
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white flex-shrink-0 transition-colors" />
